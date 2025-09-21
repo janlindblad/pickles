@@ -2,15 +2,7 @@
 
 Anyone who contributes code to this project should read through these code contribution guidelines.
 
-## Getting Started
-
-1. Clone the repository
-2. Set up virtual environment: `python -m venv .venv && source .venv/bin/activate`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Copy `.env.example` to `.env` and configure variables
-5. Run migrations: `python manage.py migrate`
-6. Create superuser: `python manage.py createsuperuser`
-7. Run development server: `python manage.py runserver`
+For general setup, installation, and project overview, see [README.md](README.md).
 
 ## Maintainable Code
 
@@ -65,21 +57,7 @@ Anyone who contributes code to this project should read through these code contr
 
 ## Application Structure
 
-In order to keep the code manageable, it is divided into several applications. Some of the applications here might not exist yet, or only exist in rudimentary form.
-
-Each application has a place in a dependency tree. Applications lower in the tree may not reference anything higher up in the tree.
-
-**Dependency Tree:**
-```
-pickles (project settings)
-└── maker (core models/UI)
-    └── groker (datasheet parsing)
-```
-
-**Application Descriptions:**
-- **pickles**: Project settings and configuration. Parent of all applications.
-- **maker**: Core Django model classes and user interface for making ad blurbs. Foundation layer that other apps build upon.
-- **groker**: Parse datasheets to update database with new information. Depends on and uses maker models.
+See [README.md](README.md) for overall project architecture and application structure.
 
 ## Models and Views
 
@@ -130,6 +108,8 @@ pickles (project settings)
 
 ## Development Workflow
 
+See [README.md](README.md) for general development workflow. The following are code-specific guidelines:
+
 ### Branch Naming
 - Feature branches: `feature/short-description`
 - Bug fixes: `fix/short-description`
@@ -140,34 +120,19 @@ pickles (project settings)
 - First line should be 50 characters or less
 - Reference issues when applicable: "Fix login bug (#123)"
 
-### Pull Requests
-- Create PRs against the main branch
-- Include description of changes and testing performed
-- Ensure all tests pass before requesting review
-- Link to relevant issues
-
 ### Code Review
 - All code must be reviewed before merging
 - Address all review comments before merging
-- Squash commits when merging to maintain clean history
+- Focus on code quality, not just functionality
 
 ## Environment and Configuration
 
-### Python Requirements
-- Python 3.11 or higher
-- Use virtual environments for all development
-- Keep `requirements.txt` updated with exact versions
+See [README.md](README.md) for environment setup and configuration details.
 
-### Environment Variables
-- Never commit `.env` files
-- Update `.env.example` when adding new environment variables
-- Use descriptive variable names with project prefix when appropriate
-- Document all environment variables in `.env.example`
-
-### Settings
-- Development settings should be safe and convenient
-- Production settings must prioritize security
-- Use environment variables for all sensitive configuration
+### Code-Specific Configuration
+- Configuration constants should be placed in `maker/constants.py`
+- Use environment variables for deployment-specific settings
+- Keep sensitive data in `.env` files (never commit these)
 
 ## Documentation
 
@@ -234,3 +199,7 @@ pickles (project settings)
 - Test migrations on a copy of production data when possible
 - Coordinate with team before squashing migrations
 - Never edit migration files after they've been committed and deployed
+
+---
+
+For installation, setup, demo data, and general project information, see [README.md](README.md).
