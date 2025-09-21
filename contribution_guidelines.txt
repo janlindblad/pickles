@@ -1,0 +1,236 @@
+# Code Contribution Guidelines
+
+Anyone who contributes code to this project should read through these code contribution guidelines.
+
+## Getting Started
+
+1. Clone the repository
+2. Set up virtual environment: `python -m venv .venv && source .venv/bin/activate`
+3. Install dependencies: `pip install -r requirements.txt`
+4. Copy `.env.example` to `.env` and configure variables
+5. Run migrations: `python manage.py migrate`
+6. Create superuser: `python manage.py createsuperuser`
+7. Run development server: `python manage.py runserver`
+
+## Maintainable Code
+
+- All contributed code should have long term maintenance in mind. As new functionality is added, actively look for relevant, existing functionality to reuse. Refactor the existing code to accommodate. The Don't Repeat Yourself, DRY, principle holds.
+
+- Adhere to the "fat models, lean views" division of responsibilities, i.e. the model classes should generally have the methods for working with the objects in these classes, that are not directly related to the user interface.
+
+- This is a Django/Python project. Adhere to general coding principles in these domains.
+
+## Code Comments and Marking
+
+- Modules marked "Particularly Important Module" (indicated by a comment at the top of the file) shall be treated with special attention to detail, clarity and be commented extensively. These are typically core business logic modules that are frequently modified or have complex interdependencies.
+
+- Make block comments at the top of functions explaining what their purpose is, and any assumptions about input data or system state.
+
+- Comments describing what the next block of code is doing are welcome.
+
+- Refrain from comments with instructions about how merge the code or why the change was done (such as "Add this line", "Change from xxx to xxx", "...rest of existing code...", "Add gap between title and actions"). Such information should be conveyed outside the code. Always be clear about which file(s) are targeted for the changes.
+
+## Error Handling
+
+- Handle edge cases gracefully (empty querysets, missing data)
+- Use Django's built-in error pages and messaging framework
+- Log errors appropriately for debugging
+
+## Database and Models
+
+- Use descriptive field names and model names
+- Add `__str__` methods for admin interface clarity
+- Use Django's built-in field types when possible
+- Consider database indexes for frequently queried fields
+
+## Security
+
+- Always use `{% csrf_token %}` in forms
+- Validate user permissions in views
+- Use Django's built-in authentication system
+- Sanitize user input appropriately
+
+## Naming Conventions
+
+- Use "object oriented naming", i.e. file and symbol names that begin with the subject, so that related files are grouped together:
+  - Functions: `user_is_demo()`, `email_send_template()`, `product_calculate_price()`
+  - Files: `user_views.py`, `email_templates.py`, `product_utils.py`
+  - Variables: `user_profile`, `email_template_ids`, `product_list`
+
+- Use all lowercase with underscore for filenames and symbols generally. CamelCase for class names.
+
+- Filenames for files containing views should end in `_views` (plural) for multiple views, `_view` (singular) for a single view class.
+
+- Test files should follow the pattern: `test_models.py`, `test_views.py`, `test_utils.py`
+
+## Application Structure
+
+In order to keep the code manageable, it is divided into several applications. Some of the applications here might not exist yet, or only exist in rudimentary form.
+
+Each application has a place in a dependency tree. Applications lower in the tree may not reference anything higher up in the tree.
+
+**Dependency Tree:**
+```
+pickles (project settings)
+└── maker (core models/UI)
+    └── groker (datasheet parsing)
+```
+
+**Application Descriptions:**
+- **pickles**: Project settings and configuration. Parent of all applications.
+- **maker**: Core Django model classes and user interface for making ad blurbs. Foundation layer that other apps build upon.
+- **groker**: Parse datasheets to update database with new information. Depends on and uses maker models.
+
+## Models and Views
+
+- Many views serve different user roles and contexts (e.g., read-only vs editable). Design views to handle these variations through parameters rather than duplicating code.
+- URL entries that end in _api as in path(..., name="..._api") should only return JSON data, never HTML.
+
+## Templates
+
+- Use semantic HTML5 elements
+- Include proper `<!DOCTYPE html>`, `<head>`, and `<body>` structure
+- Use `{% include "base_header.html" %}` in `<head>` for CSS/meta tags
+- Use `{% include "base_navbar.html" %}` after `<body>` for navigation
+- Prefer utility classes over custom styling
+
+- Basic structure should follow this pattern:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base_header.html" %}
+    <title>Page Title - Pickles</title>
+    {% load static %}
+</head>
+<body>
+    {% include "base_navbar.html" %}
+    <!-- page content -->
+</body>
+</html>
+```
+
+## CSS and Styling
+
+- All user interface styling happens in a few central files. They are found in `/static/css/`. CSS files load in this order:
+  - **base.css**: Core styling, typography, colors, and fundamental elements
+  - **components.css**: Reusable UI components (buttons, forms, cards)
+  - **layout.css**: Page layout, grid systems, and responsive design
+  - **components-specific.css**: Project-specific overrides and custom styling
+
+- Make sure not to insert local styling in template files, and try to reuse the existing components and styling elements. If something specific is warranted, put it in components-specific.css
+
+- Don't use external libraries with icons or fonts. Stick with unicode symbols and web fonts. Common unicode symbols: ✓ ✕ ➕ ⚠ ℹ ⬅ ➡ ⬆ ⬇ ⭐ 🔍
+
+## JavaScript
+
+- Prefer vanilla JavaScript over external libraries
+- Inline scripts are acceptable for component-specific functionality
+- Before adding JavaScript libraries, discuss with contributors first
+
+## Development Workflow
+
+### Branch Naming
+- Feature branches: `feature/short-description`
+- Bug fixes: `fix/short-description`
+- Documentation: `docs/short-description`
+
+### Commit Messages
+- Use present tense: "Add feature" not "Added feature"
+- First line should be 50 characters or less
+- Reference issues when applicable: "Fix login bug (#123)"
+
+### Pull Requests
+- Create PRs against the main branch
+- Include description of changes and testing performed
+- Ensure all tests pass before requesting review
+- Link to relevant issues
+
+### Code Review
+- All code must be reviewed before merging
+- Address all review comments before merging
+- Squash commits when merging to maintain clean history
+
+## Environment and Configuration
+
+### Python Requirements
+- Python 3.11 or higher
+- Use virtual environments for all development
+- Keep `requirements.txt` updated with exact versions
+
+### Environment Variables
+- Never commit `.env` files
+- Update `.env.example` when adding new environment variables
+- Use descriptive variable names with project prefix when appropriate
+- Document all environment variables in `.env.example`
+
+### Settings
+- Development settings should be safe and convenient
+- Production settings must prioritize security
+- Use environment variables for all sensitive configuration
+
+## Documentation
+
+### Docstrings
+- Use Google-style docstrings for consistency
+- Document all public functions, classes, and methods
+- Include parameter types and return values
+- Provide usage examples for complex functions
+
+### Code Comments
+- Explain "why" not "what" in comments
+- Update comments when code changes
+- Remove outdated or obvious comments
+
+## Performance Guidelines
+
+### Database Optimization
+- Use `select_related()` and `prefetch_related()` to avoid N+1 queries
+- Add database indexes for frequently queried fields
+- Use `django-debug-toolbar` in development to monitor queries
+- Consider database constraints and migrations impact
+
+### Caching
+- Cache expensive operations and database queries
+- Use Django's caching framework consistently
+- Document cache invalidation strategies
+
+### Static Files
+- Optimize images before committing
+- Use Django's static file handling
+- Consider CDN for production deployments
+
+## Testing
+
+### Test Coverage
+- For model classes, supply module integration tests for typical cases, corner cases and negative tests that can run very quickly.
+- For views, supply module integration tests that generate temporary test data to check that the main flow works, and that error cases are handled. These tests may run for a few seconds.
+- For other code, such as utility functions, supply test functionality that runs quickly.
+
+### Test Organization
+- Use descriptive test method names: `test_user_can_create_profile_with_valid_data()`
+- Group related tests in test classes
+- Use Django's `TestCase` for database-related tests, `SimpleTestCase` for others
+- Mock external dependencies and services
+
+## Version Control
+
+### What to Commit
+- Source code and configuration files
+- Migration files (but coordinate with team for conflicts)
+- Documentation and README updates
+- Test files and test data
+
+### What NOT to Commit
+- `.env` files with sensitive data
+- `__pycache__/` directories
+- IDE-specific files (covered by `.gitignore`)
+- Database files (`db.sqlite3`)
+- User-uploaded media files
+- Compiled/generated files
+
+### Migration Handling
+- Run `python manage.py makemigrations` before committing model changes
+- Test migrations on a copy of production data when possible
+- Coordinate with team before squashing migrations
+- Never edit migration files after they've been committed and deployed

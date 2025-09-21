@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base_header.html" %}
+    <title>{{ page_title|default:"Pickles Maker - Start" }}</title>
+</head>
+<body>
+    {% include "base_navbar.html" %}
+    
+    <main class="main-content">
+        <div class="container">
+            <!-- Header with Clear Button -->
+            <div class="header-controls">
+                <h1 class="m-0">Create Ad Blurb</h1>
+                <div class="clear-all-section">
+                    <button type="button" id="clearAllBtn" class="btn btn-clear">
+                        ✕ Clear All
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Selection Area -->
+            <div class="selection-area">
+                <div class="form-section">
+                    <h2 class="form-section-title">Product Selection</h2>
+                    
+                    <!-- Primary Selection Row -->
+                    <div class="selection-row">
+                        <div class="selection-group">
+                            <label for="brandSelect" class="form-label">
+                                <span class="status-indicator status-disabled" id="brandStatus"></span>
+                                Brand *
+                            </label>
+                            <select id="brandSelect" class="form-select" name="brand">
+                                <option value="">Choose a brand...</option>
+                                {% for brand in brands %}
+                                    <option value="{{ brand.id }}">{{ brand.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="selection-group">
+                            <label for="modelSelect" class="form-label">
+                                <span class="status-indicator status-disabled" id="modelStatus"></span>
+                                Model *
+                            </label>
+                            <select id="modelSelect" class="form-select" name="model" disabled>
+                                <option value="">Choose a model...</option>
+                                {% for model in models %}
+                                    <option value="{{ model.id }}">{{ model.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="selection-group">
+                            <label for="yearSelect" class="form-label">
+                                <span class="status-indicator status-disabled" id="yearStatus"></span>
+                                Year *
+                            </label>
+                            <select id="yearSelect" class="form-select" name="year" disabled>
+                                <option value="">Choose a year...</option>
+                                {% for year in years %}
+                                    <option value="{{ year.id }}">{{ year.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Packages Section -->
+                <div class="packages-section" id="packagesSection" style="display: none;">
+                    <div class="form-section">
+                        <h3 class="form-section-title">Package Selection</h3>
+                        <p class="text-muted">Select zero or more packages that apply to this product:</p>
+                        
+                        <div id="packagesContainer" class="package-grid">
+                            <!-- Packages will be populated by JavaScript -->
+                        </div>
+                        
+                        <div id="packagesLoading" class="package-empty-state" style="display: none;">
+                            <div class="selection-loading"></div>
+                            Loading packages...
+                        </div>
+                        
+                        <div id="packagesEmpty" class="package-empty-state" style="display: none;">
+                            No packages available for this selection.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Output Area -->
+            <div class="output-area">
+                <div class="form-section">
+                    <h2 class="form-section-title">Generated Content</h2>
+                    
+                    <div class="output-columns">
+                        <div class="output-column">
+                            <div class="output-column-header">
+                                <button type="button" class="btn btn-outline" data-column="1">
+                                    Button 1
+                                </button>
+                            </div>
+                            <textarea 
+                                id="output1" 
+                                class="output-textarea custom-scrollbar" 
+                                placeholder="Generated content will appear here..."
+                                readonly
+                            ></textarea>
+                        </div>
+                        
+                        <div class="output-column">
+                            <div class="output-column-header">
+                                <button type="button" class="btn btn-outline" data-column="2">
+                                    Button 2
+                                </button>
+                            </div>
+                            <textarea 
+                                id="output2" 
+                                class="output-textarea custom-scrollbar" 
+                                placeholder="Generated content will appear here..."
+                                readonly
+                            ></textarea>
+                        </div>
+                        
+                        <div class="output-column">
+                            <div class="output-column-header">
+                                <button type="button" class="btn btn-outline" data-column="3">
+                                    Button 3
+                                </button>
+                            </div>
+                            <textarea 
+                                id="output3" 
+                                class="output-textarea custom-scrollbar" 
+                                placeholder="Generated content will appear here..."
+                                readonly
+                            ></textarea>
+                        </div>
+                        
+                        <div class="output-column">
+                            <div class="output-column-header">
+                                <button type="button" class="btn btn-outline" data-column="4">
+                                    Button 4
+                                </button>
+                            </div>
+                            <textarea 
+                                id="output4" 
+                                class="output-textarea custom-scrollbar" 
+                                placeholder="Generated content will appear here..."
+                                readonly
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- JavaScript for responsive functionality -->
+    <script>
+        // Global state management
+        const AppState = {
+            selectedBrand: null,
+            selectedModel: null,
+            selectedYear: null,
+            selectedPackages: new Set(),
+            
+            // Update selection state and UI
+            updateSelection: function() {
+                this.updateStatusIndicators();
+                this.updateFormStates();
+                this.loadPackages();
+            },
+            
+            // Update status indicators
+            updateStatusIndicators: function() {
+                const brandStatus = document.getElementById('brandStatus');
+                const modelStatus = document.getElementById('modelStatus');
+                const yearStatus = document.getElementById('yearStatus');
+                
+                brandStatus.className = `status-indicator ${this.selectedBrand ? 'status-ready' : 'status-disabled'}`;
+                modelStatus.className = `status-indicator ${this.selectedModel ? 'status-ready' : 'status-disabled'}`;
+                yearStatus.className = `status-indicator ${this.selectedYear ? 'status-ready' : 'status-disabled'}`;
+            },
+            
+            // Enable/disable form elements based on state
+            updateFormStates: function() {
+                const modelSelect = document.getElementById('modelSelect');
+                const yearSelect = document.getElementById('yearSelect');
+                
+                modelSelect.disabled = !this.selectedBrand;
+                yearSelect.disabled = !this.selectedBrand || !this.selectedModel;
+                
+                if (!this.selectedBrand) {
+                    modelSelect.value = '';
+                    yearSelect.value = '';
+                    this.selectedModel = null;
+                    this.selectedYear = null;
+                }
+                
+                if (!this.selectedModel) {
+                    yearSelect.value = '';
+                    this.selectedYear = null;
+                }
+            },
+            
+            // Load packages via API
+            loadPackages: function() {
+                const packagesSection = document.getElementById('packagesSection');
+                const packagesContainer = document.getElementById('packagesContainer');
+                const packagesLoading = document.getElementById('packagesLoading');
+                const packagesEmpty = document.getElementById('packagesEmpty');
+                
+                // Hide packages section if not all required fields are selected
+                if (!this.selectedBrand || !this.selectedModel || !this.selectedYear) {
+                    packagesSection.style.display = 'none';
+                    this.selectedPackages.clear();
+                    return;
+                }
+                
+                // Show packages section and loading state
+                packagesSection.style.display = 'block';
+                packagesContainer.innerHTML = '';
+                packagesLoading.style.display = 'block';
+                packagesEmpty.style.display = 'none';
+                
+                // Fetch packages from API
+                const params = new URLSearchParams({
+                    brand_id: this.selectedBrand,
+                    model_id: this.selectedModel,
+                    year_id: this.selectedYear
+                });
+                
+                fetch(`/maker/api/packages/?${params}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        packagesLoading.style.display = 'none';
+                        
+                        if (data.success && data.packages.length > 0) {
+                            this.renderPackages(data.packages);
+                        } else {
+                            packagesEmpty.style.display = 'block';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading packages:', error);
+                        packagesLoading.style.display = 'none';
+                        packagesEmpty.style.display = 'block';
+                    });
+            },
+            
+            // Render packages as checkboxes
+            renderPackages: function(packages) {
+                const packagesContainer = document.getElementById('packagesContainer');
+                
+                packages.forEach(pkg => {
+                    const packageItem = document.createElement('div');
+                    packageItem.className = 'package-item';
+                    packageItem.innerHTML = `
+                        <div class="form-check">
+                            <input type="checkbox" 
+                                   id="package_${pkg.id}" 
+                                   class="form-check-input" 
+                                   value="${pkg.id}"
+                                   data-package-name="${pkg.name}">
+                            <label for="package_${pkg.id}" class="form-check-label">
+                                ${pkg.name}
+                            </label>
+                        </div>
+                    `;
+                    
+                    // Add event listener for package selection
+                    const checkbox = packageItem.querySelector('input[type="checkbox"]');
+                    checkbox.addEventListener('change', (e) => {
+                        if (e.target.checked) {
+                            this.selectedPackages.add(pkg.id);
+                            packageItem.classList.add('selected');
+                        } else {
+                            this.selectedPackages.delete(pkg.id);
+                            packageItem.classList.remove('selected');
+                        }
+                    });
+                    
+                    packagesContainer.appendChild(packageItem);
+                });
+            },
+            
+            // Clear all selections
+            clearAll: function() {
+                // Reset form elements
+                document.getElementById('brandSelect').value = '';
+                document.getElementById('modelSelect').value = '';
+                document.getElementById('yearSelect').value = '';
+                
+                // Reset state
+                this.selectedBrand = null;
+                this.selectedModel = null;
+                this.selectedYear = null;
+                this.selectedPackages.clear();
+                
+                // Clear output textareas
+                for (let i = 1; i <= 4; i++) {
+                    document.getElementById(`output${i}`).value = '';
+                }
+                
+                // Update UI
+                this.updateSelection();
+            }
+        };
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Brand selection
+            document.getElementById('brandSelect').addEventListener('change', function(e) {
+                AppState.selectedBrand = e.target.value || null;
+                AppState.updateSelection();
+            });
+            
+            // Model selection
+            document.getElementById('modelSelect').addEventListener('change', function(e) {
+                AppState.selectedModel = e.target.value || null;
+                AppState.updateSelection();
+            });
+            
+            // Year selection
+            document.getElementById('yearSelect').addEventListener('change', function(e) {
+                AppState.selectedYear = e.target.value || null;
+                AppState.updateSelection();
+            });
+            
+            // Clear all button
+            document.getElementById('clearAllBtn').addEventListener('click', function() {
+                AppState.clearAll();
+            });
+            
+            // Output column buttons (placeholder functionality)
+            document.querySelectorAll('[data-column]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const column = this.getAttribute('data-column');
+                    console.log(`Button ${column} clicked`);
+                    // TODO: Add actual functionality for buttons
+                });
+            });
+            
+            // Initialize UI state
+            AppState.updateSelection();
+        });
+    </script>
+</body>
+</html>
