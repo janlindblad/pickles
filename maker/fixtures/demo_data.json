@@ -1,0 +1,7349 @@
+[
+{
+  "model": "maker.historicalbrand",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "name": "Tesla",
+    "history_date": "2025-09-21T08:21:51.454Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrand",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "name": "BMW",
+    "history_date": "2025-09-21T08:21:51.455Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrand",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "name": "Audi",
+    "history_date": "2025-09-21T08:21:51.456Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrand",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "name": "Mercedes-Benz",
+    "history_date": "2025-09-21T08:21:51.457Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrand",
+  "pk": 5,
+  "fields": {
+    "id": 5,
+    "name": "Toyota",
+    "history_date": "2025-09-21T08:21:51.458Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrand",
+  "pk": 6,
+  "fields": {
+    "id": 4,
+    "name": "Mercedes-Benz",
+    "history_date": "2025-09-21T09:23:44.760Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalbrand",
+  "pk": 7,
+  "fields": {
+    "id": 2,
+    "name": "BMW",
+    "history_date": "2025-09-21T09:23:44.762Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalbrand",
+  "pk": 8,
+  "fields": {
+    "id": 6,
+    "name": "BMW",
+    "history_date": "2025-09-21T13:08:41.887Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrand",
+  "pk": 9,
+  "fields": {
+    "id": 7,
+    "name": "Volvo",
+    "history_date": "2025-09-21T13:29:33.556Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 1,
+  "fields": {
+    "name": "Tesla"
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 3,
+  "fields": {
+    "name": "Audi"
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 5,
+  "fields": {
+    "name": "Toyota"
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 6,
+  "fields": {
+    "name": "BMW"
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 7,
+  "fields": {
+    "name": "Volvo"
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "name": "Model S",
+    "history_date": "2025-09-21T08:21:51.460Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "name": "Model 3",
+    "history_date": "2025-09-21T08:21:51.461Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "name": "X3",
+    "history_date": "2025-09-21T08:21:51.461Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "name": "A4",
+    "history_date": "2025-09-21T08:21:51.462Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 5,
+  "fields": {
+    "id": 5,
+    "name": "C-Class",
+    "history_date": "2025-09-21T08:21:51.463Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 6,
+  "fields": {
+    "id": 6,
+    "name": "Prius",
+    "history_date": "2025-09-21T08:21:51.464Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 7,
+  "fields": {
+    "id": 7,
+    "name": "Model Y",
+    "history_date": "2025-09-21T08:56:32.710Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 8,
+  "fields": {
+    "id": 8,
+    "name": "Model X",
+    "history_date": "2025-09-21T08:56:32.711Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 9,
+  "fields": {
+    "id": 9,
+    "name": "Prius Prime",
+    "history_date": "2025-09-21T08:56:32.712Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 10,
+  "fields": {
+    "id": 10,
+    "name": "e-tron",
+    "history_date": "2025-09-21T08:56:32.713Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 11,
+  "fields": {
+    "id": 11,
+    "name": "e-tron GT",
+    "history_date": "2025-09-21T08:56:32.713Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 12,
+  "fields": {
+    "id": 12,
+    "name": "i4",
+    "history_date": "2025-09-21T13:10:01.048Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmodel",
+  "pk": 13,
+  "fields": {
+    "id": 13,
+    "name": "XC90",
+    "history_date": "2025-09-21T13:29:33.558Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 1,
+  "fields": {
+    "name": "Model S"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 2,
+  "fields": {
+    "name": "Model 3"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 3,
+  "fields": {
+    "name": "X3"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 4,
+  "fields": {
+    "name": "A4"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 5,
+  "fields": {
+    "name": "C-Class"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 6,
+  "fields": {
+    "name": "Prius"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 7,
+  "fields": {
+    "name": "Model Y"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 8,
+  "fields": {
+    "name": "Model X"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 9,
+  "fields": {
+    "name": "Prius Prime"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 10,
+  "fields": {
+    "name": "e-tron"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 11,
+  "fields": {
+    "name": "e-tron GT"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 12,
+  "fields": {
+    "name": "i4"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 13,
+  "fields": {
+    "name": "XC90"
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "name": "Pure Electric",
+    "history_date": "2025-09-21T11:47:09.813Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "name": "Hybrid",
+    "history_date": "2025-09-21T11:47:09.817Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "name": "Plug-in Hybrid",
+    "history_date": "2025-09-21T11:47:09.817Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "name": "Sport",
+    "history_date": "2025-09-21T11:47:09.818Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 5,
+  "fields": {
+    "id": 5,
+    "name": "Luxury",
+    "history_date": "2025-09-21T11:47:09.819Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 6,
+  "fields": {
+    "id": 6,
+    "name": "Performance",
+    "history_date": "2025-09-21T11:47:09.820Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 7,
+  "fields": {
+    "id": 7,
+    "name": "Base",
+    "history_date": "2025-09-21T11:47:09.821Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 8,
+  "fields": {
+    "id": 8,
+    "name": "Premium",
+    "history_date": "2025-09-21T11:47:09.822Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 9,
+  "fields": {
+    "id": 9,
+    "name": "Long Range",
+    "history_date": "2025-09-21T11:47:09.823Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 10,
+  "fields": {
+    "id": 10,
+    "name": "All-Wheel Drive",
+    "history_date": "2025-09-21T11:47:09.824Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 11,
+  "fields": {
+    "id": 11,
+    "name": "2024 Refresh",
+    "history_date": "2025-09-21T13:08:41.849Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 12,
+  "fields": {
+    "id": 12,
+    "name": "2024 LCI",
+    "history_date": "2025-09-21T13:10:01.050Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalseries",
+  "pk": 13,
+  "fields": {
+    "id": 13,
+    "name": "2024 Facelift",
+    "history_date": "2025-09-21T13:29:33.559Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 1,
+  "fields": {
+    "name": "Pure Electric"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 2,
+  "fields": {
+    "name": "Hybrid"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 3,
+  "fields": {
+    "name": "Plug-in Hybrid"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 4,
+  "fields": {
+    "name": "Sport"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 5,
+  "fields": {
+    "name": "Luxury"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 6,
+  "fields": {
+    "name": "Performance"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 7,
+  "fields": {
+    "name": "Base"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 8,
+  "fields": {
+    "name": "Premium"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 9,
+  "fields": {
+    "name": "Long Range"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 10,
+  "fields": {
+    "name": "All-Wheel Drive"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 11,
+  "fields": {
+    "name": "2024 Refresh"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 12,
+  "fields": {
+    "name": "2024 LCI"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 13,
+  "fields": {
+    "name": "2024 Facelift"
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T08:21:51.473Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "name": "Sport Package",
+    "history_date": "2025-09-21T08:21:51.474Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T08:21:51.475Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "name": "Comfort Package",
+    "history_date": "2025-09-21T08:21:51.476Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 5,
+  "fields": {
+    "id": 5,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T08:21:51.476Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 6,
+  "fields": {
+    "id": 6,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:33:50.138Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 7,
+  "fields": {
+    "id": 7,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T09:33:50.139Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 8,
+  "fields": {
+    "id": 8,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:33:50.141Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 9,
+  "fields": {
+    "id": 9,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:33:50.142Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 10,
+  "fields": {
+    "id": 10,
+    "name": "Sport Package",
+    "history_date": "2025-09-21T09:33:50.144Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 11,
+  "fields": {
+    "id": 11,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:33:50.146Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 12,
+  "fields": {
+    "id": 11,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.803Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 13,
+  "fields": {
+    "id": 10,
+    "name": "Sport Package",
+    "history_date": "2025-09-21T09:34:06.804Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 14,
+  "fields": {
+    "id": 9,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.804Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 15,
+  "fields": {
+    "id": 8,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.804Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 16,
+  "fields": {
+    "id": 7,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T09:34:06.804Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 17,
+  "fields": {
+    "id": 6,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.804Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 18,
+  "fields": {
+    "id": 5,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T09:34:06.805Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 19,
+  "fields": {
+    "id": 4,
+    "name": "Comfort Package",
+    "history_date": "2025-09-21T09:34:06.805Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 20,
+  "fields": {
+    "id": 3,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.805Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 21,
+  "fields": {
+    "id": 2,
+    "name": "Sport Package",
+    "history_date": "2025-09-21T09:34:06.805Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 22,
+  "fields": {
+    "id": 1,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.805Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 23,
+  "fields": {
+    "id": 12,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.809Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 24,
+  "fields": {
+    "id": 13,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T09:34:06.811Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 25,
+  "fields": {
+    "id": 14,
+    "name": "Sport Package",
+    "history_date": "2025-09-21T09:34:06.814Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 26,
+  "fields": {
+    "id": 15,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.815Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 27,
+  "fields": {
+    "id": 16,
+    "name": "Sport Package",
+    "history_date": "2025-09-21T09:34:06.816Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 28,
+  "fields": {
+    "id": 17,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.817Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 29,
+  "fields": {
+    "id": 18,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.820Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 30,
+  "fields": {
+    "id": 19,
+    "name": "Sport Package",
+    "history_date": "2025-09-21T09:34:06.821Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 31,
+  "fields": {
+    "id": 20,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.823Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 32,
+  "fields": {
+    "id": 21,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.825Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 33,
+  "fields": {
+    "id": 22,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T09:34:06.826Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 34,
+  "fields": {
+    "id": 23,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.827Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 35,
+  "fields": {
+    "id": 24,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.828Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 36,
+  "fields": {
+    "id": 25,
+    "name": "Sport Package",
+    "history_date": "2025-09-21T09:34:06.829Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 37,
+  "fields": {
+    "id": 26,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.832Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 38,
+  "fields": {
+    "id": 27,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.833Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 39,
+  "fields": {
+    "id": 28,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T09:34:06.834Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 40,
+  "fields": {
+    "id": 29,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.835Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 41,
+  "fields": {
+    "id": 30,
+    "name": "Comfort Package",
+    "history_date": "2025-09-21T09:34:06.842Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 42,
+  "fields": {
+    "id": 31,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T09:34:06.843Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 43,
+  "fields": {
+    "id": 32,
+    "name": "Technology Package",
+    "history_date": "2025-09-21T09:34:06.844Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 44,
+  "fields": {
+    "id": 33,
+    "name": "Comfort Package",
+    "history_date": "2025-09-21T09:34:06.846Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 45,
+  "fields": {
+    "id": 34,
+    "name": "Safety Package",
+    "history_date": "2025-09-21T09:34:06.847Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 46,
+  "fields": {
+    "id": 35,
+    "name": "Premium Package",
+    "history_date": "2025-09-21T09:34:06.848Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 47,
+  "fields": {
+    "id": 36,
+    "name": "Standard Range",
+    "history_date": "2025-09-21T13:08:41.858Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 48,
+  "fields": {
+    "id": 37,
+    "name": "Long Range",
+    "history_date": "2025-09-21T13:08:41.860Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 49,
+  "fields": {
+    "id": 38,
+    "name": "Performance",
+    "history_date": "2025-09-21T13:08:41.861Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 50,
+  "fields": {
+    "id": 39,
+    "name": "eDrive35",
+    "history_date": "2025-09-21T13:10:01.057Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 51,
+  "fields": {
+    "id": 40,
+    "name": "eDrive40",
+    "history_date": "2025-09-21T13:10:01.058Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 52,
+  "fields": {
+    "id": 41,
+    "name": "M50",
+    "history_date": "2025-09-21T13:10:01.059Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 53,
+  "fields": {
+    "id": 42,
+    "name": "Core",
+    "history_date": "2025-09-21T13:29:33.565Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 54,
+  "fields": {
+    "id": 43,
+    "name": "Plus",
+    "history_date": "2025-09-21T13:29:33.566Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalpackage",
+  "pk": 55,
+  "fields": {
+    "id": 44,
+    "name": "Ultra",
+    "history_date": "2025-09-21T13:29:33.567Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 12,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      9
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 13,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      9
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 14,
+  "fields": {
+    "name": "Sport Package",
+    "brand_model_series": [
+      9
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 15,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      10
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 16,
+  "fields": {
+    "name": "Sport Package",
+    "brand_model_series": [
+      10
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 17,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      10
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 18,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      2
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 19,
+  "fields": {
+    "name": "Sport Package",
+    "brand_model_series": [
+      2
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 20,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      2
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 21,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      1
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 22,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      1
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 23,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      1
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 24,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      6
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 25,
+  "fields": {
+    "name": "Sport Package",
+    "brand_model_series": [
+      6
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 26,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      6
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 27,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      5
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 28,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      5
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 29,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      5
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 30,
+  "fields": {
+    "name": "Comfort Package",
+    "brand_model_series": [
+      7
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 31,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      7
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 32,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      7
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 33,
+  "fields": {
+    "name": "Comfort Package",
+    "brand_model_series": [
+      8
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 34,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      8
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 35,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      8
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 36,
+  "fields": {
+    "name": "Standard Range",
+    "brand_model_series": [
+      11
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 37,
+  "fields": {
+    "name": "Long Range",
+    "brand_model_series": [
+      11
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 38,
+  "fields": {
+    "name": "Performance",
+    "brand_model_series": [
+      11
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 39,
+  "fields": {
+    "name": "eDrive35",
+    "brand_model_series": [
+      12
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 40,
+  "fields": {
+    "name": "eDrive40",
+    "brand_model_series": [
+      12
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 41,
+  "fields": {
+    "name": "M50",
+    "brand_model_series": [
+      12
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 42,
+  "fields": {
+    "name": "Core",
+    "brand_model_series": [
+      13
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 43,
+  "fields": {
+    "name": "Plus",
+    "brand_model_series": [
+      13
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 44,
+  "fields": {
+    "name": "Ultra",
+    "brand_model_series": [
+      13
+    ]
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "year": 2025,
+    "history_date": "2025-09-21T08:21:51.465Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "year": 2025,
+    "history_date": "2025-09-21T08:21:51.468Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "year": 2025,
+    "history_date": "2025-09-21T08:21:51.471Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "year": 2025,
+    "history_date": "2025-09-21T08:21:51.472Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 5,
+  "fields": {
+    "id": 5,
+    "year": 2025,
+    "history_date": "2025-09-21T08:21:51.473Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 6,
+  "fields": {
+    "id": 1,
+    "year": 2024,
+    "history_date": "2025-09-21T08:51:12.057Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 7,
+  "fields": {
+    "id": 2,
+    "year": 2023,
+    "history_date": "2025-09-21T08:51:12.059Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 8,
+  "fields": {
+    "id": 3,
+    "year": 2022,
+    "history_date": "2025-09-21T08:51:12.060Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 9,
+  "fields": {
+    "id": 4,
+    "year": 2021,
+    "history_date": "2025-09-21T08:51:12.063Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalyear",
+  "pk": 10,
+  "fields": {
+    "id": 5,
+    "year": 2020,
+    "history_date": "2025-09-21T08:51:12.064Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 1,
+  "fields": {
+    "year": 2024
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 2,
+  "fields": {
+    "year": 2023
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 3,
+  "fields": {
+    "year": 2022
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 4,
+  "fields": {
+    "year": 2021
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 5,
+  "fields": {
+    "year": 2020
+  }
+},
+{
+  "model": "maker.historicalblurbgroup",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "name": "Parking Assistance",
+    "description": "Various parking assistance features - only show the best one",
+    "max_items": 1,
+    "history_date": "2025-09-21T12:53:00.179Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurbgroup",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "name": "Charging Features",
+    "description": "Charging and energy features - max 2 items",
+    "max_items": 2,
+    "history_date": "2025-09-21T12:55:07.190Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.blurbgroup",
+  "pk": 1,
+  "fields": {
+    "name": "Parking Assistance",
+    "description": "Various parking assistance features - only show the best one",
+    "max_items": 1
+  }
+},
+{
+  "model": "maker.blurbgroup",
+  "pk": 2,
+  "fields": {
+    "name": "Charging Features",
+    "description": "Charging and energy features - max 2 items",
+    "max_items": 2
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "text": "Electric mirrors.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T09:44:56.543Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "text": "Parking assist.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T09:45:19.044Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "text": "Automatic parking.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T09:45:27.455Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "text": "Back view camera.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T09:45:47.122Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 5,
+  "fields": {
+    "id": 5,
+    "text": "Internet infotainment.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T09:46:18.981Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 6,
+  "fields": {
+    "id": 6,
+    "text": "Shiny Tesla.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:21:58.802Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 7,
+  "fields": {
+    "id": 7,
+    "text": "Shiny Tesla Model S.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:22:08.860Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 8,
+  "fields": {
+    "id": 8,
+    "text": "Shiny Tesla Model S. 2022 was a fine year.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:22:36.532Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 9,
+  "fields": {
+    "id": 9,
+    "text": "Premium leather-appointed seating with heated and ventilated front seats for year-round comfort.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.984Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 10,
+  "fields": {
+    "id": 10,
+    "text": "Advanced infotainment system with wireless smartphone integration and premium audio.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.985Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 11,
+  "fields": {
+    "id": 11,
+    "text": "Spacious cabin designed with sustainable materials and ambient LED lighting.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.986Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 12,
+  "fields": {
+    "id": 12,
+    "text": "Driver-focused cockpit with digital instrument cluster and heads-up display.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.987Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 13,
+  "fields": {
+    "id": 13,
+    "text": "Panoramic sunroof creates an open, airy cabin experience.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.988Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 14,
+  "fields": {
+    "id": 14,
+    "text": "Ergonomic seating with memory settings and lumbar support for all-day comfort.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.990Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 15,
+  "fields": {
+    "id": 15,
+    "text": "Quiet cabin with advanced sound dampening for a serene driving experience.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.990Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 16,
+  "fields": {
+    "id": 16,
+    "text": "Sleek aerodynamic design optimized for efficiency and striking visual appeal.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.992Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 17,
+  "fields": {
+    "id": 17,
+    "text": "LED headlights and taillights with distinctive light signature.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.993Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 18,
+  "fields": {
+    "id": 18,
+    "text": "Bold front grille with active air shutters for improved aerodynamics.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.994Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 19,
+  "fields": {
+    "id": 19,
+    "text": "Lightweight aluminum body construction for enhanced performance.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.995Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 20,
+  "fields": {
+    "id": 20,
+    "text": "Elegant chrome accents and premium paint finishes available.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.996Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 21,
+  "fields": {
+    "id": 21,
+    "text": "Sporty alloy wheels designed to reduce drag and enhance efficiency.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:34.999Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 22,
+  "fields": {
+    "id": 22,
+    "text": "Streamlined profile with coefficient of drag as low as 0.24 Cd.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.000Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 23,
+  "fields": {
+    "id": 23,
+    "text": "Zero local emissions with instant torque delivery for responsive acceleration.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.000Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 24,
+  "fields": {
+    "id": 24,
+    "text": "Up to 400 miles of electric range on a single charge.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.001Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 25,
+  "fields": {
+    "id": 25,
+    "text": "Fast charging capability - 10% to 80% in under 30 minutes.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.001Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 26,
+  "fields": {
+    "id": 26,
+    "text": "All-wheel drive standard with intelligent torque distribution.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.002Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 27,
+  "fields": {
+    "id": 27,
+    "text": "Advanced driver assistance features including adaptive cruise control.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.002Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 28,
+  "fields": {
+    "id": 28,
+    "text": "5-star safety rating with comprehensive airbag system.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.003Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 29,
+  "fields": {
+    "id": 29,
+    "text": "Regenerative braking system maximizes energy efficiency.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.004Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 30,
+  "fields": {
+    "id": 30,
+    "text": "OTA software updates keep your vehicle current with latest features.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.004Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 31,
+  "fields": {
+    "id": 31,
+    "text": "Premium Package includes leather seating, premium audio, and ambient lighting.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.005Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 32,
+  "fields": {
+    "id": 32,
+    "text": "Technology Package adds head-up display, wireless charging, and premium navigation.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.005Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 33,
+  "fields": {
+    "id": 33,
+    "text": "Cold Weather Package features heated seats, steering wheel, and washer nozzles.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.006Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 34,
+  "fields": {
+    "id": 34,
+    "text": "Sport Package includes performance wheels, sport suspension, and paddle shifters.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.007Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 35,
+  "fields": {
+    "id": 35,
+    "text": "Towing Package rated for up to 3,500 lbs with integrated trailer brake controller.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.008Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 36,
+  "fields": {
+    "id": 36,
+    "text": "Luxury Interior Package with massaging seats and premium wood trim.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.008Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 37,
+  "fields": {
+    "id": 37,
+    "text": "Advanced Safety Package with 360-degree cameras and parking assist.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T11:47:35.009Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 38,
+  "fields": {
+    "id": 16,
+    "text": "Sleek aerodynamic design optimized for efficiency and striking visual appeal.",
+    "group_priority": 0,
+    "blurb_group": null,
+    "history_date": "2025-09-21T12:12:50.213Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 39,
+  "fields": {
+    "id": 3,
+    "text": "Automatic parking.",
+    "group_priority": 10,
+    "blurb_group": 1,
+    "history_date": "2025-09-21T12:54:12.431Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 40,
+  "fields": {
+    "id": 2,
+    "text": "Parking assist.",
+    "group_priority": 5,
+    "blurb_group": 1,
+    "history_date": "2025-09-21T12:54:35.604Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 41,
+  "fields": {
+    "id": 37,
+    "text": "Advanced Safety Package with 360-degree cameras and parking assist.",
+    "group_priority": 7,
+    "blurb_group": 1,
+    "history_date": "2025-09-21T12:54:56.258Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 42,
+  "fields": {
+    "id": 38,
+    "text": "Standard interior with leatherette seating",
+    "group_priority": 1,
+    "blurb_group": null,
+    "history_date": "2025-09-21T13:10:01.060Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 43,
+  "fields": {
+    "id": 39,
+    "text": "Premium interior with Dakota leather seating",
+    "group_priority": 5,
+    "blurb_group": null,
+    "history_date": "2025-09-21T13:10:01.062Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 44,
+  "fields": {
+    "id": 40,
+    "text": "M Sport interior with Merino leather and carbon fiber trim",
+    "group_priority": 10,
+    "blurb_group": null,
+    "history_date": "2025-09-21T13:10:01.063Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 45,
+  "fields": {
+    "id": 41,
+    "text": "Advanced driver assistance systems with lane keeping",
+    "group_priority": 1,
+    "blurb_group": null,
+    "history_date": "2025-09-21T13:10:01.064Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 46,
+  "fields": {
+    "id": 42,
+    "text": "BMW iDrive 8 infotainment system with wireless Apple CarPlay",
+    "group_priority": 1,
+    "blurb_group": null,
+    "history_date": "2025-09-21T13:10:01.083Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 47,
+  "fields": {
+    "id": 43,
+    "text": "Premium leather seating with heating and ventilation",
+    "group_priority": 5,
+    "blurb_group": null,
+    "history_date": "2025-09-21T13:29:33.569Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 48,
+  "fields": {
+    "id": 44,
+    "text": "This blurb is not used in any matches yet",
+    "group_priority": 1,
+    "blurb_group": null,
+    "history_date": "2025-09-21T13:29:33.571Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalblurb",
+  "pk": 49,
+  "fields": {
+    "id": 45,
+    "text": "Advanced driver assistance with lane keeping and adaptive cruise control",
+    "group_priority": 8,
+    "blurb_group": null,
+    "history_date": "2025-09-21T13:29:33.572Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 1,
+  "fields": {
+    "text": "Electric mirrors.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 2,
+  "fields": {
+    "text": "Parking assist.",
+    "blurb_group": 1,
+    "group_priority": 5
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 3,
+  "fields": {
+    "text": "Automatic parking.",
+    "blurb_group": 1,
+    "group_priority": 10
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 4,
+  "fields": {
+    "text": "Back view camera.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 5,
+  "fields": {
+    "text": "Internet infotainment.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 6,
+  "fields": {
+    "text": "Shiny Tesla.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 7,
+  "fields": {
+    "text": "Shiny Tesla Model S.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 8,
+  "fields": {
+    "text": "Shiny Tesla Model S. 2022 was a fine year.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 9,
+  "fields": {
+    "text": "Premium leather-appointed seating with heated and ventilated front seats for year-round comfort.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 10,
+  "fields": {
+    "text": "Advanced infotainment system with wireless smartphone integration and premium audio.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 11,
+  "fields": {
+    "text": "Spacious cabin designed with sustainable materials and ambient LED lighting.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 12,
+  "fields": {
+    "text": "Driver-focused cockpit with digital instrument cluster and heads-up display.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 13,
+  "fields": {
+    "text": "Panoramic sunroof creates an open, airy cabin experience.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 14,
+  "fields": {
+    "text": "Ergonomic seating with memory settings and lumbar support for all-day comfort.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 15,
+  "fields": {
+    "text": "Quiet cabin with advanced sound dampening for a serene driving experience.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 16,
+  "fields": {
+    "text": "Sleek aerodynamic design optimized for efficiency and striking visual appeal.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 17,
+  "fields": {
+    "text": "LED headlights and taillights with distinctive light signature.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 18,
+  "fields": {
+    "text": "Bold front grille with active air shutters for improved aerodynamics.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 19,
+  "fields": {
+    "text": "Lightweight aluminum body construction for enhanced performance.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 20,
+  "fields": {
+    "text": "Elegant chrome accents and premium paint finishes available.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 21,
+  "fields": {
+    "text": "Sporty alloy wheels designed to reduce drag and enhance efficiency.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 22,
+  "fields": {
+    "text": "Streamlined profile with coefficient of drag as low as 0.24 Cd.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 23,
+  "fields": {
+    "text": "Zero local emissions with instant torque delivery for responsive acceleration.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 24,
+  "fields": {
+    "text": "Up to 400 miles of electric range on a single charge.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 25,
+  "fields": {
+    "text": "Fast charging capability - 10% to 80% in under 30 minutes.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 26,
+  "fields": {
+    "text": "All-wheel drive standard with intelligent torque distribution.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 27,
+  "fields": {
+    "text": "Advanced driver assistance features including adaptive cruise control.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 28,
+  "fields": {
+    "text": "5-star safety rating with comprehensive airbag system.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 29,
+  "fields": {
+    "text": "Regenerative braking system maximizes energy efficiency.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 30,
+  "fields": {
+    "text": "OTA software updates keep your vehicle current with latest features.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 31,
+  "fields": {
+    "text": "Premium Package includes leather seating, premium audio, and ambient lighting.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 32,
+  "fields": {
+    "text": "Technology Package adds head-up display, wireless charging, and premium navigation.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 33,
+  "fields": {
+    "text": "Cold Weather Package features heated seats, steering wheel, and washer nozzles.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 34,
+  "fields": {
+    "text": "Sport Package includes performance wheels, sport suspension, and paddle shifters.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 35,
+  "fields": {
+    "text": "Towing Package rated for up to 3,500 lbs with integrated trailer brake controller.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 36,
+  "fields": {
+    "text": "Luxury Interior Package with massaging seats and premium wood trim.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 37,
+  "fields": {
+    "text": "Advanced Safety Package with 360-degree cameras and parking assist.",
+    "blurb_group": 1,
+    "group_priority": 7
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 38,
+  "fields": {
+    "text": "Standard interior with leatherette seating",
+    "blurb_group": null,
+    "group_priority": 1
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 39,
+  "fields": {
+    "text": "Premium interior with Dakota leather seating",
+    "blurb_group": null,
+    "group_priority": 5
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 40,
+  "fields": {
+    "text": "M Sport interior with Merino leather and carbon fiber trim",
+    "blurb_group": null,
+    "group_priority": 10
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 41,
+  "fields": {
+    "text": "Advanced driver assistance systems with lane keeping",
+    "blurb_group": null,
+    "group_priority": 1
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 42,
+  "fields": {
+    "text": "BMW iDrive 8 infotainment system with wireless Apple CarPlay",
+    "blurb_group": null,
+    "group_priority": 1
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 43,
+  "fields": {
+    "text": "Premium leather seating with heating and ventilation",
+    "blurb_group": null,
+    "group_priority": 5
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 44,
+  "fields": {
+    "text": "This blurb is not used in any matches yet",
+    "blurb_group": null,
+    "group_priority": 1
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 45,
+  "fields": {
+    "text": "Advanced driver assistance with lane keeping and adaptive cruise control",
+    "blurb_group": null,
+    "group_priority": 8
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "year_start": 2020,
+    "year_end": 2024,
+    "brand": 1,
+    "model": 1,
+    "series": null,
+    "history_date": "2025-09-21T08:53:26.094Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "year_start": 2021,
+    "year_end": null,
+    "brand": 1,
+    "model": 2,
+    "series": null,
+    "history_date": "2025-09-21T08:53:26.097Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "year_start": 2020,
+    "year_end": 2022,
+    "brand": 2,
+    "model": 3,
+    "series": null,
+    "history_date": "2025-09-21T08:53:26.099Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "year_start": 2023,
+    "year_end": null,
+    "brand": 2,
+    "model": 3,
+    "series": null,
+    "history_date": "2025-09-21T08:53:26.101Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 5,
+  "fields": {
+    "id": 4,
+    "year_start": 2023,
+    "year_end": null,
+    "brand": 2,
+    "model": 3,
+    "series": null,
+    "history_date": "2025-09-21T08:56:14.895Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 6,
+  "fields": {
+    "id": 3,
+    "year_start": 2020,
+    "year_end": 2022,
+    "brand": 2,
+    "model": 3,
+    "series": null,
+    "history_date": "2025-09-21T08:56:14.895Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 7,
+  "fields": {
+    "id": 5,
+    "year_start": 2020,
+    "year_end": null,
+    "brand": 1,
+    "model": 7,
+    "series": null,
+    "history_date": "2025-09-21T08:56:32.715Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 8,
+  "fields": {
+    "id": 6,
+    "year_start": 2021,
+    "year_end": null,
+    "brand": 1,
+    "model": 8,
+    "series": null,
+    "history_date": "2025-09-21T08:56:32.718Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 9,
+  "fields": {
+    "id": 7,
+    "year_start": 2020,
+    "year_end": null,
+    "brand": 5,
+    "model": 6,
+    "series": null,
+    "history_date": "2025-09-21T08:56:32.722Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 10,
+  "fields": {
+    "id": 8,
+    "year_start": 2022,
+    "year_end": null,
+    "brand": 5,
+    "model": 9,
+    "series": null,
+    "history_date": "2025-09-21T08:56:32.723Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 11,
+  "fields": {
+    "id": 9,
+    "year_start": 2021,
+    "year_end": 2024,
+    "brand": 3,
+    "model": 10,
+    "series": null,
+    "history_date": "2025-09-21T08:56:32.726Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 12,
+  "fields": {
+    "id": 10,
+    "year_start": 2022,
+    "year_end": null,
+    "brand": 3,
+    "model": 11,
+    "series": null,
+    "history_date": "2025-09-21T08:56:32.730Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 13,
+  "fields": {
+    "id": 11,
+    "year_start": 2024,
+    "year_end": null,
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "history_date": "2025-09-21T13:08:41.857Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 14,
+  "fields": {
+    "id": 12,
+    "year_start": 2024,
+    "year_end": null,
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "history_date": "2025-09-21T13:10:01.056Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalbrandmodelseries",
+  "pk": 15,
+  "fields": {
+    "id": 13,
+    "year_start": 2024,
+    "year_end": null,
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "history_date": "2025-09-21T13:29:33.564Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 1,
+  "fields": {
+    "brand": 1,
+    "model": 1,
+    "series": null,
+    "year_start": 2020,
+    "year_end": 2024
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 2,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": null,
+    "year_start": 2021,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 5,
+  "fields": {
+    "brand": 1,
+    "model": 7,
+    "series": null,
+    "year_start": 2020,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 6,
+  "fields": {
+    "brand": 1,
+    "model": 8,
+    "series": null,
+    "year_start": 2021,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 7,
+  "fields": {
+    "brand": 5,
+    "model": 6,
+    "series": null,
+    "year_start": 2020,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 8,
+  "fields": {
+    "brand": 5,
+    "model": 9,
+    "series": null,
+    "year_start": 2022,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 9,
+  "fields": {
+    "brand": 3,
+    "model": 10,
+    "series": null,
+    "year_start": 2021,
+    "year_end": 2024
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 10,
+  "fields": {
+    "brand": 3,
+    "model": 11,
+    "series": null,
+    "year_start": 2022,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 11,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "year_start": 2024,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 12,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "year_start": 2024,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 13,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "year_start": 2024,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "year_start": null,
+    "year_end": null,
+    "brand": null,
+    "model": null,
+    "series": null,
+    "package": null,
+    "history_date": "2025-09-21T11:23:20.993Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "year_start": null,
+    "year_end": null,
+    "brand": 1,
+    "model": null,
+    "series": null,
+    "package": null,
+    "history_date": "2025-09-21T11:48:05.633Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "year_start": null,
+    "year_end": null,
+    "brand": null,
+    "model": null,
+    "series": 1,
+    "package": null,
+    "history_date": "2025-09-21T11:48:05.634Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "year_start": null,
+    "year_end": null,
+    "brand": null,
+    "model": null,
+    "series": 5,
+    "package": null,
+    "history_date": "2025-09-21T11:48:05.635Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 5,
+  "fields": {
+    "id": 5,
+    "year_start": null,
+    "year_end": null,
+    "brand": null,
+    "model": null,
+    "series": 6,
+    "package": null,
+    "history_date": "2025-09-21T11:48:05.637Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 6,
+  "fields": {
+    "id": 6,
+    "year_start": 2023,
+    "year_end": null,
+    "brand": null,
+    "model": null,
+    "series": null,
+    "package": null,
+    "history_date": "2025-09-21T11:48:05.638Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 7,
+  "fields": {
+    "id": 7,
+    "year_start": null,
+    "year_end": null,
+    "brand": 1,
+    "model": 2,
+    "series": null,
+    "package": null,
+    "history_date": "2025-09-21T11:48:05.642Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 8,
+  "fields": {
+    "id": 7,
+    "year_start": null,
+    "year_end": null,
+    "brand": 1,
+    "model": 2,
+    "series": null,
+    "package": null,
+    "history_date": "2025-09-21T13:08:41.869Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 9,
+  "fields": {
+    "id": 8,
+    "year_start": null,
+    "year_end": null,
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": null,
+    "history_date": "2025-09-21T13:08:41.875Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 10,
+  "fields": {
+    "id": 9,
+    "year_start": null,
+    "year_end": null,
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": 36,
+    "history_date": "2025-09-21T13:08:41.878Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 11,
+  "fields": {
+    "id": 10,
+    "year_start": null,
+    "year_end": null,
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": 38,
+    "history_date": "2025-09-21T13:08:41.883Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 12,
+  "fields": {
+    "id": 11,
+    "year_start": null,
+    "year_end": null,
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 39,
+    "history_date": "2025-09-21T13:10:01.065Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 13,
+  "fields": {
+    "id": 12,
+    "year_start": null,
+    "year_end": null,
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 40,
+    "history_date": "2025-09-21T13:10:01.073Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 14,
+  "fields": {
+    "id": 13,
+    "year_start": null,
+    "year_end": null,
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 41,
+    "history_date": "2025-09-21T13:10:01.078Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 15,
+  "fields": {
+    "id": 14,
+    "year_start": null,
+    "year_end": null,
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": null,
+    "history_date": "2025-09-21T13:10:01.082Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 16,
+  "fields": {
+    "id": 6,
+    "year_start": 2025,
+    "year_end": null,
+    "brand": null,
+    "model": null,
+    "series": null,
+    "package": null,
+    "history_date": "2025-09-21T13:25:36.802Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 17,
+  "fields": {
+    "id": 15,
+    "year_start": null,
+    "year_end": null,
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 43,
+    "history_date": "2025-09-21T13:29:33.573Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 18,
+  "fields": {
+    "id": 16,
+    "year_start": null,
+    "year_end": null,
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 44,
+    "history_date": "2025-09-21T13:29:33.577Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 19,
+  "fields": {
+    "id": 17,
+    "year_start": null,
+    "year_end": null,
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": null,
+    "history_date": "2025-09-21T13:29:33.581Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 20,
+  "fields": {
+    "id": 18,
+    "year_start": null,
+    "year_end": null,
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 42,
+    "history_date": "2025-09-21T13:29:33.585Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatch",
+  "pk": 21,
+  "fields": {
+    "id": 6,
+    "year_start": 2025,
+    "year_end": null,
+    "brand": null,
+    "model": null,
+    "series": null,
+    "package": null,
+    "history_date": "2025-09-21T13:32:58.627Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 1,
+  "fields": {
+    "brand": null,
+    "model": null,
+    "series": null,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 2,
+  "fields": {
+    "brand": 1,
+    "model": null,
+    "series": null,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 3,
+  "fields": {
+    "brand": null,
+    "model": null,
+    "series": 1,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 4,
+  "fields": {
+    "brand": null,
+    "model": null,
+    "series": 5,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 5,
+  "fields": {
+    "brand": null,
+    "model": null,
+    "series": 6,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 8,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 9,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": 36,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 10,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": 38,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 11,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 39,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 12,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 40,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 13,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 41,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 14,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 15,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 43,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 16,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 44,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 17,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 18,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 42,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 1,
+  "fields": {
+    "id": 1,
+    "placement": "interior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 1,
+    "blurb": 5,
+    "history_date": "2025-09-21T11:48:32.308Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 2,
+  "fields": {
+    "id": 2,
+    "placement": "interior",
+    "priority": 14,
+    "sequence": 10,
+    "match": 1,
+    "blurb": 9,
+    "history_date": "2025-09-21T11:48:32.311Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 3,
+  "fields": {
+    "id": 3,
+    "placement": "interior",
+    "priority": 13,
+    "sequence": 20,
+    "match": 1,
+    "blurb": 10,
+    "history_date": "2025-09-21T11:48:32.312Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 4,
+  "fields": {
+    "id": 4,
+    "placement": "interior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 1,
+    "blurb": 11,
+    "history_date": "2025-09-21T11:48:32.316Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 5,
+  "fields": {
+    "id": 5,
+    "placement": "exterior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 1,
+    "blurb": 16,
+    "history_date": "2025-09-21T11:48:32.318Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 6,
+  "fields": {
+    "id": 6,
+    "placement": "exterior",
+    "priority": 14,
+    "sequence": 10,
+    "match": 1,
+    "blurb": 17,
+    "history_date": "2025-09-21T11:48:32.320Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 7,
+  "fields": {
+    "id": 7,
+    "placement": "exterior",
+    "priority": 13,
+    "sequence": 20,
+    "match": 1,
+    "blurb": 18,
+    "history_date": "2025-09-21T11:48:32.321Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 8,
+  "fields": {
+    "id": 8,
+    "placement": "exterior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 1,
+    "blurb": 19,
+    "history_date": "2025-09-21T11:48:32.322Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 9,
+  "fields": {
+    "id": 9,
+    "placement": "highlights",
+    "priority": 20,
+    "sequence": 0,
+    "match": 1,
+    "blurb": 1,
+    "history_date": "2025-09-21T11:48:32.323Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 10,
+  "fields": {
+    "id": 10,
+    "placement": "highlights",
+    "priority": 19,
+    "sequence": 10,
+    "match": 1,
+    "blurb": 2,
+    "history_date": "2025-09-21T11:48:32.326Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 11,
+  "fields": {
+    "id": 11,
+    "placement": "highlights",
+    "priority": 18,
+    "sequence": 20,
+    "match": 1,
+    "blurb": 3,
+    "history_date": "2025-09-21T11:48:32.326Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 12,
+  "fields": {
+    "id": 12,
+    "placement": "highlights",
+    "priority": 17,
+    "sequence": 30,
+    "match": 1,
+    "blurb": 4,
+    "history_date": "2025-09-21T11:48:32.331Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 13,
+  "fields": {
+    "id": 13,
+    "placement": "options",
+    "priority": 10,
+    "sequence": 0,
+    "match": 1,
+    "blurb": 33,
+    "history_date": "2025-09-21T11:48:32.333Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 14,
+  "fields": {
+    "id": 14,
+    "placement": "options",
+    "priority": 9,
+    "sequence": 10,
+    "match": 1,
+    "blurb": 35,
+    "history_date": "2025-09-21T11:48:32.335Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 15,
+  "fields": {
+    "id": 15,
+    "placement": "options",
+    "priority": 8,
+    "sequence": 20,
+    "match": 1,
+    "blurb": 36,
+    "history_date": "2025-09-21T11:48:32.336Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 16,
+  "fields": {
+    "id": 16,
+    "placement": "interior",
+    "priority": 35,
+    "sequence": 0,
+    "match": 2,
+    "blurb": 5,
+    "history_date": "2025-09-21T11:48:32.337Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 17,
+  "fields": {
+    "id": 17,
+    "placement": "interior",
+    "priority": 34,
+    "sequence": 10,
+    "match": 2,
+    "blurb": 9,
+    "history_date": "2025-09-21T11:48:32.339Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 18,
+  "fields": {
+    "id": 18,
+    "placement": "interior",
+    "priority": 33,
+    "sequence": 20,
+    "match": 2,
+    "blurb": 10,
+    "history_date": "2025-09-21T11:48:32.339Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 19,
+  "fields": {
+    "id": 19,
+    "placement": "interior",
+    "priority": 32,
+    "sequence": 30,
+    "match": 2,
+    "blurb": 11,
+    "history_date": "2025-09-21T11:48:32.341Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 20,
+  "fields": {
+    "id": 20,
+    "placement": "exterior",
+    "priority": 35,
+    "sequence": 0,
+    "match": 2,
+    "blurb": 16,
+    "history_date": "2025-09-21T11:48:32.342Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 21,
+  "fields": {
+    "id": 21,
+    "placement": "exterior",
+    "priority": 34,
+    "sequence": 10,
+    "match": 2,
+    "blurb": 17,
+    "history_date": "2025-09-21T11:48:32.344Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 22,
+  "fields": {
+    "id": 22,
+    "placement": "exterior",
+    "priority": 33,
+    "sequence": 20,
+    "match": 2,
+    "blurb": 18,
+    "history_date": "2025-09-21T11:48:32.346Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 23,
+  "fields": {
+    "id": 23,
+    "placement": "exterior",
+    "priority": 32,
+    "sequence": 30,
+    "match": 2,
+    "blurb": 19,
+    "history_date": "2025-09-21T11:48:32.349Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 24,
+  "fields": {
+    "id": 24,
+    "placement": "highlights",
+    "priority": 40,
+    "sequence": 0,
+    "match": 2,
+    "blurb": 1,
+    "history_date": "2025-09-21T11:48:32.351Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 25,
+  "fields": {
+    "id": 25,
+    "placement": "highlights",
+    "priority": 39,
+    "sequence": 10,
+    "match": 2,
+    "blurb": 2,
+    "history_date": "2025-09-21T11:48:32.352Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 26,
+  "fields": {
+    "id": 26,
+    "placement": "highlights",
+    "priority": 38,
+    "sequence": 20,
+    "match": 2,
+    "blurb": 3,
+    "history_date": "2025-09-21T11:48:32.353Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 27,
+  "fields": {
+    "id": 27,
+    "placement": "highlights",
+    "priority": 37,
+    "sequence": 30,
+    "match": 2,
+    "blurb": 4,
+    "history_date": "2025-09-21T11:48:32.354Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 28,
+  "fields": {
+    "id": 28,
+    "placement": "options",
+    "priority": 30,
+    "sequence": 0,
+    "match": 2,
+    "blurb": 33,
+    "history_date": "2025-09-21T11:48:32.355Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 29,
+  "fields": {
+    "id": 29,
+    "placement": "options",
+    "priority": 29,
+    "sequence": 10,
+    "match": 2,
+    "blurb": 35,
+    "history_date": "2025-09-21T11:48:32.358Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 30,
+  "fields": {
+    "id": 30,
+    "placement": "options",
+    "priority": 28,
+    "sequence": 20,
+    "match": 2,
+    "blurb": 36,
+    "history_date": "2025-09-21T11:48:32.359Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 31,
+  "fields": {
+    "id": 31,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 3,
+    "blurb": 5,
+    "history_date": "2025-09-21T11:48:32.361Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 32,
+  "fields": {
+    "id": 32,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10,
+    "match": 3,
+    "blurb": 9,
+    "history_date": "2025-09-21T11:48:32.363Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 33,
+  "fields": {
+    "id": 33,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20,
+    "match": 3,
+    "blurb": 10,
+    "history_date": "2025-09-21T11:48:32.364Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 34,
+  "fields": {
+    "id": 34,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30,
+    "match": 3,
+    "blurb": 11,
+    "history_date": "2025-09-21T11:48:32.365Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 35,
+  "fields": {
+    "id": 35,
+    "placement": "exterior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 3,
+    "blurb": 16,
+    "history_date": "2025-09-21T11:48:32.366Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 36,
+  "fields": {
+    "id": 36,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10,
+    "match": 3,
+    "blurb": 17,
+    "history_date": "2025-09-21T11:48:32.367Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 37,
+  "fields": {
+    "id": 37,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20,
+    "match": 3,
+    "blurb": 18,
+    "history_date": "2025-09-21T11:48:32.368Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 38,
+  "fields": {
+    "id": 38,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30,
+    "match": 3,
+    "blurb": 19,
+    "history_date": "2025-09-21T11:48:32.369Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 39,
+  "fields": {
+    "id": 39,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0,
+    "match": 3,
+    "blurb": 1,
+    "history_date": "2025-09-21T11:48:32.370Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 40,
+  "fields": {
+    "id": 40,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10,
+    "match": 3,
+    "blurb": 2,
+    "history_date": "2025-09-21T11:48:32.371Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 41,
+  "fields": {
+    "id": 41,
+    "placement": "highlights",
+    "priority": 33,
+    "sequence": 20,
+    "match": 3,
+    "blurb": 3,
+    "history_date": "2025-09-21T11:48:32.373Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 42,
+  "fields": {
+    "id": 42,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30,
+    "match": 3,
+    "blurb": 4,
+    "history_date": "2025-09-21T11:48:32.374Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 43,
+  "fields": {
+    "id": 43,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0,
+    "match": 3,
+    "blurb": 33,
+    "history_date": "2025-09-21T11:48:32.377Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 44,
+  "fields": {
+    "id": 44,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10,
+    "match": 3,
+    "blurb": 35,
+    "history_date": "2025-09-21T11:48:32.378Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 45,
+  "fields": {
+    "id": 45,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20,
+    "match": 3,
+    "blurb": 36,
+    "history_date": "2025-09-21T11:48:32.381Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 46,
+  "fields": {
+    "id": 46,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 4,
+    "blurb": 5,
+    "history_date": "2025-09-21T11:48:32.383Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 47,
+  "fields": {
+    "id": 47,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10,
+    "match": 4,
+    "blurb": 9,
+    "history_date": "2025-09-21T11:48:32.384Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 48,
+  "fields": {
+    "id": 48,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20,
+    "match": 4,
+    "blurb": 10,
+    "history_date": "2025-09-21T11:48:32.385Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 49,
+  "fields": {
+    "id": 49,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30,
+    "match": 4,
+    "blurb": 11,
+    "history_date": "2025-09-21T11:48:32.386Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 50,
+  "fields": {
+    "id": 50,
+    "placement": "exterior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 4,
+    "blurb": 16,
+    "history_date": "2025-09-21T11:48:32.387Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 51,
+  "fields": {
+    "id": 51,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10,
+    "match": 4,
+    "blurb": 17,
+    "history_date": "2025-09-21T11:48:32.389Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 52,
+  "fields": {
+    "id": 52,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20,
+    "match": 4,
+    "blurb": 18,
+    "history_date": "2025-09-21T11:48:32.390Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 53,
+  "fields": {
+    "id": 53,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30,
+    "match": 4,
+    "blurb": 19,
+    "history_date": "2025-09-21T11:48:32.393Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 54,
+  "fields": {
+    "id": 54,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0,
+    "match": 4,
+    "blurb": 1,
+    "history_date": "2025-09-21T11:48:32.394Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 55,
+  "fields": {
+    "id": 55,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10,
+    "match": 4,
+    "blurb": 2,
+    "history_date": "2025-09-21T11:48:32.395Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 56,
+  "fields": {
+    "id": 56,
+    "placement": "highlights",
+    "priority": 33,
+    "sequence": 20,
+    "match": 4,
+    "blurb": 3,
+    "history_date": "2025-09-21T11:48:32.396Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 57,
+  "fields": {
+    "id": 57,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30,
+    "match": 4,
+    "blurb": 4,
+    "history_date": "2025-09-21T11:48:32.397Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 58,
+  "fields": {
+    "id": 58,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0,
+    "match": 4,
+    "blurb": 33,
+    "history_date": "2025-09-21T11:48:32.399Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 59,
+  "fields": {
+    "id": 59,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10,
+    "match": 4,
+    "blurb": 35,
+    "history_date": "2025-09-21T11:48:32.399Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 60,
+  "fields": {
+    "id": 60,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20,
+    "match": 4,
+    "blurb": 36,
+    "history_date": "2025-09-21T11:48:32.401Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 61,
+  "fields": {
+    "id": 61,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 5,
+    "blurb": 5,
+    "history_date": "2025-09-21T11:48:32.402Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 62,
+  "fields": {
+    "id": 62,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10,
+    "match": 5,
+    "blurb": 9,
+    "history_date": "2025-09-21T11:48:32.404Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 63,
+  "fields": {
+    "id": 63,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20,
+    "match": 5,
+    "blurb": 10,
+    "history_date": "2025-09-21T11:48:32.406Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 64,
+  "fields": {
+    "id": 64,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30,
+    "match": 5,
+    "blurb": 11,
+    "history_date": "2025-09-21T11:48:32.409Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 65,
+  "fields": {
+    "id": 65,
+    "placement": "exterior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 5,
+    "blurb": 16,
+    "history_date": "2025-09-21T11:48:32.411Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 66,
+  "fields": {
+    "id": 66,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10,
+    "match": 5,
+    "blurb": 17,
+    "history_date": "2025-09-21T11:48:32.412Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 67,
+  "fields": {
+    "id": 67,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20,
+    "match": 5,
+    "blurb": 18,
+    "history_date": "2025-09-21T11:48:32.413Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 68,
+  "fields": {
+    "id": 68,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30,
+    "match": 5,
+    "blurb": 19,
+    "history_date": "2025-09-21T11:48:32.414Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 69,
+  "fields": {
+    "id": 69,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0,
+    "match": 5,
+    "blurb": 1,
+    "history_date": "2025-09-21T11:48:32.417Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 70,
+  "fields": {
+    "id": 70,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10,
+    "match": 5,
+    "blurb": 2,
+    "history_date": "2025-09-21T11:48:32.418Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 71,
+  "fields": {
+    "id": 71,
+    "placement": "highlights",
+    "priority": 33,
+    "sequence": 20,
+    "match": 5,
+    "blurb": 3,
+    "history_date": "2025-09-21T11:48:32.419Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 72,
+  "fields": {
+    "id": 72,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30,
+    "match": 5,
+    "blurb": 4,
+    "history_date": "2025-09-21T11:48:32.420Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 73,
+  "fields": {
+    "id": 73,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0,
+    "match": 5,
+    "blurb": 33,
+    "history_date": "2025-09-21T11:48:32.422Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 74,
+  "fields": {
+    "id": 74,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10,
+    "match": 5,
+    "blurb": 35,
+    "history_date": "2025-09-21T11:48:32.423Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 75,
+  "fields": {
+    "id": 75,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20,
+    "match": 5,
+    "blurb": 36,
+    "history_date": "2025-09-21T11:48:32.424Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 76,
+  "fields": {
+    "id": 76,
+    "placement": "interior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 6,
+    "blurb": 5,
+    "history_date": "2025-09-21T11:48:32.425Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 77,
+  "fields": {
+    "id": 77,
+    "placement": "interior",
+    "priority": 14,
+    "sequence": 10,
+    "match": 6,
+    "blurb": 9,
+    "history_date": "2025-09-21T11:48:32.426Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 78,
+  "fields": {
+    "id": 78,
+    "placement": "interior",
+    "priority": 13,
+    "sequence": 20,
+    "match": 6,
+    "blurb": 10,
+    "history_date": "2025-09-21T11:48:32.427Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 79,
+  "fields": {
+    "id": 79,
+    "placement": "interior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 6,
+    "blurb": 11,
+    "history_date": "2025-09-21T11:48:32.429Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 80,
+  "fields": {
+    "id": 80,
+    "placement": "exterior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 6,
+    "blurb": 16,
+    "history_date": "2025-09-21T11:48:32.430Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 81,
+  "fields": {
+    "id": 81,
+    "placement": "exterior",
+    "priority": 14,
+    "sequence": 10,
+    "match": 6,
+    "blurb": 17,
+    "history_date": "2025-09-21T11:48:32.432Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 82,
+  "fields": {
+    "id": 82,
+    "placement": "exterior",
+    "priority": 13,
+    "sequence": 20,
+    "match": 6,
+    "blurb": 18,
+    "history_date": "2025-09-21T11:48:32.433Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 83,
+  "fields": {
+    "id": 83,
+    "placement": "exterior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 6,
+    "blurb": 19,
+    "history_date": "2025-09-21T11:48:32.435Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 84,
+  "fields": {
+    "id": 84,
+    "placement": "highlights",
+    "priority": 20,
+    "sequence": 0,
+    "match": 6,
+    "blurb": 1,
+    "history_date": "2025-09-21T11:48:32.436Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 85,
+  "fields": {
+    "id": 85,
+    "placement": "highlights",
+    "priority": 19,
+    "sequence": 10,
+    "match": 6,
+    "blurb": 2,
+    "history_date": "2025-09-21T11:48:32.437Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 86,
+  "fields": {
+    "id": 86,
+    "placement": "highlights",
+    "priority": 18,
+    "sequence": 20,
+    "match": 6,
+    "blurb": 3,
+    "history_date": "2025-09-21T11:48:32.438Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 87,
+  "fields": {
+    "id": 87,
+    "placement": "highlights",
+    "priority": 17,
+    "sequence": 30,
+    "match": 6,
+    "blurb": 4,
+    "history_date": "2025-09-21T11:48:32.439Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 88,
+  "fields": {
+    "id": 88,
+    "placement": "options",
+    "priority": 10,
+    "sequence": 0,
+    "match": 6,
+    "blurb": 33,
+    "history_date": "2025-09-21T11:48:32.440Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 89,
+  "fields": {
+    "id": 89,
+    "placement": "options",
+    "priority": 9,
+    "sequence": 10,
+    "match": 6,
+    "blurb": 35,
+    "history_date": "2025-09-21T11:48:32.442Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 90,
+  "fields": {
+    "id": 90,
+    "placement": "options",
+    "priority": 8,
+    "sequence": 20,
+    "match": 6,
+    "blurb": 36,
+    "history_date": "2025-09-21T11:48:32.443Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 91,
+  "fields": {
+    "id": 91,
+    "placement": "interior",
+    "priority": 65,
+    "sequence": 0,
+    "match": 7,
+    "blurb": 5,
+    "history_date": "2025-09-21T11:48:32.445Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 92,
+  "fields": {
+    "id": 92,
+    "placement": "interior",
+    "priority": 64,
+    "sequence": 10,
+    "match": 7,
+    "blurb": 9,
+    "history_date": "2025-09-21T11:48:32.446Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 93,
+  "fields": {
+    "id": 93,
+    "placement": "interior",
+    "priority": 63,
+    "sequence": 20,
+    "match": 7,
+    "blurb": 10,
+    "history_date": "2025-09-21T11:48:32.447Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 94,
+  "fields": {
+    "id": 94,
+    "placement": "interior",
+    "priority": 62,
+    "sequence": 30,
+    "match": 7,
+    "blurb": 11,
+    "history_date": "2025-09-21T11:48:32.448Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 95,
+  "fields": {
+    "id": 95,
+    "placement": "exterior",
+    "priority": 65,
+    "sequence": 0,
+    "match": 7,
+    "blurb": 16,
+    "history_date": "2025-09-21T11:48:32.450Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 96,
+  "fields": {
+    "id": 96,
+    "placement": "exterior",
+    "priority": 64,
+    "sequence": 10,
+    "match": 7,
+    "blurb": 17,
+    "history_date": "2025-09-21T11:48:32.451Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 97,
+  "fields": {
+    "id": 97,
+    "placement": "exterior",
+    "priority": 63,
+    "sequence": 20,
+    "match": 7,
+    "blurb": 18,
+    "history_date": "2025-09-21T11:48:32.452Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 98,
+  "fields": {
+    "id": 98,
+    "placement": "exterior",
+    "priority": 62,
+    "sequence": 30,
+    "match": 7,
+    "blurb": 19,
+    "history_date": "2025-09-21T11:48:32.453Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 99,
+  "fields": {
+    "id": 99,
+    "placement": "highlights",
+    "priority": 70,
+    "sequence": 0,
+    "match": 7,
+    "blurb": 1,
+    "history_date": "2025-09-21T11:48:32.454Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 100,
+  "fields": {
+    "id": 100,
+    "placement": "highlights",
+    "priority": 69,
+    "sequence": 10,
+    "match": 7,
+    "blurb": 2,
+    "history_date": "2025-09-21T11:48:32.454Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 101,
+  "fields": {
+    "id": 101,
+    "placement": "highlights",
+    "priority": 68,
+    "sequence": 20,
+    "match": 7,
+    "blurb": 3,
+    "history_date": "2025-09-21T11:48:32.456Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 102,
+  "fields": {
+    "id": 102,
+    "placement": "highlights",
+    "priority": 67,
+    "sequence": 30,
+    "match": 7,
+    "blurb": 4,
+    "history_date": "2025-09-21T11:48:32.456Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 103,
+  "fields": {
+    "id": 103,
+    "placement": "options",
+    "priority": 60,
+    "sequence": 0,
+    "match": 7,
+    "blurb": 33,
+    "history_date": "2025-09-21T11:48:32.457Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 104,
+  "fields": {
+    "id": 104,
+    "placement": "options",
+    "priority": 59,
+    "sequence": 10,
+    "match": 7,
+    "blurb": 35,
+    "history_date": "2025-09-21T11:48:32.458Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 105,
+  "fields": {
+    "id": 105,
+    "placement": "options",
+    "priority": 58,
+    "sequence": 20,
+    "match": 7,
+    "blurb": 36,
+    "history_date": "2025-09-21T11:48:32.459Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 106,
+  "fields": {
+    "id": 101,
+    "placement": "highlights",
+    "priority": 68,
+    "sequence": 20,
+    "match": 7,
+    "blurb": 3,
+    "history_date": "2025-09-21T13:01:47.153Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 107,
+  "fields": {
+    "id": 105,
+    "placement": "options",
+    "priority": 58,
+    "sequence": 20,
+    "match": 7,
+    "blurb": 36,
+    "history_date": "2025-09-21T13:08:41.865Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 108,
+  "fields": {
+    "id": 104,
+    "placement": "options",
+    "priority": 59,
+    "sequence": 10,
+    "match": 7,
+    "blurb": 35,
+    "history_date": "2025-09-21T13:08:41.866Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 109,
+  "fields": {
+    "id": 103,
+    "placement": "options",
+    "priority": 60,
+    "sequence": 0,
+    "match": 7,
+    "blurb": 33,
+    "history_date": "2025-09-21T13:08:41.866Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 110,
+  "fields": {
+    "id": 102,
+    "placement": "highlights",
+    "priority": 67,
+    "sequence": 30,
+    "match": 7,
+    "blurb": 4,
+    "history_date": "2025-09-21T13:08:41.867Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 111,
+  "fields": {
+    "id": 100,
+    "placement": "highlights",
+    "priority": 69,
+    "sequence": 10,
+    "match": 7,
+    "blurb": 2,
+    "history_date": "2025-09-21T13:08:41.867Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 112,
+  "fields": {
+    "id": 99,
+    "placement": "highlights",
+    "priority": 70,
+    "sequence": 0,
+    "match": 7,
+    "blurb": 1,
+    "history_date": "2025-09-21T13:08:41.867Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 113,
+  "fields": {
+    "id": 98,
+    "placement": "exterior",
+    "priority": 62,
+    "sequence": 30,
+    "match": 7,
+    "blurb": 19,
+    "history_date": "2025-09-21T13:08:41.867Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 114,
+  "fields": {
+    "id": 97,
+    "placement": "exterior",
+    "priority": 63,
+    "sequence": 20,
+    "match": 7,
+    "blurb": 18,
+    "history_date": "2025-09-21T13:08:41.867Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 115,
+  "fields": {
+    "id": 96,
+    "placement": "exterior",
+    "priority": 64,
+    "sequence": 10,
+    "match": 7,
+    "blurb": 17,
+    "history_date": "2025-09-21T13:08:41.868Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 116,
+  "fields": {
+    "id": 95,
+    "placement": "exterior",
+    "priority": 65,
+    "sequence": 0,
+    "match": 7,
+    "blurb": 16,
+    "history_date": "2025-09-21T13:08:41.868Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 117,
+  "fields": {
+    "id": 94,
+    "placement": "interior",
+    "priority": 62,
+    "sequence": 30,
+    "match": 7,
+    "blurb": 11,
+    "history_date": "2025-09-21T13:08:41.868Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 118,
+  "fields": {
+    "id": 93,
+    "placement": "interior",
+    "priority": 63,
+    "sequence": 20,
+    "match": 7,
+    "blurb": 10,
+    "history_date": "2025-09-21T13:08:41.868Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 119,
+  "fields": {
+    "id": 92,
+    "placement": "interior",
+    "priority": 64,
+    "sequence": 10,
+    "match": 7,
+    "blurb": 9,
+    "history_date": "2025-09-21T13:08:41.868Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 120,
+  "fields": {
+    "id": 91,
+    "placement": "interior",
+    "priority": 65,
+    "sequence": 0,
+    "match": 7,
+    "blurb": 5,
+    "history_date": "2025-09-21T13:08:41.868Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 121,
+  "fields": {
+    "id": 106,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0,
+    "match": 11,
+    "blurb": 38,
+    "history_date": "2025-09-21T13:10:01.067Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 122,
+  "fields": {
+    "id": 107,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0,
+    "match": 11,
+    "blurb": 41,
+    "history_date": "2025-09-21T13:10:01.071Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 123,
+  "fields": {
+    "id": 108,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0,
+    "match": 12,
+    "blurb": 39,
+    "history_date": "2025-09-21T13:10:01.074Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 124,
+  "fields": {
+    "id": 109,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0,
+    "match": 12,
+    "blurb": 41,
+    "history_date": "2025-09-21T13:10:01.076Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 125,
+  "fields": {
+    "id": 110,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0,
+    "match": 13,
+    "blurb": 40,
+    "history_date": "2025-09-21T13:10:01.079Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 126,
+  "fields": {
+    "id": 111,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0,
+    "match": 13,
+    "blurb": 41,
+    "history_date": "2025-09-21T13:10:01.081Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 127,
+  "fields": {
+    "id": 112,
+    "placement": "interior",
+    "priority": 2,
+    "sequence": 0,
+    "match": 14,
+    "blurb": 42,
+    "history_date": "2025-09-21T13:10:01.084Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 128,
+  "fields": {
+    "id": 26,
+    "placement": "highlights",
+    "priority": 38,
+    "sequence": 20,
+    "match": 2,
+    "blurb": 3,
+    "history_date": "2025-09-21T13:11:27.299Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 129,
+  "fields": {
+    "id": 5,
+    "placement": "exterior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 2,
+    "blurb": 16,
+    "history_date": "2025-09-21T13:13:38.343Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 130,
+  "fields": {
+    "id": 8,
+    "placement": "exterior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 1,
+    "blurb": 19,
+    "history_date": "2025-09-21T13:13:58.403Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 131,
+  "fields": {
+    "id": 7,
+    "placement": "exterior",
+    "priority": 13,
+    "sequence": 20,
+    "match": 1,
+    "blurb": 18,
+    "history_date": "2025-09-21T13:13:58.405Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 132,
+  "fields": {
+    "id": 6,
+    "placement": "exterior",
+    "priority": 14,
+    "sequence": 10,
+    "match": 1,
+    "blurb": 17,
+    "history_date": "2025-09-21T13:13:58.406Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 133,
+  "fields": {
+    "id": 10,
+    "placement": "highlights",
+    "priority": 19,
+    "sequence": 10,
+    "match": 8,
+    "blurb": 2,
+    "history_date": "2025-09-21T13:14:30.446Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 134,
+  "fields": {
+    "id": 11,
+    "placement": "highlights",
+    "priority": 18,
+    "sequence": 20,
+    "match": 10,
+    "blurb": 3,
+    "history_date": "2025-09-21T13:15:10.114Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 135,
+  "fields": {
+    "id": 12,
+    "placement": "highlights",
+    "priority": 17,
+    "sequence": 30,
+    "match": 10,
+    "blurb": 4,
+    "history_date": "2025-09-21T13:15:22.573Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 136,
+  "fields": {
+    "id": 1,
+    "placement": "interior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 12,
+    "blurb": 5,
+    "history_date": "2025-09-21T13:15:38.755Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 137,
+  "fields": {
+    "id": 2,
+    "placement": "interior",
+    "priority": 14,
+    "sequence": 10,
+    "match": 13,
+    "blurb": 9,
+    "history_date": "2025-09-21T13:15:51.495Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 138,
+  "fields": {
+    "id": 3,
+    "placement": "interior",
+    "priority": 13,
+    "sequence": 20,
+    "match": 8,
+    "blurb": 10,
+    "history_date": "2025-09-21T13:16:06.311Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 139,
+  "fields": {
+    "id": 13,
+    "placement": "options",
+    "priority": 10,
+    "sequence": 0,
+    "match": 9,
+    "blurb": 33,
+    "history_date": "2025-09-21T13:16:17.780Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 140,
+  "fields": {
+    "id": 14,
+    "placement": "options",
+    "priority": 9,
+    "sequence": 10,
+    "match": 10,
+    "blurb": 35,
+    "history_date": "2025-09-21T13:16:29.537Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 141,
+  "fields": {
+    "id": 15,
+    "placement": "options",
+    "priority": 8,
+    "sequence": 20,
+    "match": 13,
+    "blurb": 36,
+    "history_date": "2025-09-21T13:16:38.530Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 142,
+  "fields": {
+    "id": 4,
+    "placement": "interior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 6,
+    "blurb": 11,
+    "history_date": "2025-09-21T13:17:00.986Z",
+    "history_change_reason": null,
+    "history_type": "~",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 143,
+  "fields": {
+    "id": 5,
+    "placement": "exterior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 2,
+    "blurb": 16,
+    "history_date": "2025-09-21T13:19:24.348Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 144,
+  "fields": {
+    "id": 35,
+    "placement": "exterior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 3,
+    "blurb": 16,
+    "history_date": "2025-09-21T13:19:43.144Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 145,
+  "fields": {
+    "id": 50,
+    "placement": "exterior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 4,
+    "blurb": 16,
+    "history_date": "2025-09-21T13:19:57.483Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 146,
+  "fields": {
+    "id": 80,
+    "placement": "exterior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 6,
+    "blurb": 16,
+    "history_date": "2025-09-21T13:20:14.528Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 147,
+  "fields": {
+    "id": 65,
+    "placement": "exterior",
+    "priority": 30,
+    "sequence": 0,
+    "match": 5,
+    "blurb": 16,
+    "history_date": "2025-09-21T13:20:14.529Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 148,
+  "fields": {
+    "id": 41,
+    "placement": "highlights",
+    "priority": 33,
+    "sequence": 20,
+    "match": 3,
+    "blurb": 3,
+    "history_date": "2025-09-21T13:21:41.794Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 149,
+  "fields": {
+    "id": 71,
+    "placement": "highlights",
+    "priority": 33,
+    "sequence": 20,
+    "match": 5,
+    "blurb": 3,
+    "history_date": "2025-09-21T13:23:13.269Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 150,
+  "fields": {
+    "id": 56,
+    "placement": "highlights",
+    "priority": 33,
+    "sequence": 20,
+    "match": 4,
+    "blurb": 3,
+    "history_date": "2025-09-21T13:23:13.271Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 151,
+  "fields": {
+    "id": 113,
+    "placement": "interior",
+    "priority": 5,
+    "sequence": 1,
+    "match": 15,
+    "blurb": 43,
+    "history_date": "2025-09-21T13:29:33.575Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 152,
+  "fields": {
+    "id": 114,
+    "placement": "highlights",
+    "priority": 8,
+    "sequence": 1,
+    "match": 16,
+    "blurb": 45,
+    "history_date": "2025-09-21T13:29:33.579Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 153,
+  "fields": {
+    "id": 115,
+    "placement": "exterior",
+    "priority": 6,
+    "sequence": 2,
+    "match": 17,
+    "blurb": 45,
+    "history_date": "2025-09-21T13:29:33.584Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 154,
+  "fields": {
+    "id": 116,
+    "placement": "options",
+    "priority": 3,
+    "sequence": 1,
+    "match": 18,
+    "blurb": 43,
+    "history_date": "2025-09-21T13:29:33.587Z",
+    "history_change_reason": null,
+    "history_type": "+",
+    "history_user": null
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 155,
+  "fields": {
+    "id": 90,
+    "placement": "options",
+    "priority": 8,
+    "sequence": 20,
+    "match": 6,
+    "blurb": 36,
+    "history_date": "2025-09-21T13:32:58.598Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 156,
+  "fields": {
+    "id": 89,
+    "placement": "options",
+    "priority": 9,
+    "sequence": 10,
+    "match": 6,
+    "blurb": 35,
+    "history_date": "2025-09-21T13:32:58.616Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 157,
+  "fields": {
+    "id": 88,
+    "placement": "options",
+    "priority": 10,
+    "sequence": 0,
+    "match": 6,
+    "blurb": 33,
+    "history_date": "2025-09-21T13:32:58.617Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 158,
+  "fields": {
+    "id": 87,
+    "placement": "highlights",
+    "priority": 17,
+    "sequence": 30,
+    "match": 6,
+    "blurb": 4,
+    "history_date": "2025-09-21T13:32:58.618Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 159,
+  "fields": {
+    "id": 86,
+    "placement": "highlights",
+    "priority": 18,
+    "sequence": 20,
+    "match": 6,
+    "blurb": 3,
+    "history_date": "2025-09-21T13:32:58.619Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 160,
+  "fields": {
+    "id": 85,
+    "placement": "highlights",
+    "priority": 19,
+    "sequence": 10,
+    "match": 6,
+    "blurb": 2,
+    "history_date": "2025-09-21T13:32:58.619Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 161,
+  "fields": {
+    "id": 84,
+    "placement": "highlights",
+    "priority": 20,
+    "sequence": 0,
+    "match": 6,
+    "blurb": 1,
+    "history_date": "2025-09-21T13:32:58.620Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 162,
+  "fields": {
+    "id": 83,
+    "placement": "exterior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 6,
+    "blurb": 19,
+    "history_date": "2025-09-21T13:32:58.620Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 163,
+  "fields": {
+    "id": 82,
+    "placement": "exterior",
+    "priority": 13,
+    "sequence": 20,
+    "match": 6,
+    "blurb": 18,
+    "history_date": "2025-09-21T13:32:58.621Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 164,
+  "fields": {
+    "id": 81,
+    "placement": "exterior",
+    "priority": 14,
+    "sequence": 10,
+    "match": 6,
+    "blurb": 17,
+    "history_date": "2025-09-21T13:32:58.621Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 165,
+  "fields": {
+    "id": 79,
+    "placement": "interior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 6,
+    "blurb": 11,
+    "history_date": "2025-09-21T13:32:58.622Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 166,
+  "fields": {
+    "id": 78,
+    "placement": "interior",
+    "priority": 13,
+    "sequence": 20,
+    "match": 6,
+    "blurb": 10,
+    "history_date": "2025-09-21T13:32:58.622Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 167,
+  "fields": {
+    "id": 77,
+    "placement": "interior",
+    "priority": 14,
+    "sequence": 10,
+    "match": 6,
+    "blurb": 9,
+    "history_date": "2025-09-21T13:32:58.623Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 168,
+  "fields": {
+    "id": 76,
+    "placement": "interior",
+    "priority": 15,
+    "sequence": 0,
+    "match": 6,
+    "blurb": 5,
+    "history_date": "2025-09-21T13:32:58.623Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.historicalmatchitem",
+  "pk": 169,
+  "fields": {
+    "id": 4,
+    "placement": "interior",
+    "priority": 12,
+    "sequence": 30,
+    "match": 6,
+    "blurb": 11,
+    "history_date": "2025-09-21T13:32:58.624Z",
+    "history_change_reason": null,
+    "history_type": "-",
+    "history_user": 1
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 1,
+  "fields": {
+    "match": 12,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 15,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 2,
+  "fields": {
+    "match": 13,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 14,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 3,
+  "fields": {
+    "match": 8,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 13,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 9,
+  "fields": {
+    "match": 1,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 20,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 10,
+  "fields": {
+    "match": 8,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 19,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 11,
+  "fields": {
+    "match": 10,
+    "blurb": 3,
+    "placement": "highlights",
+    "priority": 18,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 12,
+  "fields": {
+    "match": 10,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 17,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 13,
+  "fields": {
+    "match": 9,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 10,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 14,
+  "fields": {
+    "match": 10,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 9,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 15,
+  "fields": {
+    "match": 13,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 8,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 16,
+  "fields": {
+    "match": 2,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 17,
+  "fields": {
+    "match": 2,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 18,
+  "fields": {
+    "match": 2,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 33,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 19,
+  "fields": {
+    "match": 2,
+    "blurb": 11,
+    "placement": "interior",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 20,
+  "fields": {
+    "match": 2,
+    "blurb": 16,
+    "placement": "exterior",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 21,
+  "fields": {
+    "match": 2,
+    "blurb": 17,
+    "placement": "exterior",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 22,
+  "fields": {
+    "match": 2,
+    "blurb": 18,
+    "placement": "exterior",
+    "priority": 33,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 23,
+  "fields": {
+    "match": 2,
+    "blurb": 19,
+    "placement": "exterior",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 24,
+  "fields": {
+    "match": 2,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 40,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 25,
+  "fields": {
+    "match": 2,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 39,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 27,
+  "fields": {
+    "match": 2,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 37,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 28,
+  "fields": {
+    "match": 2,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 30,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 29,
+  "fields": {
+    "match": 2,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 30,
+  "fields": {
+    "match": 2,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 31,
+  "fields": {
+    "match": 3,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 32,
+  "fields": {
+    "match": 3,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 33,
+  "fields": {
+    "match": 3,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 34,
+  "fields": {
+    "match": 3,
+    "blurb": 11,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 36,
+  "fields": {
+    "match": 3,
+    "blurb": 17,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 37,
+  "fields": {
+    "match": 3,
+    "blurb": 18,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 38,
+  "fields": {
+    "match": 3,
+    "blurb": 19,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 39,
+  "fields": {
+    "match": 3,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 40,
+  "fields": {
+    "match": 3,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 42,
+  "fields": {
+    "match": 3,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 43,
+  "fields": {
+    "match": 3,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 44,
+  "fields": {
+    "match": 3,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 45,
+  "fields": {
+    "match": 3,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 46,
+  "fields": {
+    "match": 4,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 47,
+  "fields": {
+    "match": 4,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 48,
+  "fields": {
+    "match": 4,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 49,
+  "fields": {
+    "match": 4,
+    "blurb": 11,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 51,
+  "fields": {
+    "match": 4,
+    "blurb": 17,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 52,
+  "fields": {
+    "match": 4,
+    "blurb": 18,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 53,
+  "fields": {
+    "match": 4,
+    "blurb": 19,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 54,
+  "fields": {
+    "match": 4,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 55,
+  "fields": {
+    "match": 4,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 57,
+  "fields": {
+    "match": 4,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 58,
+  "fields": {
+    "match": 4,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 59,
+  "fields": {
+    "match": 4,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 60,
+  "fields": {
+    "match": 4,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 61,
+  "fields": {
+    "match": 5,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 62,
+  "fields": {
+    "match": 5,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 63,
+  "fields": {
+    "match": 5,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 64,
+  "fields": {
+    "match": 5,
+    "blurb": 11,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 66,
+  "fields": {
+    "match": 5,
+    "blurb": 17,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 67,
+  "fields": {
+    "match": 5,
+    "blurb": 18,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 68,
+  "fields": {
+    "match": 5,
+    "blurb": 19,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 69,
+  "fields": {
+    "match": 5,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 70,
+  "fields": {
+    "match": 5,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 72,
+  "fields": {
+    "match": 5,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 73,
+  "fields": {
+    "match": 5,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 74,
+  "fields": {
+    "match": 5,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 75,
+  "fields": {
+    "match": 5,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 106,
+  "fields": {
+    "match": 11,
+    "blurb": 38,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 107,
+  "fields": {
+    "match": 11,
+    "blurb": 41,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 108,
+  "fields": {
+    "match": 12,
+    "blurb": 39,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 109,
+  "fields": {
+    "match": 12,
+    "blurb": 41,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 110,
+  "fields": {
+    "match": 13,
+    "blurb": 40,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 111,
+  "fields": {
+    "match": 13,
+    "blurb": 41,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 112,
+  "fields": {
+    "match": 14,
+    "blurb": 42,
+    "placement": "interior",
+    "priority": 2,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 113,
+  "fields": {
+    "match": 15,
+    "blurb": 43,
+    "placement": "interior",
+    "priority": 5,
+    "sequence": 1
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 114,
+  "fields": {
+    "match": 16,
+    "blurb": 45,
+    "placement": "highlights",
+    "priority": 8,
+    "sequence": 1
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 115,
+  "fields": {
+    "match": 17,
+    "blurb": 45,
+    "placement": "exterior",
+    "priority": 6,
+    "sequence": 2
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 116,
+  "fields": {
+    "match": 18,
+    "blurb": 43,
+    "placement": "options",
+    "priority": 3,
+    "sequence": 1
+  }
+}
+]

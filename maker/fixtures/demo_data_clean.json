@@ -1,0 +1,2134 @@
+[
+{
+  "model": "maker.brand",
+  "pk": 1,
+  "fields": {
+    "name": "Tesla"
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 3,
+  "fields": {
+    "name": "Audi"
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 5,
+  "fields": {
+    "name": "Toyota"
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 6,
+  "fields": {
+    "name": "BMW"
+  }
+},
+{
+  "model": "maker.brand",
+  "pk": 7,
+  "fields": {
+    "name": "Volvo"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 1,
+  "fields": {
+    "name": "Model S"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 2,
+  "fields": {
+    "name": "Model 3"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 3,
+  "fields": {
+    "name": "X3"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 4,
+  "fields": {
+    "name": "A4"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 5,
+  "fields": {
+    "name": "C-Class"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 6,
+  "fields": {
+    "name": "Prius"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 7,
+  "fields": {
+    "name": "Model Y"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 8,
+  "fields": {
+    "name": "Model X"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 9,
+  "fields": {
+    "name": "Prius Prime"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 10,
+  "fields": {
+    "name": "e-tron"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 11,
+  "fields": {
+    "name": "e-tron GT"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 12,
+  "fields": {
+    "name": "i4"
+  }
+},
+{
+  "model": "maker.model",
+  "pk": 13,
+  "fields": {
+    "name": "XC90"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 1,
+  "fields": {
+    "name": "Pure Electric"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 2,
+  "fields": {
+    "name": "Hybrid"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 3,
+  "fields": {
+    "name": "Plug-in Hybrid"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 4,
+  "fields": {
+    "name": "Sport"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 5,
+  "fields": {
+    "name": "Luxury"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 6,
+  "fields": {
+    "name": "Performance"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 7,
+  "fields": {
+    "name": "Base"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 8,
+  "fields": {
+    "name": "Premium"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 9,
+  "fields": {
+    "name": "Long Range"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 10,
+  "fields": {
+    "name": "All-Wheel Drive"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 11,
+  "fields": {
+    "name": "2024 Refresh"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 12,
+  "fields": {
+    "name": "2024 LCI"
+  }
+},
+{
+  "model": "maker.series",
+  "pk": 13,
+  "fields": {
+    "name": "2024 Facelift"
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 12,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      9
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 13,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      9
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 14,
+  "fields": {
+    "name": "Sport Package",
+    "brand_model_series": [
+      9
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 15,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      10
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 16,
+  "fields": {
+    "name": "Sport Package",
+    "brand_model_series": [
+      10
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 17,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      10
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 18,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      2
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 19,
+  "fields": {
+    "name": "Sport Package",
+    "brand_model_series": [
+      2
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 20,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      2
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 21,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      1
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 22,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      1
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 23,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      1
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 24,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      6
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 25,
+  "fields": {
+    "name": "Sport Package",
+    "brand_model_series": [
+      6
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 26,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      6
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 27,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      5
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 28,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      5
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 29,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      5
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 30,
+  "fields": {
+    "name": "Comfort Package",
+    "brand_model_series": [
+      7
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 31,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      7
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 32,
+  "fields": {
+    "name": "Technology Package",
+    "brand_model_series": [
+      7
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 33,
+  "fields": {
+    "name": "Comfort Package",
+    "brand_model_series": [
+      8
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 34,
+  "fields": {
+    "name": "Safety Package",
+    "brand_model_series": [
+      8
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 35,
+  "fields": {
+    "name": "Premium Package",
+    "brand_model_series": [
+      8
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 36,
+  "fields": {
+    "name": "Standard Range",
+    "brand_model_series": [
+      11
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 37,
+  "fields": {
+    "name": "Long Range",
+    "brand_model_series": [
+      11
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 38,
+  "fields": {
+    "name": "Performance",
+    "brand_model_series": [
+      11
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 39,
+  "fields": {
+    "name": "eDrive35",
+    "brand_model_series": [
+      12
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 40,
+  "fields": {
+    "name": "eDrive40",
+    "brand_model_series": [
+      12
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 41,
+  "fields": {
+    "name": "M50",
+    "brand_model_series": [
+      12
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 42,
+  "fields": {
+    "name": "Core",
+    "brand_model_series": [
+      13
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 43,
+  "fields": {
+    "name": "Plus",
+    "brand_model_series": [
+      13
+    ]
+  }
+},
+{
+  "model": "maker.package",
+  "pk": 44,
+  "fields": {
+    "name": "Ultra",
+    "brand_model_series": [
+      13
+    ]
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 1,
+  "fields": {
+    "year": 2024
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 2,
+  "fields": {
+    "year": 2023
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 3,
+  "fields": {
+    "year": 2022
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 4,
+  "fields": {
+    "year": 2021
+  }
+},
+{
+  "model": "maker.year",
+  "pk": 5,
+  "fields": {
+    "year": 2020
+  }
+},
+{
+  "model": "maker.blurbgroup",
+  "pk": 1,
+  "fields": {
+    "name": "Parking Assistance",
+    "description": "Various parking assistance features - only show the best one",
+    "max_items": 1
+  }
+},
+{
+  "model": "maker.blurbgroup",
+  "pk": 2,
+  "fields": {
+    "name": "Charging Features",
+    "description": "Charging and energy features - max 2 items",
+    "max_items": 2
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 1,
+  "fields": {
+    "text": "Electric mirrors.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 2,
+  "fields": {
+    "text": "Parking assist.",
+    "blurb_group": 1,
+    "group_priority": 5
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 3,
+  "fields": {
+    "text": "Automatic parking.",
+    "blurb_group": 1,
+    "group_priority": 10
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 4,
+  "fields": {
+    "text": "Back view camera.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 5,
+  "fields": {
+    "text": "Internet infotainment.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 6,
+  "fields": {
+    "text": "Shiny Tesla.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 7,
+  "fields": {
+    "text": "Shiny Tesla Model S.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 8,
+  "fields": {
+    "text": "Shiny Tesla Model S. 2022 was a fine year.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 9,
+  "fields": {
+    "text": "Premium leather-appointed seating with heated and ventilated front seats for year-round comfort.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 10,
+  "fields": {
+    "text": "Advanced infotainment system with wireless smartphone integration and premium audio.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 11,
+  "fields": {
+    "text": "Spacious cabin designed with sustainable materials and ambient LED lighting.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 12,
+  "fields": {
+    "text": "Driver-focused cockpit with digital instrument cluster and heads-up display.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 13,
+  "fields": {
+    "text": "Panoramic sunroof creates an open, airy cabin experience.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 14,
+  "fields": {
+    "text": "Ergonomic seating with memory settings and lumbar support for all-day comfort.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 15,
+  "fields": {
+    "text": "Quiet cabin with advanced sound dampening for a serene driving experience.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 16,
+  "fields": {
+    "text": "Sleek aerodynamic design optimized for efficiency and striking visual appeal.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 17,
+  "fields": {
+    "text": "LED headlights and taillights with distinctive light signature.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 18,
+  "fields": {
+    "text": "Bold front grille with active air shutters for improved aerodynamics.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 19,
+  "fields": {
+    "text": "Lightweight aluminum body construction for enhanced performance.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 20,
+  "fields": {
+    "text": "Elegant chrome accents and premium paint finishes available.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 21,
+  "fields": {
+    "text": "Sporty alloy wheels designed to reduce drag and enhance efficiency.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 22,
+  "fields": {
+    "text": "Streamlined profile with coefficient of drag as low as 0.24 Cd.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 23,
+  "fields": {
+    "text": "Zero local emissions with instant torque delivery for responsive acceleration.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 24,
+  "fields": {
+    "text": "Up to 400 miles of electric range on a single charge.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 25,
+  "fields": {
+    "text": "Fast charging capability - 10% to 80% in under 30 minutes.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 26,
+  "fields": {
+    "text": "All-wheel drive standard with intelligent torque distribution.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 27,
+  "fields": {
+    "text": "Advanced driver assistance features including adaptive cruise control.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 28,
+  "fields": {
+    "text": "5-star safety rating with comprehensive airbag system.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 29,
+  "fields": {
+    "text": "Regenerative braking system maximizes energy efficiency.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 30,
+  "fields": {
+    "text": "OTA software updates keep your vehicle current with latest features.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 31,
+  "fields": {
+    "text": "Premium Package includes leather seating, premium audio, and ambient lighting.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 32,
+  "fields": {
+    "text": "Technology Package adds head-up display, wireless charging, and premium navigation.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 33,
+  "fields": {
+    "text": "Cold Weather Package features heated seats, steering wheel, and washer nozzles.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 34,
+  "fields": {
+    "text": "Sport Package includes performance wheels, sport suspension, and paddle shifters.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 35,
+  "fields": {
+    "text": "Towing Package rated for up to 3,500 lbs with integrated trailer brake controller.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 36,
+  "fields": {
+    "text": "Luxury Interior Package with massaging seats and premium wood trim.",
+    "blurb_group": null,
+    "group_priority": 0
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 37,
+  "fields": {
+    "text": "Advanced Safety Package with 360-degree cameras and parking assist.",
+    "blurb_group": 1,
+    "group_priority": 7
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 38,
+  "fields": {
+    "text": "Standard interior with leatherette seating",
+    "blurb_group": null,
+    "group_priority": 1
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 39,
+  "fields": {
+    "text": "Premium interior with Dakota leather seating",
+    "blurb_group": null,
+    "group_priority": 5
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 40,
+  "fields": {
+    "text": "M Sport interior with Merino leather and carbon fiber trim",
+    "blurb_group": null,
+    "group_priority": 10
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 41,
+  "fields": {
+    "text": "Advanced driver assistance systems with lane keeping",
+    "blurb_group": null,
+    "group_priority": 1
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 42,
+  "fields": {
+    "text": "BMW iDrive 8 infotainment system with wireless Apple CarPlay",
+    "blurb_group": null,
+    "group_priority": 1
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 43,
+  "fields": {
+    "text": "Premium leather seating with heating and ventilation",
+    "blurb_group": null,
+    "group_priority": 5
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 44,
+  "fields": {
+    "text": "This blurb is not used in any matches yet",
+    "blurb_group": null,
+    "group_priority": 1
+  }
+},
+{
+  "model": "maker.blurb",
+  "pk": 45,
+  "fields": {
+    "text": "Advanced driver assistance with lane keeping and adaptive cruise control",
+    "blurb_group": null,
+    "group_priority": 8
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 1,
+  "fields": {
+    "brand": 1,
+    "model": 1,
+    "series": null,
+    "year_start": 2020,
+    "year_end": 2024
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 2,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": null,
+    "year_start": 2021,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 5,
+  "fields": {
+    "brand": 1,
+    "model": 7,
+    "series": null,
+    "year_start": 2020,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 6,
+  "fields": {
+    "brand": 1,
+    "model": 8,
+    "series": null,
+    "year_start": 2021,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 7,
+  "fields": {
+    "brand": 5,
+    "model": 6,
+    "series": null,
+    "year_start": 2020,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 8,
+  "fields": {
+    "brand": 5,
+    "model": 9,
+    "series": null,
+    "year_start": 2022,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 9,
+  "fields": {
+    "brand": 3,
+    "model": 10,
+    "series": null,
+    "year_start": 2021,
+    "year_end": 2024
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 10,
+  "fields": {
+    "brand": 3,
+    "model": 11,
+    "series": null,
+    "year_start": 2022,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 11,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "year_start": 2024,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 12,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "year_start": 2024,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.brandmodelseries",
+  "pk": 13,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "year_start": 2024,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 1,
+  "fields": {
+    "brand": null,
+    "model": null,
+    "series": null,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 2,
+  "fields": {
+    "brand": 1,
+    "model": null,
+    "series": null,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 3,
+  "fields": {
+    "brand": null,
+    "model": null,
+    "series": 1,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 4,
+  "fields": {
+    "brand": null,
+    "model": null,
+    "series": 5,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 5,
+  "fields": {
+    "brand": null,
+    "model": null,
+    "series": 6,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 8,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 9,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": 36,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 10,
+  "fields": {
+    "brand": 1,
+    "model": 2,
+    "series": 11,
+    "package": 38,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 11,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 39,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 12,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 40,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 13,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": 41,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 14,
+  "fields": {
+    "brand": 6,
+    "model": 12,
+    "series": 12,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 15,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 43,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 16,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 44,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 17,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": null,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.match",
+  "pk": 18,
+  "fields": {
+    "brand": 7,
+    "model": 13,
+    "series": 13,
+    "package": 42,
+    "year_start": null,
+    "year_end": null
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 1,
+  "fields": {
+    "match": 12,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 15,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 2,
+  "fields": {
+    "match": 13,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 14,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 3,
+  "fields": {
+    "match": 8,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 13,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 9,
+  "fields": {
+    "match": 1,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 20,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 10,
+  "fields": {
+    "match": 8,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 19,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 11,
+  "fields": {
+    "match": 10,
+    "blurb": 3,
+    "placement": "highlights",
+    "priority": 18,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 12,
+  "fields": {
+    "match": 10,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 17,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 13,
+  "fields": {
+    "match": 9,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 10,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 14,
+  "fields": {
+    "match": 10,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 9,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 15,
+  "fields": {
+    "match": 13,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 8,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 16,
+  "fields": {
+    "match": 2,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 17,
+  "fields": {
+    "match": 2,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 18,
+  "fields": {
+    "match": 2,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 33,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 19,
+  "fields": {
+    "match": 2,
+    "blurb": 11,
+    "placement": "interior",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 20,
+  "fields": {
+    "match": 2,
+    "blurb": 16,
+    "placement": "exterior",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 21,
+  "fields": {
+    "match": 2,
+    "blurb": 17,
+    "placement": "exterior",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 22,
+  "fields": {
+    "match": 2,
+    "blurb": 18,
+    "placement": "exterior",
+    "priority": 33,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 23,
+  "fields": {
+    "match": 2,
+    "blurb": 19,
+    "placement": "exterior",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 24,
+  "fields": {
+    "match": 2,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 40,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 25,
+  "fields": {
+    "match": 2,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 39,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 27,
+  "fields": {
+    "match": 2,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 37,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 28,
+  "fields": {
+    "match": 2,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 30,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 29,
+  "fields": {
+    "match": 2,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 30,
+  "fields": {
+    "match": 2,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 31,
+  "fields": {
+    "match": 3,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 32,
+  "fields": {
+    "match": 3,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 33,
+  "fields": {
+    "match": 3,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 34,
+  "fields": {
+    "match": 3,
+    "blurb": 11,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 36,
+  "fields": {
+    "match": 3,
+    "blurb": 17,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 37,
+  "fields": {
+    "match": 3,
+    "blurb": 18,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 38,
+  "fields": {
+    "match": 3,
+    "blurb": 19,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 39,
+  "fields": {
+    "match": 3,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 40,
+  "fields": {
+    "match": 3,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 42,
+  "fields": {
+    "match": 3,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 43,
+  "fields": {
+    "match": 3,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 44,
+  "fields": {
+    "match": 3,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 45,
+  "fields": {
+    "match": 3,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 46,
+  "fields": {
+    "match": 4,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 47,
+  "fields": {
+    "match": 4,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 48,
+  "fields": {
+    "match": 4,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 49,
+  "fields": {
+    "match": 4,
+    "blurb": 11,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 51,
+  "fields": {
+    "match": 4,
+    "blurb": 17,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 52,
+  "fields": {
+    "match": 4,
+    "blurb": 18,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 53,
+  "fields": {
+    "match": 4,
+    "blurb": 19,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 54,
+  "fields": {
+    "match": 4,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 55,
+  "fields": {
+    "match": 4,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 57,
+  "fields": {
+    "match": 4,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 58,
+  "fields": {
+    "match": 4,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 59,
+  "fields": {
+    "match": 4,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 60,
+  "fields": {
+    "match": 4,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 61,
+  "fields": {
+    "match": 5,
+    "blurb": 5,
+    "placement": "interior",
+    "priority": 30,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 62,
+  "fields": {
+    "match": 5,
+    "blurb": 9,
+    "placement": "interior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 63,
+  "fields": {
+    "match": 5,
+    "blurb": 10,
+    "placement": "interior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 64,
+  "fields": {
+    "match": 5,
+    "blurb": 11,
+    "placement": "interior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 66,
+  "fields": {
+    "match": 5,
+    "blurb": 17,
+    "placement": "exterior",
+    "priority": 29,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 67,
+  "fields": {
+    "match": 5,
+    "blurb": 18,
+    "placement": "exterior",
+    "priority": 28,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 68,
+  "fields": {
+    "match": 5,
+    "blurb": 19,
+    "placement": "exterior",
+    "priority": 27,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 69,
+  "fields": {
+    "match": 5,
+    "blurb": 1,
+    "placement": "highlights",
+    "priority": 35,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 70,
+  "fields": {
+    "match": 5,
+    "blurb": 2,
+    "placement": "highlights",
+    "priority": 34,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 72,
+  "fields": {
+    "match": 5,
+    "blurb": 4,
+    "placement": "highlights",
+    "priority": 32,
+    "sequence": 30
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 73,
+  "fields": {
+    "match": 5,
+    "blurb": 33,
+    "placement": "options",
+    "priority": 25,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 74,
+  "fields": {
+    "match": 5,
+    "blurb": 35,
+    "placement": "options",
+    "priority": 24,
+    "sequence": 10
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 75,
+  "fields": {
+    "match": 5,
+    "blurb": 36,
+    "placement": "options",
+    "priority": 23,
+    "sequence": 20
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 106,
+  "fields": {
+    "match": 11,
+    "blurb": 38,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 107,
+  "fields": {
+    "match": 11,
+    "blurb": 41,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 108,
+  "fields": {
+    "match": 12,
+    "blurb": 39,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 109,
+  "fields": {
+    "match": 12,
+    "blurb": 41,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 110,
+  "fields": {
+    "match": 13,
+    "blurb": 40,
+    "placement": "interior",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 111,
+  "fields": {
+    "match": 13,
+    "blurb": 41,
+    "placement": "highlights",
+    "priority": 1,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 112,
+  "fields": {
+    "match": 14,
+    "blurb": 42,
+    "placement": "interior",
+    "priority": 2,
+    "sequence": 0
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 113,
+  "fields": {
+    "match": 15,
+    "blurb": 43,
+    "placement": "interior",
+    "priority": 5,
+    "sequence": 1
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 114,
+  "fields": {
+    "match": 16,
+    "blurb": 45,
+    "placement": "highlights",
+    "priority": 8,
+    "sequence": 1
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 115,
+  "fields": {
+    "match": 17,
+    "blurb": 45,
+    "placement": "exterior",
+    "priority": 6,
+    "sequence": 2
+  }
+},
+{
+  "model": "maker.matchitem",
+  "pk": 116,
+  "fields": {
+    "match": 18,
+    "blurb": 43,
+    "placement": "options",
+    "priority": 3,
+    "sequence": 1
+  }
+}
+]
