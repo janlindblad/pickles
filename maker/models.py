@@ -83,11 +83,36 @@ class Year(models.Model):
         ordering = ['-year']  # Most recent years first
 
 
+class BlurbGroup(models.Model):
+    """
+    Represents a group of blurbs with exclusion/replacement logic.
+    Used to ensure only one blurb from a group appears in generated content.
+    """
+    name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True, help_text="Description of what this group represents")
+    max_items = models.IntegerField(default=1, help_text="Maximum items from this group allowed in content (1=replacement logic)")
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['name']
+        verbose_name = "Blurb Group"
+        verbose_name_plural = "Blurb Groups"
+
+
 class Blurb(models.Model):
     """
     Represents marketing text/blurb content.
     """
     text = models.TextField()
+    blurb_group = models.ForeignKey(BlurbGroup, null=True, blank=True, 
+                                   on_delete=models.SET_NULL,
+                                   related_name='blurbs',
+                                   help_text="Blurb group for exclusion/replacement logic")
+    group_priority = models.IntegerField(default=0, 
+                                       help_text="Priority within blurb group (higher values win in replacement)")
     history = HistoricalRecords()
     
     def __str__(self):
@@ -151,11 +176,12 @@ class Match(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='matches', null=True, blank=True, help_text="Optional brand filter")
     model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='matches', null=True, blank=True, help_text="Optional model filter")
     series = models.ForeignKey(Series, on_delete=models.CASCADE, related_name='matches', null=True, blank=True, help_text="Optional series filter")
+    package = models.ForeignKey(Package, on_delete=models.CASCADE, related_name='matches', null=True, blank=True, help_text="Optional package filter")
     year_start = models.IntegerField(null=True, blank=True, help_text="Optional earliest model year")
     year_end = models.IntegerField(null=True, blank=True, help_text="Optional latest model year")
     history = HistoricalRecords()
     
-    def matches_criteria(self, brand=None, model=None, series=None, year=None):
+    def matches_criteria(self, brand=None, model=None, series=None, package=None, year=None):
         """
         Check if this Match applies to the given criteria.
         Returns True if all specified filters match the given values.
@@ -165,6 +191,8 @@ class Match(models.Model):
         if self.model and model != self.model:
             return False
         if self.series and series != self.series:
+            return False
+        if self.package and package != self.package:
             return False
         if year:
             if self.year_start and year < self.year_start:
@@ -181,6 +209,8 @@ class Match(models.Model):
             filters.append(f"Model: {self.model.name}")
         if self.series:
             filters.append(f"Series: {self.series.name}")
+        if self.package:
+            filters.append(f"Package: {self.package.name}")
         if self.year_start or self.year_end:
             if self.year_start and self.year_end:
                 filters.append(f"Years: {self.year_start}-{self.year_end}")

@@ -11,8 +11,8 @@ CONTENT_LIMITS = {
 }
 
 # Content generation settings
-CONTENT_SEPARATOR = '. '  # How to join multiple blurbs
-CONTENT_ENDING = '.'      # How to end the final content
+CONTENT_SEPARATOR = ' '   # How to join multiple blurbs (space only, dots handled per-blurb)
+CONTENT_ENDING = ''       # No ending needed since each blurb ends with a dot
 
 # UI messaging
 MESSAGES = {

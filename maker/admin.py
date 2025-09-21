@@ -1,6 +1,6 @@
 from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
-from .models import Brand, Model, Series, Package, Year, Blurb, Match, MatchItem, BrandModelSeries
+from .models import Brand, Model, Series, Package, Year, BlurbGroup, Blurb, Match, MatchItem, BrandModelSeries
 
 
 class PackageInline(admin.TabularInline):
@@ -17,6 +17,25 @@ class MatchItemInline(admin.TabularInline):
     extra = 1
     fields = ['blurb', 'placement', 'priority', 'sequence']
     ordering = ['placement', 'sequence', '-priority']
+
+
+class BlurbMatchItemInline(admin.TabularInline):
+    """Inline admin to show match items that use this blurb."""
+    model = MatchItem
+    extra = 0
+    fields = ['match', 'placement', 'priority', 'sequence']
+    readonly_fields = ['match', 'placement', 'priority', 'sequence']
+    ordering = ['placement', 'sequence', '-priority']
+    verbose_name = "Match Item using this Blurb"
+    verbose_name_plural = "Match Items using this Blurb"
+    
+    def has_add_permission(self, request, obj=None):
+        # Don't allow adding new match items from the blurb admin
+        return False
+    
+    def has_delete_permission(self, request, obj=None):
+        # Don't allow deleting match items from the blurb admin  
+        return False
 
 
 @admin.register(Brand)
@@ -90,19 +109,107 @@ class YearAdmin(SimpleHistoryAdmin):
     ordering = ['-year']  # Most recent years first
 
 
+@admin.register(BlurbGroup)
+class BlurbGroupAdmin(SimpleHistoryAdmin):
+    """
+    Admin interface for BlurbGroup model with history tracking.
+    """
+    list_display = ['name', 'max_items', 'get_blurb_count']
+    search_fields = ['name', 'description']
+    ordering = ['name']
+    
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('name', 'description')
+        }),
+        ('Group Settings', {
+            'fields': ('max_items',),
+            'description': 'Maximum items from this group allowed in content (1 = replacement logic)'
+        }),
+    )
+    
+    def get_blurb_count(self, obj):
+        """Return the number of blurbs in this group."""
+        return obj.blurbs.count()
+    get_blurb_count.short_description = 'Blurbs in Group'
+    get_blurb_count.admin_order_field = 'blurbs__count'
+
+
 @admin.register(Blurb)
 class BlurbAdmin(SimpleHistoryAdmin):
     """
     Admin interface for Blurb model with history tracking.
     """
-    list_display = ['get_text_preview', 'id']
-    search_fields = ['text']
-    ordering = ['id']
+    list_display = ['get_text_preview', 'get_match_count', 'get_match_info', 'blurb_group', 'group_priority', 'id']
+    list_filter = ['blurb_group', 'match_items__placement']
+    search_fields = ['text', 'blurb_group__name', 'match_items__match__brand__name', 'match_items__match__model__name']
+    ordering = ['blurb_group__name', '-group_priority', 'id']
+    inlines = [BlurbMatchItemInline]
+    
+    fieldsets = (
+        ('Content', {
+            'fields': ('text',)
+        }),
+        ('Group Settings', {
+            'fields': ('blurb_group', 'group_priority'),
+            'description': 'Optional group for exclusion/replacement logic. Higher priority wins within group.'
+        }),
+    )
+    
+    def get_queryset(self, request):
+        """Optimize queryset to reduce database queries."""
+        queryset = super().get_queryset(request)
+        return queryset.select_related('blurb_group').prefetch_related(
+            'match_items__match__brand',
+            'match_items__match__model', 
+            'match_items__match__series',
+            'match_items__match__package'
+        )
     
     def get_text_preview(self, obj):
         """Return a preview of the blurb text for admin display."""
         return obj.text[:75] + "..." if len(obj.text) > 75 else obj.text
     get_text_preview.short_description = 'Text Preview'
+    
+    def get_match_count(self, obj):
+        """Return the number of match items that use this blurb."""
+        count = obj.match_items.count()
+        if count == 0:
+            return "❌ No matches"
+        return f"✅ {count} match{'es' if count != 1 else ''}"
+    get_match_count.short_description = 'Usage'
+    get_match_count.admin_order_field = 'match_items__count'
+    
+    def get_match_info(self, obj):
+        """Return a summary of matches that use this blurb."""
+        match_items = obj.match_items.select_related(
+            'match__brand', 'match__model', 'match__series', 'match__package'
+        ).all()[:3]  # Limit to first 3 to avoid long strings
+        
+        if not match_items:
+            return "No usage"
+        
+        info_parts = []
+        for item in match_items:
+            match = item.match
+            parts = []
+            if match.brand:
+                parts.append(match.brand.name)
+            if match.model:
+                parts.append(match.model.name)
+            if match.package:
+                parts.append(f"({match.package.name})")
+            
+            match_desc = " ".join(parts) if parts else "All vehicles"
+            info_parts.append(f"{item.get_placement_display()}: {match_desc}")
+        
+        result = " | ".join(info_parts)
+        if obj.match_items.count() > 3:
+            result += f" (+{obj.match_items.count() - 3} more)"
+        
+        return result
+    get_match_info.short_description = 'Used In'
+    get_match_info.allow_tags = True
 
 
 @admin.register(BrandModelSeries)
@@ -146,7 +253,7 @@ class MatchAdmin(SimpleHistoryAdmin):
     
     fieldsets = (
         ('Match Filters', {
-            'fields': ('brand', 'model', 'series'),
+            'fields': ('brand', 'model', 'series', 'package'),
             'description': 'Leave fields empty to match any value for that filter.'
         }),
         ('Year Range Filters', {

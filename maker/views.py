@@ -18,6 +18,66 @@ from .models import Brand, Model, Package, Year, Blurb, Match, BrandModelSeries,
 from .constants import CONTENT_LIMITS, CONTENT_SEPARATOR, CONTENT_ENDING, MESSAGES, FALLBACK_CONTENT
 
 
+def _apply_blurb_group_logic(items):
+    """
+    Apply BlurbGroup exclusion/replacement logic to a list of MatchItems.
+    
+    This function:
+    1. Groups items by their blurb's BlurbGroup (if any)
+    2. Within each group, selects only the highest priority items (up to max_items)
+    3. Returns deduplicated items (same blurb never appears twice)
+    
+    Args:
+        items: List of MatchItem objects
+        
+    Returns:
+        List of MatchItem objects after applying group logic
+    """
+    # Separate grouped and ungrouped items
+    grouped_items = {}  # blurb_group_id -> list of items
+    ungrouped_items = []
+    
+    for item in items:
+        if item.blurb.blurb_group:
+            group_id = item.blurb.blurb_group.id
+            if group_id not in grouped_items:
+                grouped_items[group_id] = []
+            grouped_items[group_id].append(item)
+        else:
+            ungrouped_items.append(item)
+    
+    # Process grouped items
+    selected_items = []
+    
+    for group_id, group_items in grouped_items.items():
+        # Get the BlurbGroup to check max_items
+        blurb_group = group_items[0].blurb.blurb_group
+        max_items = blurb_group.max_items
+        
+        # Sort by group_priority (descending) then by MatchItem priority/sequence
+        sorted_group_items = sorted(
+            group_items, 
+            key=lambda x: (-x.blurb.group_priority, -x.priority, x.sequence)
+        )
+        
+        # Select up to max_items from this group
+        selected_items.extend(sorted_group_items[:max_items])
+    
+    # Add ungrouped items
+    selected_items.extend(ungrouped_items)
+    
+    # Deduplicate by blurb_id (same blurb should never appear twice)
+    seen_blurbs = set()
+    deduplicated_items = []
+    
+    for item in selected_items:
+        if item.blurb.id not in seen_blurbs:
+            seen_blurbs.add(item.blurb.id)
+            deduplicated_items.append(item)
+    
+    return deduplicated_items
+
+
 def maker_start_view(request):
     """
     Main start page view for the Pickles maker application.
@@ -291,7 +351,7 @@ def maker_content_api(request):
         matching_matches = []
         
         for match in all_matches:
-            if match.matches_criteria(brand=brand, model=model, series=series, year=year_int):
+            if match.matches_criteria(brand=brand, model=model, series=series, package=package, year=year_int):
                 matching_matches.append(match)
         
         # If no matches found, return fallback content with message
@@ -317,7 +377,7 @@ def maker_content_api(request):
             content_by_placement[placement] = []
         
         for match in matching_matches:
-            match_items = MatchItem.objects.filter(match=match).select_related('blurb')
+            match_items = MatchItem.objects.filter(match=match).select_related('blurb', 'blurb__blurb_group')
             for item in match_items:
                 content_by_placement[item.placement].append(item)
         
@@ -330,8 +390,11 @@ def maker_content_api(request):
                 generated_content[placement] = ''
                 continue
             
+            # Apply BlurbGroup exclusion/replacement logic
+            filtered_items = _apply_blurb_group_logic(items)
+            
             # Sort by priority (descending) then sequence (ascending)
-            sorted_items = sorted(items, key=lambda x: (-x.priority, x.sequence))
+            sorted_items = sorted(filtered_items, key=lambda x: (-x.priority, x.sequence))
             
             # Build content string respecting character limits
             max_chars = CONTENT_LIMITS.get(placement, 500)
@@ -339,7 +402,7 @@ def maker_content_api(request):
             current_length = 0
             
             for item in sorted_items:
-                blurb_text = item.blurb.text
+                blurb_text = item.blurb.text.strip()
                 
                 # Check if adding this blurb would exceed the limit
                 additional_length = len(blurb_text)
@@ -353,9 +416,18 @@ def maker_content_api(request):
                     content_truncated = True
                     break
             
-            # Join parts and add ending
+            # Join parts and add ending with proper dot handling
             if content_parts:
-                content = CONTENT_SEPARATOR.join(content_parts) + CONTENT_ENDING
+                # Process each part to ensure proper punctuation
+                processed_parts = []
+                for part in content_parts:
+                    # Ensure each part ends with a dot if it doesn't already
+                    if not part.endswith('.'):
+                        part += '.'
+                    processed_parts.append(part)
+                
+                # Join with space (not '. ') since parts already end with dots
+                content = ' '.join(processed_parts)
             else:
                 content = ''
             
