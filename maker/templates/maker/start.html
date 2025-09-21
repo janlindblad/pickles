@@ -45,10 +45,7 @@
                                 Model *
                             </label>
                             <select id="modelSelect" class="form-select" name="model" disabled>
-                                <option value="">Choose a model...</option>
-                                {% for model in models %}
-                                    <option value="{{ model.id }}">{{ model.name }}</option>
-                                {% endfor %}
+                                <option value="">Choose a brand first...</option>
                             </select>
                         </div>
                         
@@ -164,6 +161,7 @@
             selectedModel: null,
             selectedYear: null,
             selectedPackages: new Set(),
+            previousBrand: null,  // Track previous brand to avoid unnecessary model reloads
             
             // Update selection state and UI
             updateSelection: function() {
@@ -196,12 +194,65 @@
                     yearSelect.value = '';
                     this.selectedModel = null;
                     this.selectedYear = null;
+                    // Clear model options
+                    modelSelect.innerHTML = '<option value="">Choose a brand first...</option>';
+                    this.previousBrand = null;
+                } else if (this.selectedBrand !== this.previousBrand) {
+                    // Only load models when brand actually changes
+                    this.loadModels();
+                    this.previousBrand = this.selectedBrand;
                 }
                 
                 if (!this.selectedModel) {
                     yearSelect.value = '';
                     this.selectedYear = null;
                 }
+            },
+            
+            // Load models via API based on selected brand
+            loadModels: function() {
+                if (!this.selectedBrand) {
+                    return;
+                }
+                
+                const modelSelect = document.getElementById('modelSelect');
+                modelSelect.innerHTML = '<option value="">Loading models...</option>';
+                
+                // Fetch models from API
+                const params = new URLSearchParams({
+                    brand_id: this.selectedBrand
+                });
+                
+                fetch(`/api/models/?${params}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Store currently selected model to preserve it
+                            const currentSelection = this.selectedModel;
+                            
+                            // Clear and repopulate model options
+                            modelSelect.innerHTML = '<option value="">Choose a model...</option>';
+                            
+                            data.models.forEach(model => {
+                                const option = document.createElement('option');
+                                option.value = model.id;
+                                option.textContent = model.name;
+                                modelSelect.appendChild(option);
+                            });
+                            
+                            // Restore the selected model if it exists in the new list
+                            if (currentSelection) {
+                                modelSelect.value = currentSelection;
+                            }
+                        } else {
+                            modelSelect.innerHTML = '<option value="">Error loading models</option>';
+                            console.error('Error loading models:', data.error);
+                        }
+                    })
+                    .catch(error => {
+                        modelSelect.innerHTML = '<option value="">Error loading models</option>';
+                        console.error('Error loading models:', error);
+                    });
             },
             
             // Load packages via API
@@ -231,7 +282,7 @@
                     year_id: this.selectedYear
                 });
                 
-                fetch(`/maker/api/packages/?${params}`)
+                fetch(`/api/packages/?${params}`)
                     .then(response => response.json())
                     .then(data => {
                         packagesLoading.style.display = 'none';
@@ -313,6 +364,13 @@
             // Brand selection
             document.getElementById('brandSelect').addEventListener('change', function(e) {
                 AppState.selectedBrand = e.target.value || null;
+                // Only reset model and year when brand actually changes
+                if (AppState.selectedBrand !== AppState.previousBrand) {
+                    AppState.selectedModel = null;
+                    AppState.selectedYear = null;
+                    document.getElementById('modelSelect').value = '';
+                    document.getElementById('yearSelect').value = '';
+                }
                 AppState.updateSelection();
             });
             

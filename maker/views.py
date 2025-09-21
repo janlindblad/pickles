@@ -97,8 +97,8 @@ def maker_packages_api(request):
         ).first()
         
         if series:
-            # Get packages from the matching series
-            packages = series.packages.all().order_by('name')
+            # Get packages that are associated with the matching series
+            packages = Package.objects.filter(brand_model_series=series).order_by('name')
             series_info = {
                 'id': series.id,
                 'name': str(series),
@@ -126,6 +126,71 @@ def maker_packages_api(request):
                 'model_id': model_id,
                 'year_id': year_id,
                 'year_value': year_int,
+            }
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+
+
+@require_http_methods(["GET"])
+def maker_models_api(request):
+    """
+    API endpoint to get models based on Brand selection.
+    
+    Uses BrandModelSeries to find models available for the specific brand.
+    
+    Args:
+        request: Django HttpRequest object with GET parameters:
+            - brand_id: ID of selected brand
+            
+    Returns:
+        JsonResponse with models data
+    """
+    try:
+        # Get selection parameters
+        brand_id = request.GET.get('brand_id')
+        
+        # Validate required parameters
+        if not brand_id:
+            return JsonResponse({
+                'success': False,
+                'error': 'Missing required parameter: brand_id'
+            }, status=400)
+        
+        try:
+            brand = Brand.objects.get(id=brand_id)
+        except Brand.DoesNotExist:
+            return JsonResponse({
+                'success': False,
+                'error': f'Brand with id {brand_id} not found'
+            }, status=404)
+        
+        # Get models for this brand from BrandModelSeries
+        series_for_brand = BrandModelSeries.objects.filter(brand=brand).select_related('model')
+        models_set = set()
+        
+        for series in series_for_brand:
+            models_set.add((series.model.id, series.model.name))
+        
+        # Convert to sorted list of dictionaries
+        models_data = [
+            {
+                'id': model_id,
+                'name': model_name,
+            }
+            for model_id, model_name in sorted(models_set, key=lambda x: x[1])
+        ]
+        
+        return JsonResponse({
+            'success': True,
+            'models': models_data,
+            'brand_info': {
+                'id': brand.id,
+                'name': brand.name,
             }
         })
         

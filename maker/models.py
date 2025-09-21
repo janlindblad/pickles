@@ -34,11 +34,21 @@ class Package(models.Model):
     """
     Represents a package type for products.
     """
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
+    brand_model_series = models.ManyToManyField('BrandModelSeries', related_name='packages')
     history = HistoricalRecords()
     
     def __str__(self):
-        return self.name
+        # Show associated brand/model/series context for clarity in admin
+        series_list = list(self.brand_model_series.all()[:3])  # Limit to first 3 to avoid long strings
+        if series_list:
+            series_names = [str(series) for series in series_list]
+            context = ' | '.join(series_names)
+            if self.brand_model_series.count() > 3:
+                context += f' (+{self.brand_model_series.count() - 3} more)'
+            return f"{self.name} ({context})"
+        else:
+            return f"{self.name} (no series assigned)"
     
     class Meta:
         ordering = ['name']
@@ -83,7 +93,6 @@ class BrandModelSeries(models.Model):
     series_name = models.CharField(max_length=100, blank=True, help_text="Optional series/generation name")
     year_start = models.IntegerField(help_text="First year this series was available")
     year_end = models.IntegerField(null=True, blank=True, help_text="Last year (leave empty if ongoing)")
-    packages = models.ManyToManyField(Package, blank=True, related_name='brand_model_series')
     history = HistoricalRecords()
     
     def get_year_display(self):

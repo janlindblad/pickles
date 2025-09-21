@@ -3,6 +3,14 @@ from simple_history.admin import SimpleHistoryAdmin
 from .models import Brand, Model, Package, Year, Blurb, Match, BrandModelSeries
 
 
+class PackageInline(admin.TabularInline):
+    """Inline admin for packages in BrandModelSeries."""
+    model = Package.brand_model_series.through
+    extra = 1
+    verbose_name = "Package"
+    verbose_name_plural = "Available Packages"
+
+
 @admin.register(Brand)
 class BrandAdmin(SimpleHistoryAdmin):
     """
@@ -28,9 +36,30 @@ class PackageAdmin(SimpleHistoryAdmin):
     """
     Admin interface for Package model with history tracking.
     """
-    list_display = ['name']
-    search_fields = ['name']
+    list_display = ['get_package_with_context', 'get_series_count']
+    search_fields = ['name', 'brand_model_series__brand__name', 'brand_model_series__model__name']
+    list_filter = ['brand_model_series__brand', 'brand_model_series__model', 'name']
     ordering = ['name']
+    filter_horizontal = ['brand_model_series']  # Nice interface for ManyToMany
+    list_select_related = True
+    
+    def get_queryset(self, request):
+        """Optimize queryset with prefetch_related to avoid N+1 queries."""
+        return super().get_queryset(request).prefetch_related(
+            'brand_model_series__brand',
+            'brand_model_series__model'
+        )
+    
+    def get_package_with_context(self, obj):
+        """Return package name with brand/model/series context."""
+        return str(obj)  # This will use the enhanced __str__ method
+    get_package_with_context.short_description = 'Package'
+    get_package_with_context.admin_order_field = 'name'
+    
+    def get_series_count(self, obj):
+        """Return the number of brand/model series this package is associated with."""
+        return obj.brand_model_series.count()
+    get_series_count.short_description = 'Series Count'
 
 
 @admin.register(Year)
@@ -67,7 +96,7 @@ class BrandModelSeriesAdmin(SimpleHistoryAdmin):
     list_filter = ['brand', 'model', 'year_start']
     search_fields = ['brand__name', 'model__name', 'series_name']
     ordering = ['brand__name', 'model__name', '-year_start']
-    filter_horizontal = ['packages']  # Nice interface for ManyToMany
+    inlines = [PackageInline]
     
     fieldsets = (
         ('Basic Information', {
@@ -76,10 +105,6 @@ class BrandModelSeriesAdmin(SimpleHistoryAdmin):
         ('Year Range', {
             'fields': ('year_start', 'year_end'),
             'description': 'Leave "Year end" empty if this series is ongoing.'
-        }),
-        ('Available Packages', {
-            'fields': ('packages',),
-            'classes': ('wide',)
         }),
     )
     
