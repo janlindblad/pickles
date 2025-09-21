@@ -46,16 +46,16 @@ class Package(models.Model):
 
 class Year(models.Model):
     """
-    Represents a year for products. Stored as string for flexibility.
+    Represents a year for products. Using integer for proper sorting and math operations.
     """
-    name = models.CharField(max_length=4, unique=True, help_text="Four-digit year")
+    year = models.IntegerField(unique=True, help_text="Four-digit year")
     history = HistoricalRecords()
     
     def __str__(self):
-        return self.name
+        return str(self.year)
     
     class Meta:
-        ordering = ['-name']  # Most recent years first
+        ordering = ['-year']  # Most recent years first
 
 
 class Blurb(models.Model):
@@ -71,6 +71,52 @@ class Blurb(models.Model):
     
     class Meta:
         ordering = ['id']
+
+
+class BrandModelSeries(models.Model):
+    """
+    Represents a series/generation of a Brand+Model with shared packages.
+    Groups years that have the same package availability for efficient storage.
+    """
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='model_series')
+    model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='brand_series')
+    series_name = models.CharField(max_length=100, blank=True, help_text="Optional series/generation name")
+    year_start = models.IntegerField(help_text="First year this series was available")
+    year_end = models.IntegerField(null=True, blank=True, help_text="Last year (leave empty if ongoing)")
+    packages = models.ManyToManyField(Package, blank=True, related_name='brand_model_series')
+    history = HistoricalRecords()
+    
+    def get_year_display(self):
+        """Return a human-readable year range string."""
+        if self.year_end and self.year_end != self.year_start:
+            return f"{self.year_start}-{self.year_end}"
+        elif self.year_end:
+            return str(self.year_start)
+        else:
+            return f"{self.year_start}+"
+    
+    def is_year_available(self, year_int):
+        """Check if a specific year is covered by this series."""
+        if self.year_end:
+            return self.year_start <= year_int <= self.year_end
+        else:
+            return year_int >= self.year_start
+    
+    def get_available_years(self):
+        """Return queryset of Year objects covered by this series."""
+        if self.year_end:
+            return Year.objects.filter(year__gte=self.year_start, year__lte=self.year_end)
+        else:
+            return Year.objects.filter(year__gte=self.year_start)
+    
+    def __str__(self):
+        series = f" {self.series_name}" if self.series_name else ""
+        return f"{self.brand.name} {self.model.name} ({self.get_year_display()}){series}"
+    
+    class Meta:
+        unique_together = ['brand', 'model', 'year_start']
+        ordering = ['brand__name', 'model__name', '-year_start']
+        verbose_name_plural = "Brand Model Series"
 
 
 class Match(models.Model):

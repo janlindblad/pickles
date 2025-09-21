@@ -11,9 +11,10 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.core.exceptions import ValidationError
 from django.contrib import messages
+from django.db import models
 import json
 
-from .models import Brand, Model, Package, Year, Blurb, Match
+from .models import Brand, Model, Package, Year, Blurb, Match, BrandModelSeries
 
 
 def maker_start_view(request):
@@ -32,7 +33,7 @@ def maker_start_view(request):
     # Get all available options for dropdowns
     brands = Brand.objects.all().order_by('name')
     models = Model.objects.all().order_by('name')  
-    years = Year.objects.all().order_by('-name')  # Most recent first
+    years = Year.objects.all().order_by('-year')  # Most recent first
     packages = Package.objects.all().order_by('name')
     
     context = {
@@ -51,8 +52,8 @@ def maker_packages_api(request):
     """
     API endpoint to get packages based on Brand, Model, and Year selection.
     
-    For now, returns all packages. Will be enhanced to filter based on
-    the selected Brand, Model, and Year combination.
+    Uses BrandModelSeries to find packages available for the specific
+    Brand+Model+Year combination.
     
     Args:
         request: Django HttpRequest object with GET parameters:
@@ -69,9 +70,44 @@ def maker_packages_api(request):
         model_id = request.GET.get('model_id')
         year_id = request.GET.get('year_id')
         
-        # For now, return all packages regardless of selection
-        # TODO: Add logic to filter packages based on Brand, Model, Year
-        packages = Package.objects.all().order_by('name')
+        # Validate required parameters
+        if not all([brand_id, model_id, year_id]):
+            return JsonResponse({
+                'success': False,
+                'error': 'Missing required parameters: brand_id, model_id, year_id'
+            }, status=400)
+        
+        try:
+            # Get the year object to get the integer value
+            year_obj = Year.objects.get(id=year_id)
+            year_int = year_obj.year
+        except Year.DoesNotExist:
+            return JsonResponse({
+                'success': False,
+                'error': f'Year with id {year_id} not found'
+            }, status=404)
+        
+        # Find BrandModelSeries that matches the selection
+        series = BrandModelSeries.objects.filter(
+            brand_id=brand_id,
+            model_id=model_id,
+            year_start__lte=year_int
+        ).filter(
+            models.Q(year_end__gte=year_int) | models.Q(year_end__isnull=True)
+        ).first()
+        
+        if series:
+            # Get packages from the matching series
+            packages = series.packages.all().order_by('name')
+            series_info = {
+                'id': series.id,
+                'name': str(series),
+                'year_range': series.get_year_display(),
+            }
+        else:
+            # No matching series found, return empty package list
+            packages = Package.objects.none()
+            series_info = None
         
         packages_data = [
             {
@@ -84,10 +120,12 @@ def maker_packages_api(request):
         return JsonResponse({
             'success': True,
             'packages': packages_data,
+            'series_info': series_info,
             'filter_applied': {
                 'brand_id': brand_id,
                 'model_id': model_id,
                 'year_id': year_id,
+                'year_value': year_int,
             }
         })
         

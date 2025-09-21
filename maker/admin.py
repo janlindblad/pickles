@@ -1,6 +1,6 @@
 from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
-from .models import Brand, Model, Package, Year, Blurb, Match
+from .models import Brand, Model, Package, Year, Blurb, Match, BrandModelSeries
 
 
 @admin.register(Brand)
@@ -38,9 +38,9 @@ class YearAdmin(SimpleHistoryAdmin):
     """
     Admin interface for Year model with history tracking.
     """
-    list_display = ['name']
-    search_fields = ['name']
-    ordering = ['-name']  # Most recent years first
+    list_display = ['year']
+    search_fields = ['year']
+    ordering = ['-year']  # Most recent years first
 
 
 @admin.register(Blurb)
@@ -56,6 +56,38 @@ class BlurbAdmin(SimpleHistoryAdmin):
         """Return a preview of the blurb text for admin display."""
         return obj.text[:75] + "..." if len(obj.text) > 75 else obj.text
     get_text_preview.short_description = 'Text Preview'
+
+
+@admin.register(BrandModelSeries)
+class BrandModelSeriesAdmin(SimpleHistoryAdmin):
+    """
+    Admin interface for BrandModelSeries model with history tracking.
+    """
+    list_display = ['brand', 'model', 'get_year_display', 'series_name', 'get_package_count']
+    list_filter = ['brand', 'model', 'year_start']
+    search_fields = ['brand__name', 'model__name', 'series_name']
+    ordering = ['brand__name', 'model__name', '-year_start']
+    filter_horizontal = ['packages']  # Nice interface for ManyToMany
+    
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('brand', 'model', 'series_name')
+        }),
+        ('Year Range', {
+            'fields': ('year_start', 'year_end'),
+            'description': 'Leave "Year end" empty if this series is ongoing.'
+        }),
+        ('Available Packages', {
+            'fields': ('packages',),
+            'classes': ('wide',)
+        }),
+    )
+    
+    def get_package_count(self, obj):
+        """Return the number of packages associated with this series."""
+        return obj.packages.count()
+    get_package_count.short_description = 'Package Count'
+    get_package_count.admin_order_field = 'packages__count'
 
 
 @admin.register(Match)
