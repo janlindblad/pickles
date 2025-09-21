@@ -14,7 +14,8 @@ from django.contrib import messages
 from django.db import models
 import json
 
-from .models import Brand, Model, Package, Year, Blurb, Match, BrandModelSeries
+from .models import Brand, Model, Package, Year, Blurb, Match, BrandModelSeries, Series, MatchItem
+from .constants import CONTENT_LIMITS, CONTENT_SEPARATOR, CONTENT_ENDING, MESSAGES, FALLBACK_CONTENT
 
 
 def maker_start_view(request):
@@ -191,6 +192,203 @@ def maker_models_api(request):
             'brand_info': {
                 'id': brand.id,
                 'name': brand.name,
+            }
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+
+
+@require_http_methods(["GET"])
+def maker_content_api(request):
+    """
+    API endpoint to generate content based on Brand, Model, Year, and Package selection.
+    
+    Finds matching Match instances based on selection criteria, collects associated
+    MatchItems by placement category, applies priority-based selection with character
+    limits, and returns generated content for all categories.
+    
+    Args:
+        request: Django HttpRequest object with GET parameters:
+            - brand_id: ID of selected brand (optional)
+            - model_id: ID of selected model (optional) 
+            - year_id: ID of selected year (optional)
+            - package_id: ID of selected package (optional)
+            
+    Returns:
+        JsonResponse with generated content for each placement category
+    """
+    try:
+        # Get selection parameters
+        brand_id = request.GET.get('brand_id')
+        model_id = request.GET.get('model_id') 
+        year_id = request.GET.get('year_id')
+        package_id = request.GET.get('package_id')
+        
+        # Get objects from IDs (if provided)
+        brand = None
+        model = None
+        year_obj = None
+        year_int = None
+        package = None
+        series = None
+        
+        if brand_id:
+            try:
+                brand = Brand.objects.get(id=brand_id)
+            except Brand.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': f'Brand with id {brand_id} not found'
+                }, status=404)
+        
+        if model_id:
+            try:
+                model = Model.objects.get(id=model_id)
+            except Model.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': f'Model with id {model_id} not found'
+                }, status=404)
+        
+        if year_id:
+            try:
+                year_obj = Year.objects.get(id=year_id)
+                year_int = year_obj.year
+            except Year.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': f'Year with id {year_id} not found'
+                }, status=404)
+        
+        if package_id:
+            try:
+                package = Package.objects.get(id=package_id)
+            except Package.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': f'Package with id {package_id} not found'
+                }, status=404)
+        
+        # If we have brand, model, and year, try to find the series
+        if brand and model and year_int:
+            brand_model_series = BrandModelSeries.objects.filter(
+                brand=brand,
+                model=model,
+                year_start__lte=year_int
+            ).filter(
+                models.Q(year_end__gte=year_int) | models.Q(year_end__isnull=True)
+            ).first()
+            
+            if brand_model_series and brand_model_series.series:
+                series = brand_model_series.series
+        
+        # Find all matches that apply to our selection
+        all_matches = Match.objects.all()
+        matching_matches = []
+        
+        for match in all_matches:
+            if match.matches_criteria(brand=brand, model=model, series=series, year=year_int):
+                matching_matches.append(match)
+        
+        # If no matches found, return fallback content with message
+        if not matching_matches:
+            return JsonResponse({
+                'success': True,
+                'content': FALLBACK_CONTENT,
+                'message': MESSAGES['no_matches_found'],
+                'message_type': 'warning',
+                'matches_found': 0,
+                'selection_info': {
+                    'brand': brand.name if brand else None,
+                    'model': model.name if model else None,
+                    'year': year_int,
+                    'series': series.name if series else None,
+                    'package': package.name if package else None,
+                }
+            })
+        
+        # Collect all MatchItems from matching matches, grouped by placement
+        content_by_placement = {}
+        for placement in ['interior', 'exterior', 'highlights', 'options']:
+            content_by_placement[placement] = []
+        
+        for match in matching_matches:
+            match_items = MatchItem.objects.filter(match=match).select_related('blurb')
+            for item in match_items:
+                content_by_placement[item.placement].append(item)
+        
+        # Generate content for each placement category
+        generated_content = {}
+        content_truncated = False
+        
+        for placement, items in content_by_placement.items():
+            if not items:
+                generated_content[placement] = ''
+                continue
+            
+            # Sort by priority (descending) then sequence (ascending)
+            sorted_items = sorted(items, key=lambda x: (-x.priority, x.sequence))
+            
+            # Build content string respecting character limits
+            max_chars = CONTENT_LIMITS.get(placement, 500)
+            content_parts = []
+            current_length = 0
+            
+            for item in sorted_items:
+                blurb_text = item.blurb.text
+                
+                # Check if adding this blurb would exceed the limit
+                additional_length = len(blurb_text)
+                if content_parts:  # Add separator length if not first item
+                    additional_length += len(CONTENT_SEPARATOR)
+                
+                if current_length + additional_length + len(CONTENT_ENDING) <= max_chars:
+                    content_parts.append(blurb_text)
+                    current_length += additional_length
+                else:
+                    content_truncated = True
+                    break
+            
+            # Join parts and add ending
+            if content_parts:
+                content = CONTENT_SEPARATOR.join(content_parts) + CONTENT_ENDING
+            else:
+                content = ''
+            
+            generated_content[placement] = content
+        
+        # Determine response message
+        message = MESSAGES['content_generated']
+        message_type = 'success'
+        if content_truncated:
+            message = MESSAGES['content_truncated']
+            message_type = 'info'
+        
+        return JsonResponse({
+            'success': True,
+            'content': generated_content,
+            'message': message,
+            'message_type': message_type,
+            'matches_found': len(matching_matches),
+            'selection_info': {
+                'brand': brand.name if brand else None,
+                'model': model.name if model else None,
+                'year': year_int,
+                'series': series.name if series else None,
+                'package': package.name if package else None,
+            },
+            'content_stats': {
+                placement: {
+                    'length': len(content),
+                    'limit': CONTENT_LIMITS.get(placement, 500),
+                    'items_used': len([item for item in content_by_placement[placement] 
+                                     if item.blurb.text in content])
+                }
+                for placement, content in generated_content.items()
             }
         })
         

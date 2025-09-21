@@ -19,6 +19,12 @@
                 </div>
             </div>
             
+            <!-- Notification Area -->
+            <div id="notificationArea" class="alert alert-dismissible d-none mt-3" role="alert">
+                <span id="notificationMessage"></span>
+                <button type="button" class="btn-close" onclick="document.getElementById('notificationArea').classList.add('d-none')"></button>
+            </div>
+            
             <!-- Selection Area -->
             <div class="selection-area">
                 <div class="form-section">
@@ -95,13 +101,13 @@
                         <div class="output-column">
                             <div class="output-column-header">
                                 <button type="button" class="btn btn-outline" data-column="1">
-                                    Button 1
+                                    Copy Interior
                                 </button>
                             </div>
                             <textarea 
                                 id="output1" 
                                 class="output-textarea custom-scrollbar" 
-                                placeholder="Generated content will appear here..."
+                                placeholder="Interior features and descriptions will appear here..."
                                 readonly
                             ></textarea>
                         </div>
@@ -109,13 +115,13 @@
                         <div class="output-column">
                             <div class="output-column-header">
                                 <button type="button" class="btn btn-outline" data-column="2">
-                                    Button 2
+                                    Copy Exterior
                                 </button>
                             </div>
                             <textarea 
                                 id="output2" 
                                 class="output-textarea custom-scrollbar" 
-                                placeholder="Generated content will appear here..."
+                                placeholder="Exterior features and styling will appear here..."
                                 readonly
                             ></textarea>
                         </div>
@@ -123,13 +129,13 @@
                         <div class="output-column">
                             <div class="output-column-header">
                                 <button type="button" class="btn btn-outline" data-column="3">
-                                    Button 3
+                                    Copy Highlights
                                 </button>
                             </div>
                             <textarea 
                                 id="output3" 
                                 class="output-textarea custom-scrollbar" 
-                                placeholder="Generated content will appear here..."
+                                placeholder="Key highlights and selling points will appear here..."
                                 readonly
                             ></textarea>
                         </div>
@@ -137,13 +143,13 @@
                         <div class="output-column">
                             <div class="output-column-header">
                                 <button type="button" class="btn btn-outline" data-column="4">
-                                    Button 4
+                                    Copy Options
                                 </button>
                             </div>
                             <textarea 
                                 id="output4" 
                                 class="output-textarea custom-scrollbar" 
-                                placeholder="Generated content will appear here..."
+                                placeholder="Available options and packages will appear here..."
                                 readonly
                             ></textarea>
                         </div>
@@ -168,6 +174,7 @@
                 this.updateStatusIndicators();
                 this.updateFormStates();
                 this.loadPackages();
+                this.generateContent();
             },
             
             // Update status indicators
@@ -330,10 +337,144 @@
                             this.selectedPackages.delete(pkg.id);
                             packageItem.classList.remove('selected');
                         }
+                        // Trigger content generation when package selection changes
+                        this.generateContent();
                     });
                     
                     packagesContainer.appendChild(packageItem);
                 });
+            },
+            
+            // Generate content based on current selections
+            generateContent: function() {
+                // Clear previous content
+                for (let i = 1; i <= 4; i++) {
+                    document.getElementById(`output${i}`).value = '';
+                }
+                
+                // Only generate if we have basic selections
+                if (!this.selectedBrand) {
+                    return;
+                }
+                
+                // Build API parameters
+                const params = new URLSearchParams();
+                if (this.selectedBrand) params.append('brand_id', this.selectedBrand);
+                if (this.selectedModel) params.append('model_id', this.selectedModel);
+                if (this.selectedYear) params.append('year_id', this.selectedYear);
+                if (this.selectedPackages.size > 0) {
+                    // For now, use the first selected package
+                    params.append('package_id', Array.from(this.selectedPackages)[0]);
+                }
+                
+                // Call content generation API
+                fetch(`/api/content/?${params}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Populate textareas with generated content
+                            document.getElementById('output1').value = data.content.interior || '';
+                            document.getElementById('output2').value = data.content.exterior || '';
+                            document.getElementById('output3').value = data.content.highlights || '';
+                            document.getElementById('output4').value = data.content.options || '';
+                            
+                            // Show notification
+                            if (data.message) {
+                                this.showNotification(data.message, data.message_type || 'info');
+                            }
+                        } else {
+                            console.error('Content generation error:', data.error);
+                            this.showNotification('Error generating content: ' + data.error, 'danger');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Content generation failed:', error);
+                        this.showNotification('Failed to generate content. Please try again.', 'danger');
+                    });
+            },
+            
+            // Show notification to user
+            showNotification: function(message, type = 'info') {
+                const notificationArea = document.getElementById('notificationArea');
+                const notificationMessage = document.getElementById('notificationMessage');
+                
+                // Set message and style
+                notificationMessage.textContent = message;
+                notificationArea.className = `alert alert-${type} alert-dismissible`;
+                notificationArea.classList.remove('d-none');
+                
+                // Auto-hide after 5 seconds for non-error messages
+                if (type !== 'danger') {
+                    setTimeout(() => {
+                        notificationArea.classList.add('d-none');
+                    }, 5000);
+                }
+            },
+            
+            // Generate content based on current selections
+            generateContent: function() {
+                // Clear previous content
+                for (let i = 1; i <= 4; i++) {
+                    document.getElementById(`output${i}`).value = '';
+                }
+                
+                // Only generate if we have basic selections
+                if (!this.selectedBrand) {
+                    return;
+                }
+                
+                // Build API parameters
+                const params = new URLSearchParams();
+                if (this.selectedBrand) params.append('brand_id', this.selectedBrand);
+                if (this.selectedModel) params.append('model_id', this.selectedModel);
+                if (this.selectedYear) params.append('year_id', this.selectedYear);
+                if (this.selectedPackages.size > 0) {
+                    // For now, use the first selected package
+                    params.append('package_id', Array.from(this.selectedPackages)[0]);
+                }
+                
+                // Call content generation API
+                fetch(`/api/content/?${params}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Populate textareas with generated content
+                            document.getElementById('output1').value = data.content.interior || '';
+                            document.getElementById('output2').value = data.content.exterior || '';
+                            document.getElementById('output3').value = data.content.highlights || '';
+                            document.getElementById('output4').value = data.content.options || '';
+                            
+                            // Show notification
+                            if (data.message) {
+                                this.showNotification(data.message, data.message_type || 'info');
+                            }
+                        } else {
+                            console.error('Content generation error:', data.error);
+                            this.showNotification('Error generating content: ' + data.error, 'danger');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Content generation failed:', error);
+                        this.showNotification('Failed to generate content. Please try again.', 'danger');
+                    });
+            },
+            
+            // Show notification to user
+            showNotification: function(message, type = 'info') {
+                const notificationArea = document.getElementById('notificationArea');
+                const notificationMessage = document.getElementById('notificationMessage');
+                
+                // Set message and style
+                notificationMessage.textContent = message;
+                notificationArea.className = `alert alert-${type} alert-dismissible`;
+                notificationArea.classList.remove('d-none');
+                
+                // Auto-hide after 5 seconds for non-error messages
+                if (type !== 'danger') {
+                    setTimeout(() => {
+                        notificationArea.classList.add('d-none');
+                    }, 5000);
+                }
             },
             
             // Clear all selections
@@ -353,6 +494,9 @@
                 for (let i = 1; i <= 4; i++) {
                     document.getElementById(`output${i}`).value = '';
                 }
+                
+                // Hide notifications
+                document.getElementById('notificationArea').classList.add('d-none');
                 
                 // Update UI
                 this.updateSelection();
@@ -391,12 +535,56 @@
                 AppState.clearAll();
             });
             
-            // Output column buttons (placeholder functionality)
+            // Output column buttons - copy to clipboard functionality
             document.querySelectorAll('[data-column]').forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', async function() {
                     const column = this.getAttribute('data-column');
-                    console.log(`Button ${column} clicked`);
-                    // TODO: Add actual functionality for buttons
+                    const textarea = document.getElementById(`output${column}`);
+                    const content = textarea.value;
+                    
+                    if (!content.trim()) {
+                        // Show brief feedback for empty content
+                        const originalText = this.textContent;
+                        this.textContent = 'Nothing to copy';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 1500);
+                        return;
+                    }
+                    
+                    try {
+                        await navigator.clipboard.writeText(content);
+                        // Show success feedback
+                        const originalText = this.textContent;
+                        this.textContent = 'Copied!';
+                        this.classList.add('btn-success');
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.classList.remove('btn-success');
+                        }, 1500);
+                    } catch (err) {
+                        console.error('Failed to copy to clipboard:', err);
+                        // Fallback for browsers that don't support clipboard API
+                        textarea.select();
+                        textarea.setSelectionRange(0, 99999); // For mobile devices
+                        try {
+                            document.execCommand('copy');
+                            const originalText = this.textContent;
+                            this.textContent = 'Copied!';
+                            this.classList.add('btn-success');
+                            setTimeout(() => {
+                                this.textContent = originalText;
+                                this.classList.remove('btn-success');
+                            }, 1500);
+                        } catch (fallbackErr) {
+                            console.error('Fallback copy failed:', fallbackErr);
+                            const originalText = this.textContent;
+                            this.textContent = 'Copy failed';
+                            setTimeout(() => {
+                                this.textContent = originalText;
+                            }, 1500);
+                        }
+                    }
                 });
             });
             

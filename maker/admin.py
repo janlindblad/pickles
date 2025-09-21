@@ -1,6 +1,6 @@
 from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
-from .models import Brand, Model, Package, Year, Blurb, Match, BrandModelSeries
+from .models import Brand, Model, Series, Package, Year, Blurb, Match, MatchItem, BrandModelSeries
 
 
 class PackageInline(admin.TabularInline):
@@ -9,6 +9,14 @@ class PackageInline(admin.TabularInline):
     extra = 1
     verbose_name = "Package"
     verbose_name_plural = "Available Packages"
+
+
+class MatchItemInline(admin.TabularInline):
+    """Inline admin for match items in Match."""
+    model = MatchItem
+    extra = 1
+    fields = ['blurb', 'placement', 'priority', 'sequence']
+    ordering = ['placement', 'sequence', '-priority']
 
 
 @admin.register(Brand)
@@ -25,6 +33,16 @@ class BrandAdmin(SimpleHistoryAdmin):
 class ModelAdmin(SimpleHistoryAdmin):
     """
     Admin interface for Model model with history tracking.
+    """
+    list_display = ['name']
+    search_fields = ['name']
+    ordering = ['name']
+
+
+@admin.register(Series)
+class SeriesAdmin(SimpleHistoryAdmin):
+    """
+    Admin interface for Series model with history tracking.
     """
     list_display = ['name']
     search_fields = ['name']
@@ -92,15 +110,15 @@ class BrandModelSeriesAdmin(SimpleHistoryAdmin):
     """
     Admin interface for BrandModelSeries model with history tracking.
     """
-    list_display = ['brand', 'model', 'get_year_display', 'series_name', 'get_package_count']
-    list_filter = ['brand', 'model', 'year_start']
-    search_fields = ['brand__name', 'model__name', 'series_name']
+    list_display = ['brand', 'model', 'get_year_display', 'series', 'get_package_count']
+    list_filter = ['brand', 'model', 'series', 'year_start']
+    search_fields = ['brand__name', 'model__name', 'series__name']
     ordering = ['brand__name', 'model__name', '-year_start']
     inlines = [PackageInline]
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('brand', 'model', 'series_name')
+            'fields': ('brand', 'model', 'series')
         }),
         ('Year Range', {
             'fields': ('year_start', 'year_end'),
@@ -120,11 +138,51 @@ class MatchAdmin(SimpleHistoryAdmin):
     """
     Admin interface for Match model with history tracking.
     """
-    list_display = ['id', 'get_blurb_preview']
-    list_filter = ['blurb']
+    list_display = ['id', '__str__', 'get_item_count']
+    list_filter = ['brand', 'model', 'series', 'year_start', 'year_end']
+    search_fields = ['brand__name', 'model__name', 'series__name']
     ordering = ['id']
+    inlines = [MatchItemInline]
+    
+    fieldsets = (
+        ('Match Filters', {
+            'fields': ('brand', 'model', 'series'),
+            'description': 'Leave fields empty to match any value for that filter.'
+        }),
+        ('Year Range Filters', {
+            'fields': ('year_start', 'year_end'),
+            'description': 'Optional year range filters. Leave empty to match any year.'
+        }),
+    )
+    
+    def get_item_count(self, obj):
+        """Return the number of match items for this match."""
+        return obj.items.count()
+    get_item_count.short_description = 'Items'
+    get_item_count.admin_order_field = 'items__count'
+
+
+@admin.register(MatchItem)
+class MatchItemAdmin(SimpleHistoryAdmin):
+    """
+    Admin interface for MatchItem model with history tracking.
+    """
+    list_display = ['match', 'placement', 'priority', 'sequence', 'get_blurb_preview']
+    list_filter = ['placement', 'match__brand', 'match__model', 'match__series']
+    search_fields = ['blurb__text', 'match__brand__name', 'match__model__name']
+    ordering = ['match', 'placement', 'sequence', '-priority']
+    
+    fieldsets = (
+        ('Content', {
+            'fields': ('match', 'blurb')
+        }),
+        ('Placement & Priority', {
+            'fields': ('placement', 'priority', 'sequence'),
+            'description': 'Priority: higher numbers selected first. Sequence: lower numbers appear first.'
+        }),
+    )
     
     def get_blurb_preview(self, obj):
-        """Return a preview of the associated blurb text."""
+        """Return a preview of the blurb text."""
         return obj.blurb.text[:50] + "..." if len(obj.blurb.text) > 50 else obj.blurb.text
     get_blurb_preview.short_description = 'Blurb Preview'

@@ -30,6 +30,21 @@ class Model(models.Model):
         ordering = ['name']
 
 
+class Series(models.Model):
+    """
+    Represents a series/generation name that can be shared across multiple BrandModelSeries.
+    """
+    name = models.CharField(max_length=100, unique=True)
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = "Series"
+
+
 class Package(models.Model):
     """
     Represents a package type for products.
@@ -90,7 +105,7 @@ class BrandModelSeries(models.Model):
     """
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='model_series')
     model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='brand_series')
-    series_name = models.CharField(max_length=100, blank=True, help_text="Optional series/generation name")
+    series = models.ForeignKey(Series, on_delete=models.CASCADE, related_name='brand_model_series', null=True, blank=True, help_text="Optional series/generation")
     year_start = models.IntegerField(help_text="First year this series was available")
     year_end = models.IntegerField(null=True, blank=True, help_text="Last year (leave empty if ongoing)")
     history = HistoricalRecords()
@@ -119,7 +134,7 @@ class BrandModelSeries(models.Model):
             return Year.objects.filter(year__gte=self.year_start)
     
     def __str__(self):
-        series = f" {self.series_name}" if self.series_name else ""
+        series = f" {self.series.name}" if self.series else ""
         return f"{self.brand.name} {self.model.name} ({self.get_year_display()}){series}"
     
     class Meta:
@@ -130,14 +145,83 @@ class BrandModelSeries(models.Model):
 
 class Match(models.Model):
     """
-    Represents a match between a blurb and other entities.
-    This model will be expanded with more relationships in the future.
+    Represents matching conditions that trigger content generation.
+    When conditions are met, associated MatchItems are selected for content.
     """
-    blurb = models.ForeignKey(Blurb, on_delete=models.CASCADE, related_name='matches')
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='matches', null=True, blank=True, help_text="Optional brand filter")
+    model = models.ForeignKey(Model, on_delete=models.CASCADE, related_name='matches', null=True, blank=True, help_text="Optional model filter")
+    series = models.ForeignKey(Series, on_delete=models.CASCADE, related_name='matches', null=True, blank=True, help_text="Optional series filter")
+    year_start = models.IntegerField(null=True, blank=True, help_text="Optional earliest model year")
+    year_end = models.IntegerField(null=True, blank=True, help_text="Optional latest model year")
     history = HistoricalRecords()
     
+    def matches_criteria(self, brand=None, model=None, series=None, year=None):
+        """
+        Check if this Match applies to the given criteria.
+        Returns True if all specified filters match the given values.
+        """
+        if self.brand and brand != self.brand:
+            return False
+        if self.model and model != self.model:
+            return False
+        if self.series and series != self.series:
+            return False
+        if year:
+            if self.year_start and year < self.year_start:
+                return False
+            if self.year_end and year > self.year_end:
+                return False
+        return True
+    
     def __str__(self):
-        return f"Match for: {self.blurb}"
+        filters = []
+        if self.brand:
+            filters.append(f"Brand: {self.brand.name}")
+        if self.model:
+            filters.append(f"Model: {self.model.name}")
+        if self.series:
+            filters.append(f"Series: {self.series.name}")
+        if self.year_start or self.year_end:
+            if self.year_start and self.year_end:
+                filters.append(f"Years: {self.year_start}-{self.year_end}")
+            elif self.year_start:
+                filters.append(f"Years: {self.year_start}+")
+            elif self.year_end:
+                filters.append(f"Years: -{self.year_end}")
+        
+        if filters:
+            return f"Match ({', '.join(filters)})"
+        else:
+            return "Match (no filters)"
     
     class Meta:
         ordering = ['id']
+        verbose_name_plural = "Matches"
+
+
+class MatchItem(models.Model):
+    """
+    Represents a content item that can be selected when a Match triggers.
+    Items have placement categories, priority for selection, and sequence for ordering.
+    """
+    PLACEMENT_CHOICES = [
+        ('interior', 'Interior'),
+        ('exterior', 'Exterior'),
+        ('highlights', 'Highlights'),
+        ('options', 'Options'),
+    ]
+    
+    match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name='items')
+    blurb = models.ForeignKey(Blurb, on_delete=models.CASCADE, related_name='match_items')
+    placement = models.CharField(max_length=20, choices=PLACEMENT_CHOICES, help_text="Content category for this item")
+    priority = models.IntegerField(default=0, help_text="Selection priority (higher numbers selected first when space is limited)")
+    sequence = models.IntegerField(default=0, help_text="Display order within category (lower numbers appear first)")
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return f"{self.get_placement_display()} - Priority {self.priority} - {self.blurb}"
+    
+    class Meta:
+        ordering = ['placement', 'sequence', '-priority']
+        verbose_name = "Match Item"
+        verbose_name_plural = "Match Items"
