@@ -100,58 +100,46 @@
                     <div class="output-columns">
                         <div class="output-column">
                             <div class="output-column-header">
-                                <button type="button" class="btn btn-outline" data-column="1">
+                                <button type="button" class="btn btn-outline" data-category="interior">
                                     Copy Interior
                                 </button>
                             </div>
-                            <textarea 
-                                id="output1" 
-                                class="output-textarea custom-scrollbar" 
-                                placeholder="Interior features and descriptions will appear here..."
-                                readonly
-                            ></textarea>
+                            <div class="content-list" id="interior-list">
+                                <p class="empty-state">Interior features and descriptions will appear here...</p>
+                            </div>
                         </div>
                         
                         <div class="output-column">
                             <div class="output-column-header">
-                                <button type="button" class="btn btn-outline" data-column="2">
+                                <button type="button" class="btn btn-outline" data-category="exterior">
                                     Copy Exterior
                                 </button>
                             </div>
-                            <textarea 
-                                id="output2" 
-                                class="output-textarea custom-scrollbar" 
-                                placeholder="Exterior features and styling will appear here..."
-                                readonly
-                            ></textarea>
+                            <div class="content-list" id="exterior-list">
+                                <p class="empty-state">Exterior features and styling will appear here...</p>
+                            </div>
                         </div>
                         
                         <div class="output-column">
                             <div class="output-column-header">
-                                <button type="button" class="btn btn-outline" data-column="3">
+                                <button type="button" class="btn btn-outline" data-category="highlights">
                                     Copy Highlights
                                 </button>
                             </div>
-                            <textarea 
-                                id="output3" 
-                                class="output-textarea custom-scrollbar" 
-                                placeholder="Key highlights and selling points will appear here..."
-                                readonly
-                            ></textarea>
+                            <div class="content-list" id="highlights-list">
+                                <p class="empty-state">Key highlights and selling points will appear here...</p>
+                            </div>
                         </div>
                         
                         <div class="output-column">
                             <div class="output-column-header">
-                                <button type="button" class="btn btn-outline" data-column="4">
+                                <button type="button" class="btn btn-outline" data-category="options">
                                     Copy Options
                                 </button>
                             </div>
-                            <textarea 
-                                id="output4" 
-                                class="output-textarea custom-scrollbar" 
-                                placeholder="Available options and packages will appear here..."
-                                readonly
-                            ></textarea>
+                            <div class="content-list" id="options-list">
+                                <p class="empty-state">Available options and packages will appear here...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,6 +149,9 @@
     
     <!-- JavaScript for responsive functionality -->
     <script>
+        // Configuration constants from Django
+        const CONTENT_SEPARATOR = "{{ content_separator|escapejs }}";
+        
         // Global state management
         const AppState = {
             selectedBrand: null,
@@ -348,9 +339,7 @@
             // Generate content based on current selections
             generateContent: function() {
                 // Clear previous content
-                for (let i = 1; i <= 4; i++) {
-                    document.getElementById(`output${i}`).value = '';
-                }
+                this.clearContentLists();
                 
                 // Only generate if we have basic selections
                 if (!this.selectedBrand) {
@@ -372,11 +361,11 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            // Populate textareas with generated content
-                            document.getElementById('output1').value = data.content.interior || '';
-                            document.getElementById('output2').value = data.content.exterior || '';
-                            document.getElementById('output3').value = data.content.highlights || '';
-                            document.getElementById('output4').value = data.content.options || '';
+                            // Populate content lists with generated items
+                            this.populateContentList('interior', data.content.interior?.items);
+                            this.populateContentList('exterior', data.content.exterior?.items);
+                            this.populateContentList('highlights', data.content.highlights?.items);
+                            this.populateContentList('options', data.content.options?.items);
                             
                             // Show notification
                             if (data.message) {
@@ -411,54 +400,6 @@
                 }
             },
             
-            // Generate content based on current selections
-            generateContent: function() {
-                // Clear previous content
-                for (let i = 1; i <= 4; i++) {
-                    document.getElementById(`output${i}`).value = '';
-                }
-                
-                // Only generate if we have basic selections
-                if (!this.selectedBrand) {
-                    return;
-                }
-                
-                // Build API parameters
-                const params = new URLSearchParams();
-                if (this.selectedBrand) params.append('brand_id', this.selectedBrand);
-                if (this.selectedModel) params.append('model_id', this.selectedModel);
-                if (this.selectedYear) params.append('year_id', this.selectedYear);
-                if (this.selectedPackages.size > 0) {
-                    // For now, use the first selected package
-                    params.append('package_id', Array.from(this.selectedPackages)[0]);
-                }
-                
-                // Call content generation API
-                fetch(`/api/content/?${params}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            // Populate textareas with generated content
-                            document.getElementById('output1').value = data.content.interior || '';
-                            document.getElementById('output2').value = data.content.exterior || '';
-                            document.getElementById('output3').value = data.content.highlights || '';
-                            document.getElementById('output4').value = data.content.options || '';
-                            
-                            // Show notification
-                            if (data.message) {
-                                this.showNotification(data.message, data.message_type || 'info');
-                            }
-                        } else {
-                            console.error('Content generation error:', data.error);
-                            this.showNotification('Error generating content: ' + data.error, 'danger');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Content generation failed:', error);
-                        this.showNotification('Failed to generate content. Please try again.', 'danger');
-                    });
-            },
-            
             // Show notification to user
             showNotification: function(message, type = 'info') {
                 const notificationArea = document.getElementById('notificationArea');
@@ -475,6 +416,92 @@
                         notificationArea.classList.add('d-none');
                     }, 5000);
                 }
+            },
+            
+            // Clear content lists
+            clearContentLists: function() {
+                const categories = ['interior', 'exterior', 'highlights', 'options'];
+                categories.forEach(category => {
+                    const listContainer = document.getElementById(`${category}-list`);
+                    listContainer.innerHTML = `<p class="empty-state">${this.getEmptyStateMessage(category)}</p>`;
+                });
+            },
+            
+            // Populate content list with items
+            populateContentList: function(category, items) {
+                const listContainer = document.getElementById(`${category}-list`);
+                
+                if (!items || items.length === 0) {
+                    listContainer.innerHTML = `<p class="empty-state">${this.getEmptyStateMessage(category)}</p>`;
+                    return;
+                }
+                
+                // Create list structure
+                const ul = document.createElement('ul');
+                
+                items.forEach((item) => {
+                    const li = document.createElement('li');
+                    li.className = `content-item ${this.getPriorityClass(item.priority)}`;
+                    
+                    // Main content
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'content-text';
+                    contentDiv.textContent = item.text;
+                    
+                    // Metadata
+                    const metaDiv = document.createElement('div');
+                    metaDiv.className = 'content-item-meta';
+                    metaDiv.innerHTML = `
+                        <span class="sequence">Sequence: ${item.sequence}</span>
+                        <span class="priority-badge ${this.getPriorityClass(item.priority)}">${this.getPriorityLabel(item.priority)}</span>
+                    `;
+                    
+                    li.appendChild(contentDiv);
+                    li.appendChild(metaDiv);
+                    ul.appendChild(li);
+                });
+                
+                listContainer.innerHTML = '';
+                listContainer.appendChild(ul);
+            },
+            
+            // Get priority CSS class
+            getPriorityClass: function(priority) {
+                if (priority >= 50) return 'priority-high';
+                if (priority >= 20) return 'priority-medium';
+                return 'priority-low';
+            },
+            
+            // Get priority label
+            getPriorityLabel: function(priority) {
+                if (priority >= 50) return 'High';
+                if (priority >= 20) return 'Medium';
+                return 'Low';
+            },
+            
+            // Get empty state message
+            getEmptyStateMessage: function(category) {
+                const messages = {
+                    interior: 'Interior features and descriptions will appear here...',
+                    exterior: 'Exterior features and styling will appear here...',
+                    highlights: 'Key highlights and selling points will appear here...',
+                    options: 'Available options and packages will appear here...'
+                };
+                return messages[category] || 'Content will appear here...';
+            },
+            
+            // Copy content list to clipboard
+            copyContentList: function(category) {
+                const listContainer = document.getElementById(`${category}-list`);
+                const items = listContainer.querySelectorAll('.content-text');
+                
+                if (items.length === 0) {
+                    return null; // No content to copy
+                }
+                
+                // Extract text content and join with configured separator
+                const texts = Array.from(items).map(item => item.textContent.trim());
+                return texts.join(CONTENT_SEPARATOR);
             },
             
             // Clear all selections
@@ -490,10 +517,8 @@
                 this.selectedYear = null;
                 this.selectedPackages.clear();
                 
-                // Clear output textareas
-                for (let i = 1; i <= 4; i++) {
-                    document.getElementById(`output${i}`).value = '';
-                }
+                // Clear content lists
+                this.clearContentLists();
                 
                 // Hide notifications
                 document.getElementById('notificationArea').classList.add('d-none');
@@ -536,13 +561,12 @@
             });
             
             // Output column buttons - copy to clipboard functionality
-            document.querySelectorAll('[data-column]').forEach(button => {
+            document.querySelectorAll('[data-category]').forEach(button => {
                 button.addEventListener('click', async function() {
-                    const column = this.getAttribute('data-column');
-                    const textarea = document.getElementById(`output${column}`);
-                    const content = textarea.value;
+                    const category = this.getAttribute('data-category');
+                    const content = AppState.copyContentList(category);
                     
-                    if (!content.trim()) {
+                    if (!content || !content.trim()) {
                         // Show brief feedback for empty content
                         const originalText = this.textContent;
                         this.textContent = 'Nothing to copy';
@@ -564,26 +588,11 @@
                         }, 1500);
                     } catch (err) {
                         console.error('Failed to copy to clipboard:', err);
-                        // Fallback for browsers that don't support clipboard API
-                        textarea.select();
-                        textarea.setSelectionRange(0, 99999); // For mobile devices
-                        try {
-                            document.execCommand('copy');
-                            const originalText = this.textContent;
-                            this.textContent = 'Copied!';
-                            this.classList.add('btn-success');
-                            setTimeout(() => {
-                                this.textContent = originalText;
-                                this.classList.remove('btn-success');
-                            }, 1500);
-                        } catch (fallbackErr) {
-                            console.error('Fallback copy failed:', fallbackErr);
-                            const originalText = this.textContent;
-                            this.textContent = 'Copy failed';
-                            setTimeout(() => {
-                                this.textContent = originalText;
-                            }, 1500);
-                        }
+                        const originalText = this.textContent;
+                        this.textContent = 'Copy failed';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 1500);
                     }
                 });
             });

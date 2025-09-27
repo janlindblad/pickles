@@ -80,29 +80,16 @@ def _apply_blurb_group_logic(items):
 
 def maker_start_view(request):
     """
-    Main start page view for the Pickles maker application.
-    
-    Displays selection interface for Brand, Model, Year, and Packages.
-    Provides responsive interface without form submission.
-    
-    Args:
-        request: Django HttpRequest object
-        
-    Returns:
-        HttpResponse with rendered start page template
+    Main view for the maker interface.
+    Provides initial data for brand/model/year selection.
     """
-    # Get all available options for dropdowns
-    brands = Brand.objects.all().order_by('name')
-    models = Model.objects.all().order_by('name')  
-    years = Year.objects.all().order_by('-year')  # Most recent first
-    packages = Package.objects.all().order_by('name')
+    from .constants import CONTENT_SEPARATOR
     
     context = {
-        'brands': brands,
-        'models': models,
-        'years': years,
-        'packages': packages,
-        'page_title': 'Pickles Maker - Start',
+        'brands': Brand.objects.all().order_by('name'),
+        'years': Year.objects.all().order_by('-year'),
+        'content_separator': CONTENT_SEPARATOR,
+        'page_title': 'Pickles Maker - Create Ad Blurb'
     }
     
     return render(request, 'maker/start.html', context)
@@ -387,7 +374,7 @@ def maker_content_api(request):
         
         for placement, items in content_by_placement.items():
             if not items:
-                generated_content[placement] = ''
+                generated_content[placement] = {'items': [], 'text': ''}
                 continue
             
             # Apply BlurbGroup exclusion/replacement logic
@@ -396,42 +383,42 @@ def maker_content_api(request):
             # Sort by priority (descending) then sequence (ascending)
             sorted_items = sorted(filtered_items, key=lambda x: (-x.priority, x.sequence))
             
-            # Build content string respecting character limits
+            # Build item list respecting character limits
             max_chars = CONTENT_LIMITS.get(placement, 500)
+            selected_items = []
             content_parts = []
             current_length = 0
             
             for item in sorted_items:
                 blurb_text = item.blurb.text.strip()
                 
-                # Check if adding this blurb would exceed the limit
-                additional_length = len(blurb_text)
-                if content_parts:  # Add separator length if not first item
-                    additional_length += len(CONTENT_SEPARATOR)
+                # Ensure proper punctuation
+                if not blurb_text.endswith('.'):
+                    blurb_text += '.'
                 
-                if current_length + additional_length + len(CONTENT_ENDING) <= max_chars:
+                # Check if adding this item would exceed the limit
+                additional_length = len(blurb_text)
+                if current_length + additional_length <= max_chars:
+                    selected_items.append({
+                        'text': blurb_text,
+                        'priority': item.priority,
+                        'sequence': item.sequence,
+                        'match_id': item.match.id,
+                        'blurb_id': item.blurb.id,
+                    })
                     content_parts.append(blurb_text)
                     current_length += additional_length
                 else:
                     content_truncated = True
                     break
             
-            # Join parts and add ending with proper dot handling
-            if content_parts:
-                # Process each part to ensure proper punctuation
-                processed_parts = []
-                for part in content_parts:
-                    # Ensure each part ends with a dot if it doesn't already
-                    if not part.endswith('.'):
-                        part += '.'
-                    processed_parts.append(part)
-                
-                # Join with space (not '. ') since parts already end with dots
-                content = ' '.join(processed_parts)
-            else:
-                content = ''
+            # Create both item list and concatenated text for backward compatibility
+            concatenated_text = ' '.join(content_parts) if content_parts else ''
             
-            generated_content[placement] = content
+            generated_content[placement] = {
+                'items': selected_items,
+                'text': concatenated_text
+            }
         
         # Determine response message
         message = MESSAGES['content_generated']
@@ -455,12 +442,11 @@ def maker_content_api(request):
             },
             'content_stats': {
                 placement: {
-                    'length': len(content),
+                    'length': len(content_data['text']) if content_data['text'] else 0,
                     'limit': CONTENT_LIMITS.get(placement, 500),
-                    'items_used': len([item for item in content_by_placement[placement] 
-                                     if item.blurb.text in content])
+                    'items_used': len(content_data['items'])
                 }
-                for placement, content in generated_content.items()
+                for placement, content_data in generated_content.items()
             }
         })
         
