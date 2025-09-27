@@ -1,5 +1,7 @@
 from django.db import models
+from django.core.validators import MaxLengthValidator
 from simple_history.models import HistoricalRecords
+from .constants import BLURB_TEXT_MAX_LENGTH
 
 
 class Brand(models.Model):
@@ -105,8 +107,10 @@ class BlurbGroup(models.Model):
 class Blurb(models.Model):
     """
     Represents marketing text/blurb content.
+    Limited to 35 characters to ensure concise, effective messaging.
     """
-    text = models.TextField()
+    text = models.CharField(max_length=BLURB_TEXT_MAX_LENGTH, 
+                           help_text=f"Marketing text (max {BLURB_TEXT_MAX_LENGTH} characters)")
     blurb_group = models.ForeignKey(BlurbGroup, null=True, blank=True, 
                                    on_delete=models.SET_NULL,
                                    related_name='blurbs',

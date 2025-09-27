@@ -392,10 +392,6 @@ def maker_content_api(request):
             for item in sorted_items:
                 blurb_text = item.blurb.text.strip()
                 
-                # Ensure proper punctuation
-                if not blurb_text.endswith('.'):
-                    blurb_text += '.'
-                
                 # Check if adding this item would exceed the limit
                 additional_length = len(blurb_text)
                 if current_length + additional_length <= max_chars:
@@ -413,7 +409,8 @@ def maker_content_api(request):
                     break
             
             # Create both item list and concatenated text for backward compatibility
-            concatenated_text = ' '.join(content_parts) if content_parts else ''
+            from .constants import CONTENT_SEPARATOR
+            concatenated_text = CONTENT_SEPARATOR.join(content_parts) if content_parts else ''
             
             generated_content[placement] = {
                 'items': selected_items,

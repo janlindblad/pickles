@@ -2,6 +2,9 @@
 Configuration constants for the maker app.
 """
 
+# Blurb text constraints
+BLURB_TEXT_MAX_LENGTH = 35  # Maximum characters for blurb text
+
 # Content generation character limits per category
 CONTENT_LIMITS = {
     'interior': 500,
