@@ -15,7 +15,7 @@ class MatchItemInline(admin.TabularInline):
     """Inline admin for match items in Match."""
     model = MatchItem
     extra = 1
-    fields = ['blurb', 'placement', 'priority', 'sequence']
+    fields = ['blurb', 'placement', 'is_highlight', 'is_option', 'priority', 'sequence']
     ordering = ['placement', 'sequence', '-priority']
 
 
@@ -23,8 +23,8 @@ class BlurbMatchItemInline(admin.TabularInline):
     """Inline admin to show match items that use this blurb."""
     model = MatchItem
     extra = 0
-    fields = ['match', 'placement', 'priority', 'sequence']
-    readonly_fields = ['match', 'placement', 'priority', 'sequence']
+    fields = ['match', 'placement', 'is_highlight', 'is_option', 'priority', 'sequence']
+    readonly_fields = ['match', 'placement', 'is_highlight', 'is_option', 'priority', 'sequence']
     ordering = ['placement', 'sequence', '-priority']
     verbose_name = "Match Item using this Blurb"
     verbose_name_plural = "Match Items using this Blurb"
@@ -274,8 +274,8 @@ class MatchItemAdmin(SimpleHistoryAdmin):
     """
     Admin interface for MatchItem model with history tracking.
     """
-    list_display = ['match', 'placement', 'priority', 'sequence', 'get_blurb_preview']
-    list_filter = ['placement', 'match__brand', 'match__model', 'match__series']
+    list_display = ['match', 'placement', 'is_highlight', 'is_option', 'priority', 'sequence', 'get_blurb_preview', 'get_categories_display']
+    list_filter = ['placement', 'is_highlight', 'is_option', 'match__brand', 'match__model', 'match__series']
     search_fields = ['blurb__text', 'match__brand__name', 'match__model__name']
     ordering = ['match', 'placement', 'sequence', '-priority']
     
@@ -283,8 +283,12 @@ class MatchItemAdmin(SimpleHistoryAdmin):
         ('Content', {
             'fields': ('match', 'blurb')
         }),
-        ('Placement & Priority', {
-            'fields': ('placement', 'priority', 'sequence'),
+        ('Placement & Categories', {
+            'fields': ('placement', 'is_highlight', 'is_option'),
+            'description': 'Placement: interior or exterior. Checkboxes: item will appear in highlights/options sections.'
+        }),
+        ('Priority & Sequence', {
+            'fields': ('priority', 'sequence'),
             'description': 'Priority: higher numbers selected first. Sequence: lower numbers appear first.'
         }),
     )
@@ -293,3 +297,9 @@ class MatchItemAdmin(SimpleHistoryAdmin):
         """Return a preview of the blurb text."""
         return obj.blurb.text[:50] + "..." if len(obj.blurb.text) > 50 else obj.blurb.text
     get_blurb_preview.short_description = 'Blurb Preview'
+    
+    def get_categories_display(self, obj):
+        """Display which categories this item appears in."""
+        categories = obj.get_categories()
+        return ', '.join(categories) if categories else '—'
+    get_categories_display.short_description = 'Categories'

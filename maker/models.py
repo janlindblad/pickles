@@ -236,24 +236,38 @@ class Match(models.Model):
 class MatchItem(models.Model):
     """
     Represents a content item that can be selected when a Match triggers.
-    Items have placement categories, priority for selection, and sequence for ordering.
+    Items have primary placement (interior/exterior) and can also be marked as highlights and/or options.
+    This allows items to appear in multiple content categories simultaneously.
     """
     PLACEMENT_CHOICES = [
         ('interior', 'Interior'),
         ('exterior', 'Exterior'),
-        ('highlights', 'Highlights'),
-        ('options', 'Options'),
     ]
     
     match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name='items')
     blurb = models.ForeignKey(Blurb, on_delete=models.CASCADE, related_name='match_items')
-    placement = models.CharField(max_length=20, choices=PLACEMENT_CHOICES, help_text="Content category for this item")
+    placement = models.CharField(max_length=20, choices=PLACEMENT_CHOICES, 
+                                help_text="Primary content category (Interior or Exterior)")
+    is_highlight = models.BooleanField(default=False, 
+                                     help_text="Check to also show this item in Highlights")
+    is_option = models.BooleanField(default=False, 
+                                  help_text="Check to also show this item in Options")
     priority = models.IntegerField(default=0, help_text="Selection priority (higher numbers selected first when space is limited)")
     sequence = models.IntegerField(default=0, help_text="Display order within category (lower numbers appear first)")
     history = HistoricalRecords()
     
+    def get_categories(self):
+        """Return list of categories this item appears in."""
+        categories = [self.placement]
+        if self.is_highlight:
+            categories.append('highlights')
+        if self.is_option:
+            categories.append('options')
+        return categories
+    
     def __str__(self):
-        return f"{self.get_placement_display()} - Priority {self.priority} - {self.blurb}"
+        categories = ', '.join([cat.title() for cat in self.get_categories()])
+        return f"{categories} - Priority {self.priority} - {self.blurb}"
     
     class Meta:
         ordering = ['placement', 'sequence', '-priority']

@@ -358,15 +358,22 @@ def maker_content_api(request):
                 }
             })
         
-        # Collect all MatchItems from matching matches, grouped by placement
+        # Collect all MatchItems from matching matches
+        all_items = []
+        for match in matching_matches:
+            match_items = MatchItem.objects.filter(match=match).select_related('blurb', 'blurb__blurb_group')
+            all_items.extend(match_items)
+        
+        # Group items by their categories (an item can appear in multiple categories)
         content_by_placement = {}
         for placement in ['interior', 'exterior', 'highlights', 'options']:
             content_by_placement[placement] = []
         
-        for match in matching_matches:
-            match_items = MatchItem.objects.filter(match=match).select_related('blurb', 'blurb__blurb_group')
-            for item in match_items:
-                content_by_placement[item.placement].append(item)
+        for item in all_items:
+            categories = item.get_categories()
+            for category in categories:
+                if category in content_by_placement:
+                    content_by_placement[category].append(item)
         
         # Generate content for each placement category
         generated_content = {}
