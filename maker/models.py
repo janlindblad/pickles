@@ -252,7 +252,6 @@ class MatchItem(models.Model):
                                      help_text="Check to also show this item in Highlights")
     is_option = models.BooleanField(default=False, 
                                   help_text="Check to also show this item in Options")
-    priority = models.IntegerField(default=0, help_text="Selection priority (higher numbers selected first when space is limited)")
     sequence = models.IntegerField(default=0, help_text="Display order within category (lower numbers appear first)")
     history = HistoricalRecords()
     
@@ -267,9 +266,9 @@ class MatchItem(models.Model):
     
     def __str__(self):
         categories = ', '.join([cat.title() for cat in self.get_categories()])
-        return f"{categories} - Priority {self.priority} - {self.blurb}"
+        return f"{categories} - {self.blurb}"
     
     class Meta:
-        ordering = ['placement', 'sequence', '-priority']
+        ordering = ['placement', 'sequence']
         verbose_name = "Match Item"
         verbose_name_plural = "Match Items"

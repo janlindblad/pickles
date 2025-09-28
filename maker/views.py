@@ -22,16 +22,16 @@ def _apply_blurb_group_logic(items):
     """
     Apply BlurbGroup exclusion/replacement logic to a list of MatchItems.
     
-    This function:
-    1. Groups items by their blurb's BlurbGroup (if any)
-    2. Within each group, selects only the highest priority items (up to max_items)
-    3. Returns deduplicated items (same blurb never appears twice)
+    For each BlurbGroup:
+    1. Groups all items by their blurb's blurb_group
+    2. Within each group, selects only the highest group_priority items (up to max_items)
+    3. Sorts items by group_priority (desc) then sequence (asc)
     
     Args:
         items: List of MatchItem objects
         
     Returns:
-        List of MatchItem objects after applying group logic
+        List of selected MatchItem objects after applying group logic
     """
     # Separate grouped and ungrouped items
     grouped_items = {}  # blurb_group_id -> list of items
@@ -54,10 +54,10 @@ def _apply_blurb_group_logic(items):
         blurb_group = group_items[0].blurb.blurb_group
         max_items = blurb_group.max_items
         
-        # Sort by group_priority (descending) then by MatchItem priority/sequence
+        # Sort by group_priority (descending) then by MatchItem sequence
         sorted_group_items = sorted(
             group_items, 
-            key=lambda x: (-x.blurb.group_priority, -x.priority, x.sequence)
+            key=lambda x: (-x.blurb.group_priority, x.sequence)
         )
         
         # Select up to max_items from this group
@@ -255,7 +255,7 @@ def maker_content_api(request):
     API endpoint to generate content based on Brand, Model, Year, and Package selection.
     
     Finds matching Match instances based on selection criteria, collects associated
-    MatchItems by placement category, applies priority-based selection with character
+    MatchItems by placement category, applies sequence-based selection with character
     limits, and returns generated content for all categories.
     
     Args:
@@ -387,8 +387,8 @@ def maker_content_api(request):
             # Apply BlurbGroup exclusion/replacement logic
             filtered_items = _apply_blurb_group_logic(items)
             
-            # Sort by priority (descending) then sequence (ascending)
-            sorted_items = sorted(filtered_items, key=lambda x: (-x.priority, x.sequence))
+            # Sort by sequence (ascending) 
+            sorted_items = sorted(filtered_items, key=lambda x: x.sequence)
             
             # Build item list respecting character limits
             max_chars = CONTENT_LIMITS.get(placement, 500)
@@ -404,7 +404,6 @@ def maker_content_api(request):
                 if current_length + additional_length <= max_chars:
                     selected_items.append({
                         'text': blurb_text,
-                        'priority': item.priority,
                         'sequence': item.sequence,
                         'match_id': item.match.id,
                         'blurb_id': item.blurb.id,

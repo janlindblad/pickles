@@ -15,17 +15,17 @@ class MatchItemInline(admin.TabularInline):
     """Inline admin for match items in Match."""
     model = MatchItem
     extra = 1
-    fields = ['blurb', 'placement', 'is_highlight', 'is_option', 'priority', 'sequence']
-    ordering = ['placement', 'sequence', '-priority']
+    fields = ['blurb', 'placement', 'is_highlight', 'is_option', 'sequence']
+    ordering = ['placement', 'sequence']
 
 
 class BlurbMatchItemInline(admin.TabularInline):
     """Inline admin to show match items that use this blurb."""
     model = MatchItem
     extra = 0
-    fields = ['match', 'placement', 'is_highlight', 'is_option', 'priority', 'sequence']
-    readonly_fields = ['match', 'placement', 'is_highlight', 'is_option', 'priority', 'sequence']
-    ordering = ['placement', 'sequence', '-priority']
+    fields = ['match', 'placement', 'is_highlight', 'is_option', 'sequence']
+    readonly_fields = ['match', 'placement', 'is_highlight', 'is_option', 'sequence']
+    ordering = ['placement', 'sequence']
     verbose_name = "Match Item using this Blurb"
     verbose_name_plural = "Match Items using this Blurb"
     
@@ -274,10 +274,10 @@ class MatchItemAdmin(SimpleHistoryAdmin):
     """
     Admin interface for MatchItem model with history tracking.
     """
-    list_display = ['match', 'placement', 'is_highlight', 'is_option', 'priority', 'sequence', 'get_blurb_preview', 'get_categories_display']
+    list_display = ['match', 'placement', 'is_highlight', 'is_option', 'sequence', 'get_blurb_preview', 'get_categories_display']
     list_filter = ['placement', 'is_highlight', 'is_option', 'match__brand', 'match__model', 'match__series']
     search_fields = ['blurb__text', 'match__brand__name', 'match__model__name']
-    ordering = ['match', 'placement', 'sequence', '-priority']
+    ordering = ['match', 'placement', 'sequence']
     
     fieldsets = (
         ('Content', {
@@ -287,9 +287,9 @@ class MatchItemAdmin(SimpleHistoryAdmin):
             'fields': ('placement', 'is_highlight', 'is_option'),
             'description': 'Placement: interior or exterior. Checkboxes: item will appear in highlights/options sections.'
         }),
-        ('Priority & Sequence', {
-            'fields': ('priority', 'sequence'),
-            'description': 'Priority: higher numbers selected first. Sequence: lower numbers appear first.'
+        ('Sequence', {
+            'fields': ('sequence',),
+            'description': 'Sequence: lower numbers appear first.'
         }),
     )
     

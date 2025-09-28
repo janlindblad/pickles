@@ -441,7 +441,7 @@
                 
                 items.forEach((item) => {
                     const li = document.createElement('li');
-                    li.className = `content-item ${this.getPriorityClass(item.priority)}`;
+                    li.className = 'content-item';
                     
                     // Main content
                     const contentDiv = document.createElement('div');
@@ -453,7 +453,6 @@
                     metaDiv.className = 'content-item-meta';
                     metaDiv.innerHTML = `
                         <span class="sequence">Sequence: ${item.sequence}</span>
-                        <span class="priority-badge ${this.getPriorityClass(item.priority)}">${this.getPriorityLabel(item.priority)}</span>
                     `;
                     
                     li.appendChild(contentDiv);
@@ -463,20 +462,6 @@
                 
                 listContainer.innerHTML = '';
                 listContainer.appendChild(ul);
-            },
-            
-            // Get priority CSS class
-            getPriorityClass: function(priority) {
-                if (priority >= 50) return 'priority-high';
-                if (priority >= 20) return 'priority-medium';
-                return 'priority-low';
-            },
-            
-            // Get priority label
-            getPriorityLabel: function(priority) {
-                if (priority >= 50) return 'High';
-                if (priority >= 20) return 'Medium';
-                return 'Low';
             },
             
             // Get empty state message
