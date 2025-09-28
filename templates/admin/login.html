@@ -1,0 +1,70 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% translate 'Log in' %} | Pickles Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/base.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'maker/css/admin_custom.css' %}">
+</head>
+<body class="login">
+
+<div id="container">
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+            <h1 id="site-name">
+                🥒 Pickles Administration
+            </h1>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        <div id="content-main">
+            {% if form.errors and not form.non_field_errors %}
+                <p class="errornote">
+                {% if form.errors.items|length == 1 %}
+                    {% translate "Please correct the error below." %}
+                {% else %}
+                    {% translate "Please correct the errors below." %}
+                {% endif %}
+                </p>
+            {% endif %}
+
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="errornote">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <div id="login-form">
+                <form action="{{ app_path }}" method="post">{% csrf_token %}
+                    <div class="form-row">
+                        {{ form.username.errors }}
+                        {{ form.username.label_tag }} 
+                        {{ form.username }}
+                    </div>
+                    <div class="form-row">
+                        {{ form.password.errors }}
+                        {{ form.password.label_tag }} 
+                        {{ form.password }}
+                    </div>
+                    {% url 'admin_password_reset' as password_reset_url %}
+                    {% if password_reset_url %}
+                    <div class="password-reset-link">
+                        <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
+                    </div>
+                    {% endif %}
+                    <div class="submit-row">
+                        <input type="submit" value="{% translate 'Log in' %}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

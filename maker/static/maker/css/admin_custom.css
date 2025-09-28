@@ -1,0 +1,442 @@
+/* Pickles Admin Custom Styles - Match main site theme */
+
+/* Override Django admin colors to match Carla.se theme */
+:root {
+    --primary: #00d4aa;  /* Your teal color */
+    --primary-fg: #fff;
+    --body-fg: #333;
+    --body-bg: #fff;
+    --body-quiet-color: #666;
+    --body-loud-color: #000;
+    --header-color: #ffc;
+    --header-branding-color: var(--primary);
+    --header-bg: #2c2c2c;  /* Dark header like your main site */
+    --header-link-color: var(--primary);
+    --breadcrumbs-fg: #c4dce8;
+    --breadcrumbs-link-fg: var(--primary);
+    --breadcrumbs-bg: #f8f9fa;
+    --link-fg: var(--primary);
+    --link-hover-color: #00b899;
+    --link-selected-fg: #00b899;
+    --hairline-color: #e8e8e8;
+    --border-color: #ddd;
+    --error-fg: #d63384;
+    --message-success-bg: #d1e7dd;
+    --message-warning-bg: #fff3cd;
+    --message-error-bg: #f8d7da;
+    --darkened-bg: #f8f9fa;
+    --selected-bg: #e8f5f0;
+    --selected-row: #e8f5f0;
+    --button-fg: #fff;
+    --button-bg: var(--primary);
+    --button-hover-bg: #00b899;
+    --default-button-bg: #6c757d;
+    --default-button-hover-bg: #5a6268;
+    --close-button-bg: #888;
+    --close-button-hover-bg: #747474;
+    --delete-button-bg: #d63384;
+    --delete-button-hover-bg: #c02c5f;
+}
+
+/* Header styling to match your main site */
+#header {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    color: #fff;
+    border-bottom: 3px solid var(--primary);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#header a:link, #header a:visited {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+#header a:focus, #header a:hover {
+    color: #00b899;
+}
+
+#site-name a {
+    color: #fff !important;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+#site-name a:hover {
+    color: var(--primary) !important;
+}
+
+/* Navigation breadcrumbs */
+.breadcrumbs {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 12px 20px;
+}
+
+.breadcrumbs a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+/* Content area */
+.main {
+    padding: 20px;
+}
+
+/* Form styling to match your components */
+.form-row {
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Input fields */
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+input[type="number"],
+textarea, 
+select {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="password"]:focus, 
+input[type="number"]:focus,
+textarea:focus, 
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+}
+
+/* Buttons */
+.button, input[type="submit"], button {
+    background: var(--primary);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button:hover, input[type="submit"]:hover, button:hover {
+    background: #00b899;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+}
+
+.button.default, .default {
+    background: #6c757d;
+}
+
+.button.default:hover, .default:hover {
+    background: #5a6268;
+}
+
+/* Tables */
+.results table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.results th {
+    background: #f8f9fa;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary);
+}
+
+.results tbody tr:hover {
+    background: var(--selected-bg);
+}
+
+/* Messages */
+.messagelist {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.messagelist li {
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 12px 16px;
+    font-weight: 500;
+}
+
+.messagelist .success {
+    background: var(--message-success-bg);
+    color: #0d5132;
+    border-left: 4px solid #198754;
+}
+
+.messagelist .warning {
+    background: var(--message-warning-bg);
+    color: #856404;
+    border-left: 4px solid #ffc107;
+}
+
+.messagelist .error {
+    background: var(--message-error-bg);
+    color: #712d32;
+    border-left: 4px solid #dc3545;
+}
+
+/* Dashboard modules */
+.dashboard .module {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.dashboard .module h2 {
+    background: var(--primary);
+    color: white;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
+}
+
+/* Inline forms */
+.inline-group {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.inline-group .aligned label {
+    font-weight: 600;
+}
+
+/* Filter sidebar */
+#changelist-filter {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#changelist-filter h2 {
+    background: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    margin: 0;
+    font-weight: 600;
+}
+
+#changelist-filter h3 {
+    color: #333;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Action bar */
+.actions {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+/* Login page specific styles */
+.login {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+.login #container {
+    width: 400px;
+    margin: 5% auto;
+    position: relative;
+}
+
+.login #header {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    color: #fff;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 3px solid var(--primary);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.login #branding {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.login #site-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.login #content {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    padding: 30px;
+    border: none;
+}
+
+.login #content-main {
+    margin: 0;
+    padding: 0;
+}
+
+.login #login-form {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.login .form-row {
+    padding: 15px 0;
+    border-bottom: none;
+    margin: 0;
+}
+
+.login .form-row:first-child {
+    padding-top: 0;
+}
+
+.login .form-row label {
+    color: #333 !important;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.login .form-row input[type="text"],
+.login .form-row input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login .form-row input[type="text"]:focus,
+.login .form-row input[type="password"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+    outline: none;
+}
+
+.login .submit-row {
+    text-align: center;
+    padding: 25px 0 5px 0;
+    margin: 0;
+}
+
+.login .submit-row input[type="submit"] {
+    background: var(--primary);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.login .submit-row input[type="submit"]:hover {
+    background: #00b899;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+}
+
+.login .password-reset-link {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.login .password-reset-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.login .password-reset-link a:hover {
+    color: #00b899;
+    text-decoration: underline;
+}
+
+/* Error messages */
+.login .errorlist {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 5px 0;
+    list-style: none;
+    font-size: 13px;
+}
+
+.login .errornote {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 0 0 15px 0;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Hide any admin widgets that might leak through */
+.login .object-tools,
+.login .breadcrumbs,
+.login #nav-sidebar,
+.login .nav-sidebar,
+.login .togglelink,
+.login .search,
+.login .filter,
+.login .actions {
+    display: none !important;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .main {
+        padding: 10px;
+    }
+    
+    #site-name a {
+        font-size: 20px;
+    }
+    
+    .breadcrumbs {
+        padding: 8px 15px;
+    }
+}

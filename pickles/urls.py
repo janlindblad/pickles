@@ -22,5 +22,10 @@ urlpatterns = [
     path('', include('maker.urls')),  # Root URL points to maker app
 ]
 
+# Customize admin site branding
+admin.site.site_title = 'Pickles Admin'
+admin.site.site_header = 'Pickles Administration'
+admin.site.index_title = 'Welcome to Pickles Admin'
+
 # Note: Static files are served automatically by Django development server when DEBUG=True
 # No additional configuration needed for app-level static files (maker/static/maker/)
