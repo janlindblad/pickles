@@ -109,6 +109,34 @@ select {
     padding: 10px 12px;
     font-size: 14px;
     transition: border-color 0.2s;
+    line-height: 1.4;
+    vertical-align: baseline;
+}
+
+/* Chrome-specific fixes for form elements */
+select {
+    padding: 8px 12px;
+    line-height: 1.5;
+    min-height: 20px;
+    height: auto;
+    vertical-align: top;
+    background-color: #fff;
+}
+
+/* Fix for Chrome dropdown text positioning */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {
+        padding-top: 9px;
+        padding-bottom: 9px;
+        line-height: 1.4;
+        vertical-align: baseline;
+    }
+}
+
+/* Ensure proper text rendering in Chrome */
+select option {
+    padding: 4px 8px;
+    line-height: 1.4;
 }
 
 input[type="text"]:focus, 
@@ -223,6 +251,59 @@ select:focus {
 
 .inline-group .aligned label {
     font-weight: 600;
+}
+
+/* Chrome-specific fixes for inline form selects */
+.inline-group select,
+.form-row select,
+.aligned select {
+    padding: 8px 12px;
+    line-height: 1.5;
+    min-height: 22px;
+    height: auto;
+    vertical-align: top;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Additional Chrome fixes */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .inline-group select,
+    .form-row select,
+    .aligned select,
+    .vForeignKeyRawIdAdminField + select {
+        padding-top: 9px;
+        padding-bottom: 9px;
+        line-height: 1.4;
+        vertical-align: baseline;
+        box-sizing: border-box;
+    }
+}
+
+/* Specific fix for Django's ModelChoiceField selects */
+.field-match select,
+.field-blurb select,
+.field-brand select,
+.field-model select,
+.field-series select,
+.field-package select,
+.field-placement select {
+    min-height: 24px;
+    padding: 8px 12px;
+    line-height: 1.5;
+}
+
+/* Generic fix for all admin selects in Chrome */
+@supports (-webkit-appearance: none) {
+    select {
+        -webkit-appearance: menulist;
+        appearance: menulist;
+        padding: 8px 12px;
+        line-height: 1.5;
+        vertical-align: baseline;
+    }
 }
 
 /* Filter sidebar */
@@ -439,4 +520,64 @@ select:focus {
     .breadcrumbs {
         padding: 8px 15px;
     }
+}
+
+/* Chrome form element fixes - comprehensive solution */
+/* Override any conflicting Django admin styles that cause text cutoff */
+.change-form select,
+.add-form select,
+.inline-related select,
+select.vForeignKeyRawIdAdminField,
+.form-row select,
+.aligned select,
+.inline-group select {
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    padding: 8px 12px !important;
+    min-height: 22px !important;
+    height: auto !important;
+    vertical-align: baseline !important;
+    box-sizing: border-box !important;
+    background-color: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Chrome-specific override */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .change-form select,
+    .add-form select,
+    .inline-related select,
+    select.vForeignKeyRawIdAdminField,
+    .form-row select,
+    .aligned select,
+    .inline-group select {
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+        line-height: 1.4 !important;
+        vertical-align: baseline !important;
+    }
+    
+    /* Fix for select options */
+    select option {
+        padding: 4px 8px;
+        line-height: 1.4;
+        font-size: 13px;
+    }
+}
+
+/* Ensure focus states still work */
+.change-form select:focus,
+.add-form select:focus,
+.inline-related select:focus,
+select.vForeignKeyRawIdAdminField:focus,
+.form-row select:focus,
+.aligned select:focus,
+.inline-group select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2) !important;
+    outline: none !important;
 }
