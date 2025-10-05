@@ -631,15 +631,7 @@
                         contentContainer.appendChild(contentDiv);
                     }
                     
-                    // Metadata
-                    const metaDiv = document.createElement('div');
-                    metaDiv.className = 'content-item-meta';
-                    metaDiv.innerHTML = `
-                        <span class="sequence">Sequence: ${item.sequence}</span>
-                    `;
-                    
                     li.appendChild(contentContainer);
-                    li.appendChild(metaDiv);
                     ul.appendChild(li);
                 });
                 
