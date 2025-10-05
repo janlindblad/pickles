@@ -127,6 +127,27 @@ class Blurb(models.Model):
         ordering = ['id']
 
 
+class BlurbInfo(models.Model):
+    """
+    Represents back office photos/drawings and info texts associated with blurbs.
+    Only displayed for items in the options column, providing detailed technical information.
+    """
+    blurb = models.ForeignKey(Blurb, on_delete=models.CASCADE, related_name='blurb_info')
+    image = models.ImageField(upload_to='blurb_info/', help_text="Photo or drawing for back office reference")
+    info_text = models.TextField(blank=True, help_text="Technical details or additional information")
+    sequence = models.IntegerField(default=0, help_text="Display order for multiple images (lower numbers appear first)")
+    created_at = models.DateTimeField(auto_now_add=True)
+    history = HistoricalRecords()
+    
+    def __str__(self):
+        return f"Info for {self.blurb} - {self.image.name}"
+    
+    class Meta:
+        ordering = ['sequence', 'created_at']
+        verbose_name = "Blurb Info"
+        verbose_name_plural = "Blurb Info"
+
+
 class BrandModelSeries(models.Model):
     """
     Represents a series/generation of a Brand+Model with shared packages.

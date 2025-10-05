@@ -361,7 +361,10 @@ def maker_content_api(request):
         # Collect all MatchItems from matching matches
         all_items = []
         for match in matching_matches:
-            match_items = MatchItem.objects.filter(match=match).select_related('blurb', 'blurb__blurb_group')
+            match_items = MatchItem.objects.filter(match=match).select_related(
+                'blurb', 
+                'blurb__blurb_group'
+            ).prefetch_related('blurb__blurb_info')
             all_items.extend(match_items)
         
         # Group items by their categories (an item can appear in multiple categories)
@@ -402,12 +405,28 @@ def maker_content_api(request):
                 # Check if adding this item would exceed the limit
                 additional_length = len(blurb_text)
                 if current_length + additional_length <= max_chars:
-                    selected_items.append({
+                    item_data = {
                         'text': blurb_text,
                         'sequence': item.sequence,
                         'match_id': item.match.id,
                         'blurb_id': item.blurb.id,
-                    })
+                    }
+                    
+                    # Add BlurbInfo data for options column items
+                    if placement == 'options':
+                        blurb_info_items = item.blurb.blurb_info.all().order_by('sequence', 'created_at')
+                        if blurb_info_items:
+                            item_data['blurb_info'] = [
+                                {
+                                    'id': info.id,
+                                    'image_url': info.image.url if info.image else None,
+                                    'info_text': info.info_text,
+                                    'sequence': info.sequence,
+                                }
+                                for info in blurb_info_items
+                            ]
+                    
+                    selected_items.append(item_data)
                     content_parts.append(blurb_text)
                     current_length += additional_length
                 else:

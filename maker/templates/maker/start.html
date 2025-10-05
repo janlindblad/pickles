@@ -3,6 +3,171 @@
 <head>
     {% include "base_header.html" %}
     <title>{{ page_title|default:"Pickles Maker - Start" }}</title>
+    
+    <style>
+        /* BlurbInfo Modal Styles */
+        .blurb-info-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .blurb-info-modal-content {
+            background: white;
+            border-radius: 8px;
+            max-width: 90vw;
+            max-height: 90vh;
+            width: 800px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .blurb-info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #f8f9fa;
+        }
+        
+        .blurb-info-header h3 {
+            margin: 0;
+            color: #1a5b5b;
+        }
+        
+        .blurb-info-close {
+            cursor: pointer;
+            font-size: 24px;
+            color: #666;
+            line-height: 1;
+            padding: 5px;
+        }
+        
+        .blurb-info-close:hover {
+            color: #000;
+        }
+        
+        .blurb-info-blurb {
+            padding: 15px 20px;
+            background: #f0f8f8;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+        
+        .blurb-info-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #f8f9fa;
+        }
+        
+        .nav-btn {
+            background: #1a5b5b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: #145050;
+        }
+        
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .nav-counter {
+            font-weight: 500;
+            color: #666;
+        }
+        
+        .blurb-info-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .blurb-info-item {
+            padding: 20px;
+        }
+        
+        .blurb-info-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .blurb-info-image img {
+            max-width: 100%;
+            max-height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .no-image {
+            padding: 40px;
+            background: #f5f5f5;
+            color: #999;
+            text-align: center;
+            border: 2px dashed #ddd;
+            border-radius: 4px;
+        }
+        
+        .blurb-info-text {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        
+        /* Info Icon Styles */
+        .content-item-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-icon {
+            cursor: pointer;
+            font-size: 16px;
+            color: #1a5b5b;
+            background: #e6f3f3;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .info-icon:hover {
+            background: #1a5b5b;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .content-text {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
     {% include "base_navbar.html" %}
@@ -443,10 +608,28 @@
                     const li = document.createElement('li');
                     li.className = 'content-item';
                     
-                    // Main content
+                    // Main content container
+                    const contentContainer = document.createElement('div');
+                    contentContainer.className = 'content-item-container';
+                    
+                    // Main content text
                     const contentDiv = document.createElement('div');
                     contentDiv.className = 'content-text';
                     contentDiv.textContent = item.text;
+                    
+                    // Add info icon for options items with BlurbInfo
+                    if (category === 'options' && item.blurb_info && item.blurb_info.length > 0) {
+                        const infoIcon = document.createElement('span');
+                        infoIcon.className = 'info-icon';
+                        infoIcon.innerHTML = 'ⓘ';
+                        infoIcon.title = 'Click to view back office photos and details';
+                        infoIcon.onclick = () => this.showBlurbInfoModal(item.blurb_info, item.text);
+                        
+                        contentContainer.appendChild(contentDiv);
+                        contentContainer.appendChild(infoIcon);
+                    } else {
+                        contentContainer.appendChild(contentDiv);
+                    }
                     
                     // Metadata
                     const metaDiv = document.createElement('div');
@@ -455,7 +638,7 @@
                         <span class="sequence">Sequence: ${item.sequence}</span>
                     `;
                     
-                    li.appendChild(contentDiv);
+                    li.appendChild(contentContainer);
                     li.appendChild(metaDiv);
                     ul.appendChild(li);
                 });
@@ -510,6 +693,141 @@
                 
                 // Update UI
                 this.updateSelection();
+            },
+            
+            // Show BlurbInfo modal
+            showBlurbInfoModal: function(blurbInfoItems, blurbText) {
+                this.createBlurbInfoModal(blurbInfoItems, blurbText);
+            },
+            
+            // Create and show BlurbInfo modal
+            createBlurbInfoModal: function(blurbInfoItems, blurbText) {
+                // Remove existing modal if any
+                const existingModal = document.getElementById('blurb-info-modal');
+                if (existingModal) {
+                    existingModal.remove();
+                }
+                
+                // Create modal
+                const modal = document.createElement('div');
+                modal.id = 'blurb-info-modal';
+                modal.className = 'blurb-info-modal';
+                
+                // Modal content
+                const modalContent = document.createElement('div');
+                modalContent.className = 'blurb-info-modal-content';
+                
+                // Header
+                const header = document.createElement('div');
+                header.className = 'blurb-info-header';
+                header.innerHTML = `
+                    <h3>Back Office Information</h3>
+                    <span class="blurb-info-close">&times;</span>
+                `;
+                
+                // Blurb text
+                const blurbDiv = document.createElement('div');
+                blurbDiv.className = 'blurb-info-blurb';
+                blurbDiv.innerHTML = `<strong>Item:</strong> ${blurbText}`;
+                
+                // Content area
+                const contentArea = document.createElement('div');
+                contentArea.className = 'blurb-info-content';
+                
+                // Navigation (if multiple items)
+                let navDiv = null;
+                if (blurbInfoItems.length > 1) {
+                    navDiv = document.createElement('div');
+                    navDiv.className = 'blurb-info-nav';
+                    navDiv.innerHTML = `
+                        <button type="button" class="nav-btn" id="prev-btn">&larr; Previous</button>
+                        <span class="nav-counter">1 of ${blurbInfoItems.length}</span>
+                        <button type="button" class="nav-btn" id="next-btn">Next &rarr;</button>
+                    `;
+                }
+                
+                // Image and text container
+                const itemContainer = document.createElement('div');
+                itemContainer.className = 'blurb-info-item';
+                
+                // Build modal structure
+                modalContent.appendChild(header);
+                modalContent.appendChild(blurbDiv);
+                if (navDiv) modalContent.appendChild(navDiv);
+                modalContent.appendChild(contentArea);
+                modalContent.appendChild(itemContainer);
+                modal.appendChild(modalContent);
+                
+                // Add to body
+                document.body.appendChild(modal);
+                
+                // Modal state
+                let currentIndex = 0;
+                
+                // Function to display current item
+                const displayItem = (index) => {
+                    const item = blurbInfoItems[index];
+                    itemContainer.innerHTML = `
+                        <div class="blurb-info-image">
+                            ${item.image_url ? `<img src="${item.image_url}" alt="Back office photo">` : '<div class="no-image">No image available</div>'}
+                        </div>
+                        <div class="blurb-info-text">
+                            ${item.info_text || '<em>No additional information</em>'}
+                        </div>
+                    `;
+                    
+                    if (navDiv) {
+                        navDiv.querySelector('.nav-counter').textContent = `${index + 1} of ${blurbInfoItems.length}`;
+                        navDiv.querySelector('#prev-btn').disabled = index === 0;
+                        navDiv.querySelector('#next-btn').disabled = index === blurbInfoItems.length - 1;
+                    }
+                };
+                
+                // Display first item
+                displayItem(currentIndex);
+                
+                // Event listeners
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.remove();
+                    }
+                });
+                
+                header.querySelector('.blurb-info-close').addEventListener('click', () => {
+                    modal.remove();
+                });
+                
+                if (navDiv) {
+                    navDiv.querySelector('#prev-btn').addEventListener('click', () => {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            displayItem(currentIndex);
+                        }
+                    });
+                    
+                    navDiv.querySelector('#next-btn').addEventListener('click', () => {
+                        if (currentIndex < blurbInfoItems.length - 1) {
+                            currentIndex++;
+                            displayItem(currentIndex);
+                        }
+                    });
+                }
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', function modalKeyHandler(e) {
+                    if (e.key === 'Escape') {
+                        modal.remove();
+                        document.removeEventListener('keydown', modalKeyHandler);
+                    }
+                    if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                        currentIndex--;
+                        displayItem(currentIndex);
+                    }
+                    if (e.key === 'ArrowRight' && currentIndex < blurbInfoItems.length - 1) {
+                        currentIndex++;
+                        displayItem(currentIndex);
+                    }
+                });
             }
         };
         

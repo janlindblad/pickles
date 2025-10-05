@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +28,10 @@ urlpatterns = [
 admin.site.site_title = 'Pickles Admin'
 admin.site.site_header = 'Pickles Administration'
 admin.site.index_title = 'Welcome to Pickles Admin'
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Note: Static files are served automatically by Django development server when DEBUG=True
 # No additional configuration needed for app-level static files (maker/static/maker/)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
-from .models import Brand, Model, Series, Package, Year, BlurbGroup, Blurb, Match, MatchItem, BrandModelSeries
+from .models import Brand, Model, Series, Package, Year, BlurbGroup, Blurb, BlurbInfo, Match, MatchItem, BrandModelSeries
 
 
 class PackageInline(admin.TabularInline):
@@ -36,6 +36,16 @@ class BlurbMatchItemInline(admin.TabularInline):
     def has_delete_permission(self, request, obj=None):
         # Don't allow deleting match items from the blurb admin  
         return False
+
+
+class BlurbInfoInline(admin.TabularInline):
+    """Inline admin for BlurbInfo in Blurb."""
+    model = BlurbInfo
+    extra = 1
+    fields = ['image', 'info_text', 'sequence']
+    ordering = ['sequence']
+    verbose_name = "Back Office Info"
+    verbose_name_plural = "Back Office Photos/Drawings"
 
 
 @admin.register(Brand)
@@ -140,11 +150,11 @@ class BlurbAdmin(SimpleHistoryAdmin):
     """
     Admin interface for Blurb model with history tracking.
     """
-    list_display = ['get_text_preview', 'get_match_count', 'get_match_info', 'blurb_group', 'group_priority', 'id']
+    list_display = ['get_text_preview', 'get_match_count', 'get_match_info', 'get_info_count', 'blurb_group', 'group_priority', 'id']
     list_filter = ['blurb_group', 'match_items__placement']
     search_fields = ['text', 'blurb_group__name', 'match_items__match__brand__name', 'match_items__match__model__name']
     ordering = ['blurb_group__name', '-group_priority', 'id']
-    inlines = [BlurbMatchItemInline]
+    inlines = [BlurbInfoInline, BlurbMatchItemInline]
     
     fieldsets = (
         ('Content', {
@@ -210,6 +220,15 @@ class BlurbAdmin(SimpleHistoryAdmin):
         return result
     get_match_info.short_description = 'Used In'
     get_match_info.allow_tags = True
+    
+    def get_info_count(self, obj):
+        """Return the number of BlurbInfo items for this blurb."""
+        count = obj.blurb_info.count()
+        if count == 0:
+            return "—"
+        return f"📷 {count} item{'s' if count != 1 else ''}"
+    get_info_count.short_description = 'Back Office Info'
+    get_info_count.admin_order_field = 'blurb_info__count'
 
 
 @admin.register(BrandModelSeries)
@@ -303,3 +322,38 @@ class MatchItemAdmin(SimpleHistoryAdmin):
         categories = obj.get_categories()
         return ', '.join(categories) if categories else '—'
     get_categories_display.short_description = 'Categories'
+
+
+@admin.register(BlurbInfo)
+class BlurbInfoAdmin(SimpleHistoryAdmin):
+    """
+    Admin interface for BlurbInfo model with history tracking.
+    """
+    list_display = ['blurb', 'get_image_preview', 'get_info_preview', 'sequence', 'created_at']
+    list_filter = ['created_at', 'blurb__blurb_group']
+    search_fields = ['blurb__text', 'info_text']
+    ordering = ['blurb', 'sequence']
+    
+    fieldsets = (
+        ('Content', {
+            'fields': ('blurb', 'image', 'info_text')
+        }),
+        ('Display Settings', {
+            'fields': ('sequence',),
+            'description': 'Order for displaying multiple info items (lower numbers appear first)'
+        }),
+    )
+    
+    def get_image_preview(self, obj):
+        """Return a preview of the uploaded image."""
+        if obj.image:
+            return f"📷 {obj.image.name.split('/')[-1]}"
+        return "No image"
+    get_image_preview.short_description = 'Image'
+    
+    def get_info_preview(self, obj):
+        """Return a preview of the info text."""
+        if obj.info_text:
+            return obj.info_text[:50] + "..." if len(obj.info_text) > 50 else obj.info_text
+        return "No text"
+    get_info_preview.short_description = 'Info Text Preview'
