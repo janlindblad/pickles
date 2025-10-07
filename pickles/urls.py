@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('maker.urls')),  # Root URL points to maker app
+    path('speeder/', include('speeder.urls')),  # Bulk management interface
 ]
 
 # Customize admin site branding

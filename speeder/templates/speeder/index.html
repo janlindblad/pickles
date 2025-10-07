@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base_header.html" %}
+    <title>{{ page_title|default:"Speeder - Bulk Management" }}</title>
+    
+    <style>
+        /* Speeder Interface Styles */
+        .speeder-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .speeder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1a5b5b;
+        }
+        
+        .speeder-title {
+            color: #1a5b5b;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .speeder-subtitle {
+            color: #666;
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+        
+        /* Navigation Cards */
+        .navigation-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: #1a5b5b;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .nav-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .nav-card:hover {
+            border-color: #1a5b5b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 91, 91, 0.15);
+        }
+        
+        .nav-card.selected {
+            border-color: #1a5b5b;
+            background: #f0f8f8;
+            box-shadow: 0 4px 12px rgba(26, 91, 91, 0.15);
+        }
+        
+        .nav-card.add-new {
+            border: 2px dashed #1a5b5b;
+            color: #1a5b5b;
+            background: #f9fcfc;
+        }
+        
+        .nav-card.add-new:hover {
+            background: #f0f8f8;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .add-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #1a5b5b;
+        }
+        
+        /* Blurb Management Table */
+        .blurb-management {
+            margin-top: 30px;
+        }
+        
+        .blurb-table-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .blurb-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        .blurb-table th {
+            background: #1a5b5b;
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .blurb-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: middle;
+        }
+        
+        .blurb-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .package-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .blurb-text {
+            max-width: 200px;
+            word-wrap: break-word;
+        }
+        
+        .field-input {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        
+        .field-input:focus {
+            border-color: #1a5b5b;
+            outline: none;
+        }
+        
+        .placement-select {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        
+        .boolean-checkbox {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* Add New Blurb Section */
+        .add-blurb-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .add-blurb-form {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .add-blurb-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .add-blurb-btn {
+            background: #1a5b5b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .add-blurb-btn:hover {
+            background: #145050;
+        }
+        
+        .add-blurb-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Loading and Empty States */
+        .loading-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Status Messages */
+        .status-message {
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .blurb-table {
+                font-size: 12px;
+            }
+            
+            .blurb-table th,
+            .blurb-table td {
+                padding: 8px 6px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            
+            .nav-card {
+                padding: 15px;
+                min-height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include "base_navbar.html" %}
+    
+    <main class="main-content">
+        <div class="speeder-container">
+            <!-- Header -->
+            <div class="speeder-header">
+                <div>
+                    <h1 class="speeder-title">🏎️ Speeder</h1>
+                    <p class="speeder-subtitle">Bulk Data Management Interface</p>
+                </div>
+            </div>
+            
+            <!-- Status Messages -->
+            <div id="statusMessage" class="status-message hidden"></div>
+            
+            <!-- Brand Selection -->
+            <div class="navigation-section" id="brandSection">
+                <h2 class="section-title">Select Brand</h2>
+                <div class="cards-container" id="brandsContainer">
+                    <div class="loading-state">Loading brands...</div>
+                </div>
+            </div>
+            
+            <!-- Model Selection -->
+            <div class="navigation-section hidden" id="modelSection">
+                <h2 class="section-title">Select Model</h2>
+                <div class="cards-container" id="modelsContainer"></div>
+            </div>
+            
+            <!-- Series Selection -->
+            <div class="navigation-section hidden" id="seriesSection">
+                <h2 class="section-title">Select Series</h2>
+                <div class="cards-container" id="seriesContainer"></div>
+            </div>
+            
+            <!-- Blurb Management -->
+            <div class="blurb-management hidden" id="blurbSection">
+                <h2 class="section-title">Manage Blurbs</h2>
+                
+                <div class="blurb-table-container">
+                    <table class="blurb-table" id="blurbTable">
+                        <thead>
+                            <tr id="tableHeader">
+                                <!-- Package columns will be dynamically generated -->
+                                <th>Blurb Text</th>
+                                <th>Placement</th>
+                                <th>Highlights</th>
+                                <th>Options</th>
+                                <th>Sequence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blurbTableBody">
+                            <!-- Blurb rows will be dynamically generated -->
+                        </tbody>
+                    </table>
+                    
+                    <!-- Add New Blurb Section -->
+                    <div class="add-blurb-section">
+                        <div class="add-blurb-form">
+                            <input type="text" 
+                                   id="newBlurbText" 
+                                   class="add-blurb-input" 
+                                   placeholder="Enter new blurb text..." 
+                                   maxlength="35">
+                            <button type="button" 
+                                    id="addBlurbBtn" 
+                                    class="add-blurb-btn">
+                                Add Blurb
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Speeder Application State and Logic
+        const SpeederApp = {
+            // Current selection state
+            selectedBrand: null,
+            selectedModel: null,
+            selectedSeries: null,
+            
+            // Current data
+            packages: [],
+            blurbs: [],
+            
+            // Initialize the application
+            init: function() {
+                this.loadBrands();
+                this.setupEventListeners();
+            },
+            
+            // Set up event listeners
+            setupEventListeners: function() {
+                // Add new blurb button
+                document.getElementById('addBlurbBtn').addEventListener('click', () => {
+                    this.addNewBlurb();
+                });
+                
+                // Enter key in new blurb input
+                document.getElementById('newBlurbText').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.addNewBlurb();
+                    }
+                });
+            },
+            
+            // Load brands from API
+            loadBrands: async function() {
+                try {
+                    const response = await fetch('/speeder/api/brands/');
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.renderBrands(data.brands);
+                    } else {
+                        this.showError('Failed to load brands: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error loading brands: ' + error.message);
+                }
+            },
+            
+            // Render brand cards
+            renderBrands: function(brands) {
+                const container = document.getElementById('brandsContainer');
+                container.innerHTML = '';
+                
+                // Add existing brands
+                brands.forEach(brand => {
+                    const card = this.createCard(brand.name, '', () => {
+                        this.selectBrand(brand);
+                    });
+                    container.appendChild(card);
+                });
+                
+                // Add "Add New Brand" card
+                const addCard = this.createAddCard('Add New Brand', () => {
+                    this.addNewBrand();
+                });
+                container.appendChild(addCard);
+            },
+            
+            // Select a brand
+            selectBrand: async function(brand) {
+                this.selectedBrand = brand;
+                this.selectedModel = null;
+                this.selectedSeries = null;
+                
+                // Update UI
+                this.highlightCard('brandsContainer', brand.id);
+                this.hideSection('seriesSection');
+                this.hideSection('blurbSection');
+                
+                // Load models
+                await this.loadModels(brand.id);
+                this.showSection('modelSection');
+            },
+            
+            // Load models for a brand
+            loadModels: async function(brandId) {
+                try {
+                    const response = await fetch(`/speeder/api/models/${brandId}/`);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.renderModels(data.models);
+                    } else {
+                        this.showError('Failed to load models: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error loading models: ' + error.message);
+                }
+            },
+            
+            // Render model cards
+            renderModels: function(models) {
+                const container = document.getElementById('modelsContainer');
+                container.innerHTML = '';
+                
+                models.forEach(model => {
+                    const card = this.createCard(model.name, '', () => {
+                        this.selectModel(model);
+                    });
+                    container.appendChild(card);
+                });
+                
+                // Add "Add New Model" card
+                const addCard = this.createAddCard('Add New Model', () => {
+                    this.addNewModel();
+                });
+                container.appendChild(addCard);
+            },
+            
+            // Select a model
+            selectModel: async function(model) {
+                this.selectedModel = model;
+                this.selectedSeries = null;
+                
+                // Update UI
+                this.highlightCard('modelsContainer', model.id);
+                this.hideSection('blurbSection');
+                
+                // Load series
+                await this.loadSeries(this.selectedBrand.id, model.id);
+                this.showSection('seriesSection');
+            },
+            
+            // Load series for a brand and model
+            loadSeries: async function(brandId, modelId) {
+                try {
+                    const response = await fetch(`/speeder/api/series/${brandId}/${modelId}/`);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.renderSeries(data.series);
+                    } else {
+                        this.showError('Failed to load series: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error loading series: ' + error.message);
+                }
+            },
+            
+            // Render series cards
+            renderSeries: function(seriesData) {
+                const container = document.getElementById('seriesContainer');
+                container.innerHTML = '';
+                
+                seriesData.forEach(series => {
+                    const card = this.createCard(series.name, series.year_range, () => {
+                        this.selectSeries(series);
+                    });
+                    container.appendChild(card);
+                });
+                
+                // Add "Add New Series" card
+                const addCard = this.createAddCard('Add New Series', () => {
+                    this.addNewSeries();
+                });
+                container.appendChild(addCard);
+            },
+            
+            // Select a series
+            selectSeries: async function(series) {
+                this.selectedSeries = series;
+                
+                // Update UI
+                this.highlightCard('seriesContainer', series.brand_model_series_id);
+                
+                // Load blurbs
+                const seriesId = series.id || 0; // Handle "No Series" case
+                await this.loadBlurbs(this.selectedBrand.id, this.selectedModel.id, seriesId);
+                this.showSection('blurbSection');
+            },
+            
+            // Load blurbs for a brand, model, and series
+            loadBlurbs: async function(brandId, modelId, seriesId) {
+                try {
+                    const response = await fetch(`/speeder/api/blurbs/${brandId}/${modelId}/${seriesId}/`);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.packages = data.packages;
+                        this.blurbs = data.blurbs;
+                        this.renderBlurbTable();
+                    } else {
+                        this.showError('Failed to load blurbs: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error loading blurbs: ' + error.message);
+                }
+            },
+            
+            // Render the blurb management table
+            renderBlurbTable: function() {
+                this.renderTableHeader();
+                this.renderTableBody();
+            },
+            
+            // Render table header with package columns
+            renderTableHeader: function() {
+                const header = document.getElementById('tableHeader');
+                
+                // Clear existing package columns
+                const packageCells = header.querySelectorAll('.package-header');
+                packageCells.forEach(cell => cell.remove());
+                
+                // Add package columns before the blurb text column
+                const blurbTextHeader = header.querySelector('th');
+                this.packages.forEach(package => {
+                    const th = document.createElement('th');
+                    th.textContent = package.name;
+                    th.className = 'package-header';
+                    header.insertBefore(th, blurbTextHeader);
+                });
+            },
+            
+            // Render table body with blurb rows
+            renderTableBody: function() {
+                const tbody = document.getElementById('blurbTableBody');
+                tbody.innerHTML = '';
+                
+                this.blurbs.forEach(blurb => {
+                    const row = this.createBlurbRow(blurb);
+                    tbody.appendChild(row);
+                });
+                
+                if (this.blurbs.length === 0) {
+                    const emptyRow = document.createElement('tr');
+                    const emptyCell = document.createElement('td');
+                    emptyCell.colSpan = this.packages.length + 5; // packages + 5 other columns
+                    emptyCell.className = 'empty-state';
+                    emptyCell.textContent = 'No blurbs found. Add one below to get started.';
+                    emptyRow.appendChild(emptyCell);
+                    tbody.appendChild(emptyRow);
+                }
+            },
+            
+            // Create a blurb table row
+            createBlurbRow: function(blurb) {
+                const row = document.createElement('tr');
+                row.dataset.blurbId = blurb.id;
+                
+                // Package checkboxes
+                this.packages.forEach(package => {
+                    const cell = document.createElement('td');
+                    cell.style.textAlign = 'center';
+                    
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'package-checkbox';
+                    checkbox.dataset.packageId = package.id || 'null';
+                    
+                    const packageKey = package.id ? package.id.toString() : 'null';
+                    const state = blurb.package_states[packageKey];
+                    
+                    if (state) {
+                        checkbox.checked = state.checked;
+                    }
+                    
+                    checkbox.addEventListener('change', () => {
+                        this.updateBlurbPackage(blurb.id, package.id, checkbox.checked);
+                    });
+                    
+                    cell.appendChild(checkbox);
+                    row.appendChild(cell);
+                });
+                
+                // Get default state for placement and other fields
+                const defaultState = this.getDefaultBlurbState(blurb);
+                
+                // Blurb text
+                const textCell = document.createElement('td');
+                textCell.className = 'blurb-text';
+                textCell.textContent = blurb.text;
+                row.appendChild(textCell);
+                
+                // Placement
+                const placementCell = document.createElement('td');
+                const placementSelect = document.createElement('select');
+                placementSelect.className = 'placement-select';
+                placementSelect.innerHTML = `
+                    <option value="interior" ${defaultState.placement === 'interior' ? 'selected' : ''}>Interior</option>
+                    <option value="exterior" ${defaultState.placement === 'exterior' ? 'selected' : ''}>Exterior</option>
+                `;
+                placementSelect.addEventListener('change', () => {
+                    this.updateBlurbField(blurb.id, 'placement', placementSelect.value);
+                });
+                placementCell.appendChild(placementSelect);
+                row.appendChild(placementCell);
+                
+                // Highlights checkbox
+                const highlightsCell = document.createElement('td');
+                highlightsCell.style.textAlign = 'center';
+                const highlightsCheckbox = document.createElement('input');
+                highlightsCheckbox.type = 'checkbox';
+                highlightsCheckbox.className = 'boolean-checkbox';
+                highlightsCheckbox.checked = defaultState.is_highlight;
+                highlightsCheckbox.addEventListener('change', () => {
+                    this.updateBlurbField(blurb.id, 'is_highlight', highlightsCheckbox.checked);
+                });
+                highlightsCell.appendChild(highlightsCheckbox);
+                row.appendChild(highlightsCell);
+                
+                // Options checkbox
+                const optionsCell = document.createElement('td');
+                optionsCell.style.textAlign = 'center';
+                const optionsCheckbox = document.createElement('input');
+                optionsCheckbox.type = 'checkbox';
+                optionsCheckbox.className = 'boolean-checkbox';
+                optionsCheckbox.checked = defaultState.is_option;
+                optionsCheckbox.addEventListener('change', () => {
+                    this.updateBlurbField(blurb.id, 'is_option', optionsCheckbox.checked);
+                });
+                optionsCell.appendChild(optionsCheckbox);
+                row.appendChild(optionsCell);
+                
+                // Sequence
+                const sequenceCell = document.createElement('td');
+                const sequenceInput = document.createElement('input');
+                sequenceInput.type = 'number';
+                sequenceInput.className = 'field-input';
+                sequenceInput.value = defaultState.sequence;
+                sequenceInput.addEventListener('change', () => {
+                    this.updateBlurbField(blurb.id, 'sequence', parseInt(sequenceInput.value) || 0);
+                });
+                sequenceCell.appendChild(sequenceInput);
+                row.appendChild(sequenceCell);
+                
+                return row;
+            },
+            
+            // Get default state for a blurb (from the first checked package)
+            getDefaultBlurbState: function(blurb) {
+                for (const [packageKey, state] of Object.entries(blurb.package_states)) {
+                    if (state.checked) {
+                        return state;
+                    }
+                }
+                // Return defaults if no packages are checked
+                return {
+                    placement: 'interior',
+                    is_highlight: false,
+                    is_option: false,
+                    sequence: 0,
+                };
+            },
+            
+            // Update blurb package association
+            updateBlurbPackage: async function(blurbId, packageId, checked) {
+                // Update local state
+                const blurb = this.blurbs.find(b => b.id === blurbId);
+                if (!blurb) return;
+                
+                const packageKey = packageId ? packageId.toString() : 'null';
+                
+                if (!blurb.package_states[packageKey]) {
+                    blurb.package_states[packageKey] = {
+                        checked: false,
+                        placement: 'interior',
+                        is_highlight: false,
+                        is_option: false,
+                        sequence: 0,
+                        match_item_id: null,
+                    };
+                }
+                
+                blurb.package_states[packageKey].checked = checked;
+                
+                // Save to backend
+                await this.saveBlurbPackages(blurbId);
+            },
+            
+            // Update blurb field (placement, highlights, options, sequence)
+            updateBlurbField: function(blurbId, field, value) {
+                const blurb = this.blurbs.find(b => b.id === blurbId);
+                if (!blurb) return;
+                
+                // Update all checked package states
+                for (const [packageKey, state] of Object.entries(blurb.package_states)) {
+                    if (state.checked) {
+                        state[field] = value;
+                    }
+                }
+                
+                // Save to backend
+                this.saveBlurbPackages(blurbId);
+            },
+            
+            // Save blurb package associations to backend
+            saveBlurbPackages: async function(blurbId) {
+                const blurb = this.blurbs.find(b => b.id === blurbId);
+                if (!blurb) return;
+                
+                try {
+                    const response = await fetch('/speeder/api/save-blurb-packages/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            blurb_id: blurbId,
+                            brand_id: this.selectedBrand.id,
+                            model_id: this.selectedModel.id,
+                            series_id: this.selectedSeries.id || null,
+                            package_states: blurb.package_states,
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (!data.success) {
+                        this.showError('Failed to save: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error saving: ' + error.message);
+                }
+            },
+            
+            // Add new blurb
+            addNewBlurb: async function() {
+                const input = document.getElementById('newBlurbText');
+                const text = input.value.trim();
+                
+                if (!text) {
+                    this.showError('Please enter blurb text');
+                    return;
+                }
+                
+                try {
+                    const response = await fetch('/speeder/api/create-blurb/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            text: text,
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Add to local state with empty package states
+                        const newBlurb = {
+                            id: data.blurb.id,
+                            text: data.blurb.text,
+                            package_states: {},
+                        };
+                        
+                        // Initialize package states
+                        this.packages.forEach(package => {
+                            const packageKey = package.id ? package.id.toString() : 'null';
+                            newBlurb.package_states[packageKey] = {
+                                checked: false,
+                                placement: 'interior',
+                                is_highlight: false,
+                                is_option: false,
+                                sequence: 0,
+                                match_item_id: null,
+                            };
+                        });
+                        
+                        this.blurbs.push(newBlurb);
+                        this.renderTableBody();
+                        
+                        // Clear input
+                        input.value = '';
+                        
+                        this.showSuccess('Blurb added successfully');
+                    } else {
+                        this.showError('Failed to create blurb: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error creating blurb: ' + error.message);
+                }
+            },
+            
+            // Utility functions
+            createCard: function(title, subtitle, onClick) {
+                const card = document.createElement('div');
+                card.className = 'nav-card';
+                card.addEventListener('click', onClick);
+                
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'card-title';
+                titleDiv.textContent = title;
+                card.appendChild(titleDiv);
+                
+                if (subtitle) {
+                    const subtitleDiv = document.createElement('div');
+                    subtitleDiv.className = 'card-subtitle';
+                    subtitleDiv.textContent = subtitle;
+                    card.appendChild(subtitleDiv);
+                }
+                
+                return card;
+            },
+            
+            createAddCard: function(title, onClick) {
+                const card = document.createElement('div');
+                card.className = 'nav-card add-new';
+                card.addEventListener('click', onClick);
+                
+                const iconDiv = document.createElement('div');
+                iconDiv.className = 'add-icon';
+                iconDiv.textContent = '+';
+                card.appendChild(iconDiv);
+                
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'card-title';
+                titleDiv.textContent = title;
+                card.appendChild(titleDiv);
+                
+                return card;
+            },
+            
+            highlightCard: function(containerId, selectedId) {
+                const container = document.getElementById(containerId);
+                const cards = container.querySelectorAll('.nav-card:not(.add-new)');
+                
+                cards.forEach((card, index) => {
+                    card.classList.remove('selected');
+                    // Use index for comparison since we don't store IDs in cards
+                    // This is a simplified approach - in production, you'd want to store data attributes
+                });
+                
+                // For now, just highlight the first clicked card
+                // In a more robust implementation, you'd match by data attributes
+            },
+            
+            showSection: function(sectionId) {
+                document.getElementById(sectionId).classList.remove('hidden');
+            },
+            
+            hideSection: function(sectionId) {
+                document.getElementById(sectionId).classList.add('hidden');
+            },
+            
+            showSuccess: function(message) {
+                this.showMessage(message, 'status-success');
+            },
+            
+            showError: function(message) {
+                this.showMessage(message, 'status-error');
+            },
+            
+            showMessage: function(message, className) {
+                const messageDiv = document.getElementById('statusMessage');
+                messageDiv.textContent = message;
+                messageDiv.className = `status-message ${className}`;
+                messageDiv.classList.remove('hidden');
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            },
+            
+            // Placeholder functions for add new actions
+            addNewBrand: function() {
+                alert('Add new brand functionality would be implemented here');
+            },
+            
+            addNewModel: function() {
+                alert('Add new model functionality would be implemented here');
+            },
+            
+            addNewSeries: function() {
+                alert('Add new series functionality would be implemented here');
+            },
+        };
+        
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            SpeederApp.init();
+        });
+    </script>
+</body>
+</html>

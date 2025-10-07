@@ -7,6 +7,9 @@
         
         <ul class="navbar-nav">
             <li><a href="{% url 'maker:start' %}">Home</a></li>
+            {% if user.is_staff %}
+                <li><a href="{% url 'speeder:index' %}">🏎️ Speeder</a></li>
+            {% endif %}
             <li><a href="{% url 'admin:index' %}">Admin</a></li>
             <li><a href="#" class="text-muted">Groker <span style="font-size: 0.8em;">(coming soon)</span></a></li>
         </ul>
