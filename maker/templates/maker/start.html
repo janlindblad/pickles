@@ -617,8 +617,8 @@
                     contentDiv.className = 'content-text';
                     contentDiv.textContent = item.text;
                     
-                    // Add info icon for options items with BlurbInfo
-                    if (category === 'options' && item.blurb_info && item.blurb_info.length > 0) {
+                    // Add info icon for options and highlights items with BlurbInfo
+                    if ((category === 'options' || category === 'highlights') && item.blurb_info && item.blurb_info.length > 0) {
                         const infoIcon = document.createElement('span');
                         infoIcon.className = 'info-icon';
                         infoIcon.innerHTML = 'ⓘ';

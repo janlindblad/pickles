@@ -412,8 +412,8 @@ def maker_content_api(request):
                         'blurb_id': item.blurb.id,
                     }
                     
-                    # Add BlurbInfo data for options column items
-                    if placement == 'options':
+                    # Add BlurbInfo data for options and highlights column items
+                    if placement in ['options', 'highlights']:
                         blurb_info_items = item.blurb.blurb_info.all().order_by('sequence', 'created_at')
                         if blurb_info_items:
                             item_data['blurb_info'] = [
