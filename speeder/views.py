@@ -269,7 +269,6 @@ def blurbs_api(request, brand_id, model_id, series_id):
 
 
 @require_http_methods(["POST"])
-@csrf_exempt
 @user_passes_test(is_staff_user, login_url='/admin/login/')
 def save_blurb_packages(request):
     """
@@ -353,7 +352,162 @@ def save_blurb_packages(request):
 
 
 @require_http_methods(["POST"])
-@csrf_exempt
+@user_passes_test(is_staff_user, login_url='/admin/login/')
+def create_brand(request):
+    """
+    API endpoint to create a new brand.
+    """
+    try:
+        data = json.loads(request.body)
+        brand_name = data.get('name', '').strip()
+        
+        if not brand_name:
+            return JsonResponse({
+                'success': False,
+                'error': 'Brand name is required'
+            }, status=400)
+        
+        brand = Brand.objects.create(name=brand_name)
+        
+        return JsonResponse({
+            'success': True,
+            'brand': {
+                'id': brand.id,
+                'name': brand.name,
+            }
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+
+
+@require_http_methods(["POST"])
+@user_passes_test(is_staff_user, login_url='/admin/login/')
+def create_model(request):
+    """
+    API endpoint to create a new model.
+    If a brand_id is provided, also creates a BrandModelSeries entry.
+    """
+    try:
+        data = json.loads(request.body)
+        model_name = data.get('name', '').strip()
+        brand_id = data.get('brand_id')  # Optional brand association
+        
+        if not model_name:
+            return JsonResponse({
+                'success': False,
+                'error': 'Model name is required'
+            }, status=400)
+        
+        with transaction.atomic():
+            # Create the model
+            model = Model.objects.create(name=model_name)
+            
+            # If brand_id provided, create BrandModelSeries
+            if brand_id:
+                try:
+                    brand = Brand.objects.get(id=brand_id)
+                    # Create BrandModelSeries with placeholder year (will be updated when series created)
+                    BrandModelSeries.objects.create(
+                        brand=brand,
+                        model=model,
+                        series=None,  # No series yet
+                        year_start=2024,  # Default placeholder year
+                        year_end=None,
+                    )
+                except Brand.DoesNotExist:
+                    # Brand doesn't exist, but don't fail the model creation
+                    pass
+        
+        return JsonResponse({
+            'success': True,
+            'model': {
+                'id': model.id,
+                'name': model.name,
+            }
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+
+
+@require_http_methods(["POST"])
+@user_passes_test(is_staff_user, login_url='/admin/login/')
+def create_series(request):
+    """
+    API endpoint to create a new series with BrandModelSeries entry.
+    """
+    try:
+        data = json.loads(request.body)
+        series_name = data.get('name', '').strip()
+        brand_id = data.get('brand_id')
+        model_id = data.get('model_id')
+        year_start = data.get('year_start')
+        year_end = data.get('year_end')
+        
+        if not series_name:
+            return JsonResponse({
+                'success': False,
+                'error': 'Series name is required'
+            }, status=400)
+        
+        if not brand_id or not model_id:
+            return JsonResponse({
+                'success': False,
+                'error': 'Brand and model IDs are required'
+            }, status=400)
+        
+        if year_start is None:
+            return JsonResponse({
+                'success': False,
+                'error': 'Year start is required'
+            }, status=400)
+        
+        with transaction.atomic():
+            # Create the series
+            series = Series.objects.create(name=series_name)
+            
+            # Create BrandModelSeries entry
+            brand = Brand.objects.get(id=brand_id)
+            model = Model.objects.get(id=model_id)
+            
+            brand_model_series = BrandModelSeries.objects.create(
+                brand=brand,
+                model=model,
+                series=series,
+                year_start=year_start if year_start else None,
+                year_end=year_end if year_end else None,
+            )
+        
+        return JsonResponse({
+            'success': True,
+            'series': {
+                'id': series.id,
+                'name': series.name,
+                'year_range': brand_model_series.get_year_display(),
+                'brand_model_series_id': brand_model_series.id,
+            }
+        })
+        
+    except (Brand.DoesNotExist, Model.DoesNotExist):
+        return JsonResponse({
+            'success': False,
+            'error': 'Brand or Model not found'
+        }, status=404)
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+
+
+@require_http_methods(["POST"])
 @user_passes_test(is_staff_user, login_url='/admin/login/')
 def create_blurb(request):
     """
