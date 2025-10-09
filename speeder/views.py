@@ -268,6 +268,48 @@ def blurbs_api(request, brand_id, model_id, series_id):
         }, status=500)
 
 
+@require_http_methods(["GET"])
+@user_passes_test(is_staff_user, login_url='/admin/login/')
+def blurbs_search_api(request):
+    """
+    API endpoint to search for existing blurbs by text query.
+    Used for autocomplete functionality when adding new blurbs.
+    """
+    try:
+        query = request.GET.get('q', '').strip()
+        
+        if not query:
+            return JsonResponse({
+                'success': True,
+                'blurbs': []
+            })
+        
+        # Search for blurbs containing the query (case-insensitive)
+        # Limit to prevent overwhelming the UI
+        blurbs = Blurb.objects.filter(
+            text__icontains=query
+        ).select_related('blurb_group')[:20]  # Limit to 20 results
+        
+        blurbs_data = [
+            {
+                'id': blurb.id,
+                'text': blurb.text,
+            }
+            for blurb in blurbs
+        ]
+        
+        return JsonResponse({
+            'success': True,
+            'blurbs': blurbs_data
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+
+
 @require_http_methods(["POST"])
 @user_passes_test(is_staff_user, login_url='/admin/login/')
 def save_blurb_packages(request):

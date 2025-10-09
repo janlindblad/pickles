@@ -257,6 +257,54 @@
             cursor: not-allowed;
         }
         
+        /* Blurb Search Matches */
+        .blurb-matches {
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        
+        .blurb-match-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+        
+        .blurb-match-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .blurb-match-item:last-child {
+            border-bottom: none;
+        }
+        
+        .blurb-match-text {
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .add-existing-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .add-existing-btn:hover {
+            background: #218838;
+        }
+        
         /* Loading and Empty States */
         .loading-state {
             text-align: center;
@@ -594,8 +642,13 @@
                             <button type="button" 
                                     id="addBlurbBtn" 
                                     class="add-blurb-btn">
-                                Add Blurb
+                                Add new blurb
                             </button>
+                        </div>
+                        
+                        <!-- Blurb Search Matches -->
+                        <div id="blurbMatches" class="blurb-matches hidden">
+                            <!-- Matching blurbs will be displayed here -->
                         </div>
                     </div>
                 </div>
@@ -614,6 +667,9 @@
             // Current data
             packages: [],
             blurbs: [],
+            
+            // Search timeout for debouncing
+            searchTimeout: null,
             
             // Initialize the application
             init: function() {
@@ -646,6 +702,130 @@
                         this.addNewBlurb();
                     }
                 });
+                
+                // Blurb search input
+                const blurbInput = document.getElementById('newBlurbText');
+                blurbInput.addEventListener('input', this.debouncedSearchBlurbs.bind(this));
+                blurbInput.addEventListener('focus', this.debouncedSearchBlurbs.bind(this));
+                blurbInput.addEventListener('blur', () => {
+                    // Delay hiding to allow clicking on matches
+                    setTimeout(() => this.hideBlurbMatches(), 150);
+                });
+            },
+            
+            // Debounced search for existing blurbs
+            debouncedSearchBlurbs: function() {
+                clearTimeout(this.searchTimeout);
+                this.searchTimeout = setTimeout(() => {
+                    this.searchBlurbs();
+                }, 300);
+            },
+            
+            // Search for existing blurbs
+            searchBlurbs: async function() {
+                const input = document.getElementById('newBlurbText');
+                const query = input.value.trim();
+                
+                if (!query || query.length < 2) {
+                    this.hideBlurbMatches();
+                    return;
+                }
+                
+                try {
+                    const response = await fetch(`/speeder/api/blurbs/search/?q=${encodeURIComponent(query)}`, {
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.showBlurbMatches(data.blurbs);
+                    } else {
+                        this.hideBlurbMatches();
+                    }
+                } catch (error) {
+                    console.error('Error searching blurbs:', error);
+                    this.hideBlurbMatches();
+                }
+            },
+            
+            // Show blurb search matches
+            showBlurbMatches: function(blurbs) {
+                const container = document.getElementById('blurbMatches');
+                
+                if (blurbs.length === 0) {
+                    this.hideBlurbMatches();
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                blurbs.forEach(blurb => {
+                    const matchItem = document.createElement('div');
+                    matchItem.className = 'blurb-match-item';
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'blurb-match-text';
+                    textSpan.textContent = blurb.text;
+                    
+                    const addBtn = document.createElement('button');
+                    addBtn.className = 'add-existing-btn';
+                    addBtn.textContent = 'Add existing blurb';
+                    addBtn.addEventListener('click', () => {
+                        this.addExistingBlurb(blurb.id, blurb.text);
+                    });
+                    
+                    matchItem.appendChild(textSpan);
+                    matchItem.appendChild(addBtn);
+                    container.appendChild(matchItem);
+                });
+                
+                container.classList.remove('hidden');
+            },
+            
+            // Hide blurb search matches
+            hideBlurbMatches: function() {
+                const container = document.getElementById('blurbMatches');
+                container.classList.add('hidden');
+                container.innerHTML = '';
+            },
+            
+            // Add existing blurb to current context
+            addExistingBlurb: function(blurbId, blurbText) {
+                // Check if blurb already exists in current context
+                const existingBlurb = this.blurbs.find(b => b.id === blurbId);
+                if (existingBlurb) {
+                    this.showError('This blurb is already in the current context');
+                    return;
+                }
+                
+                // Add to local state with empty package states
+                const newBlurb = {
+                    id: blurbId,
+                    text: blurbText,
+                    package_states: {},
+                };
+                
+                // Initialize package states
+                this.packages.forEach(package => {
+                    const packageKey = package.id ? package.id.toString() : 'null';
+                    newBlurb.package_states[packageKey] = {
+                        checked: false,
+                        placement: 'interior',
+                        is_highlight: false,
+                        is_option: false,
+                        sequence: 0,
+                        match_item_id: null,
+                    };
+                });
+                
+                this.blurbs.push(newBlurb);
+                this.renderTableBody();
+                
+                // Clear input and hide matches
+                document.getElementById('newBlurbText').value = '';
+                this.hideBlurbMatches();
+                
+                this.showSuccess('Existing blurb added to context');
             },
             
             // Load brands from API

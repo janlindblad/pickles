@@ -9,6 +9,7 @@ urlpatterns = [
     path('api/models/<int:brand_id>/', views.models_api, name='models_api'),
     path('api/series/<int:brand_id>/<int:model_id>/', views.series_api, name='series_api'),
     path('api/blurbs/<int:brand_id>/<int:model_id>/<int:series_id>/', views.blurbs_api, name='blurbs_api'),
+    path('api/blurbs/search/', views.blurbs_search_api, name='blurbs_search_api'),
     path('api/save-blurb-packages/', views.save_blurb_packages, name='save_blurb_packages'),
     path('api/create-blurb/', views.create_blurb, name='create_blurb'),
     path('api/create-brand/', views.create_brand, name='create_brand'),
