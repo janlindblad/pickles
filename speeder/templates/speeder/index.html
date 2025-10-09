@@ -913,7 +913,12 @@
                 // Blurb text
                 const textCell = document.createElement('td');
                 textCell.className = 'blurb-text';
-                textCell.textContent = blurb.text;
+                const blurbLink = document.createElement('a');
+                blurbLink.href = `/admin/maker/blurb/${blurb.id}/change/`;
+                blurbLink.textContent = blurb.text;
+                blurbLink.target = '_blank';
+                blurbLink.title = 'Edit this blurb in admin';
+                textCell.appendChild(blurbLink);
                 row.appendChild(textCell);
                 
                 // Placement
