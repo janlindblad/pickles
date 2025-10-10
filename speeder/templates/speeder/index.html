@@ -305,6 +305,150 @@
             background: #218838;
         }
         
+        /* Package Management */
+        .package-management {
+            margin-bottom: 30px;
+        }
+        
+        .package-cards-container {
+            margin-bottom: 20px;
+        }
+        
+        .add-package-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .add-package-form {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .add-package-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .add-package-btn {
+            background: #1a5b5b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .add-package-btn:hover {
+            background: #145050;
+        }
+        
+        .add-package-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .package-matches {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        
+        .package-match-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+        
+        .package-match-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .package-match-item:last-child {
+            border-bottom: none;
+        }
+        
+        .package-match-text {
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .add-existing-package-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .add-existing-package-btn:hover {
+            background: #218838;
+        }
+        
+        .remove-package-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+        
+        .remove-package-btn:hover {
+            background: #c82333;
+        }
+        
+        /* Complex MatchItem Styling */
+        .package-checkbox.complex-match-item {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: #f5f5f5;
+        }
+        
+        .package-checkbox.complex-match-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .complex-match-item-cell {
+            background-color: #f8f9fa;
+            position: relative;
+        }
+        
+        .complex-match-item-cell::after {
+            content: "🔒";
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 10px;
+            color: #666;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
         /* Loading and Empty States */
         .loading-state {
             text-align: center;
@@ -610,6 +754,36 @@
                 <div class="cards-container" id="seriesContainer"></div>
             </div>
             
+            <!-- Package Management -->
+            <div class="package-management hidden" id="packageSection">
+                <h2 class="section-title">Manage Packages</h2>
+                
+                <div class="package-cards-container">
+                    <div class="cards-container" id="packageContainer"></div>
+                    
+                    <!-- Add Package Section -->
+                    <div class="add-package-section">
+                        <div class="add-package-form">
+                            <input type="text" 
+                                   id="newPackageText" 
+                                   class="add-package-input" 
+                                   placeholder="Enter new package name..." 
+                                   maxlength="100">
+                            <button type="button" 
+                                    id="createPackageBtn" 
+                                    class="add-package-btn">
+                                Create Package
+                            </button>
+                        </div>
+                        
+                        <!-- Package Search Matches -->
+                        <div id="packageMatches" class="package-matches hidden">
+                            <!-- Matching packages will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Blurb Management -->
             <div class="blurb-management hidden" id="blurbSection">
                 <h2 class="section-title">Manage Blurbs</h2>
@@ -667,9 +841,11 @@
             // Current data
             packages: [],
             blurbs: [],
+            brandModelSeriesId: null,
             
-            // Search timeout for debouncing
-            searchTimeout: null,
+            // Search timeouts for debouncing
+            blurbSearchTimeout: null,
+            packageSearchTimeout: null,
             
             // Initialize the application
             init: function() {
@@ -711,12 +887,30 @@
                     // Delay hiding to allow clicking on matches
                     setTimeout(() => this.hideBlurbMatches(), 150);
                 });
+                
+                // Package management events
+                document.getElementById('createPackageBtn').addEventListener('click', () => {
+                    this.createNewPackage();
+                });
+                
+                const packageInput = document.getElementById('newPackageText');
+                packageInput.addEventListener('input', this.debouncedSearchPackages.bind(this));
+                packageInput.addEventListener('focus', this.debouncedSearchPackages.bind(this));
+                packageInput.addEventListener('blur', () => {
+                    setTimeout(() => this.hidePackageMatches(), 150);
+                });
+                
+                packageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.createNewPackage();
+                    }
+                });
             },
             
             // Debounced search for existing blurbs
             debouncedSearchBlurbs: function() {
-                clearTimeout(this.searchTimeout);
-                this.searchTimeout = setTimeout(() => {
+                clearTimeout(this.blurbSearchTimeout);
+                this.blurbSearchTimeout = setTimeout(() => {
                     this.searchBlurbs();
                 }, 300);
             },
@@ -805,7 +999,17 @@
                     package_states: {},
                 };
                 
-                // Initialize package states
+                // Initialize package states - start with "All Packages" (null)
+                newBlurb.package_states['null'] = {
+                    checked: false,
+                    placement: 'interior',
+                    is_highlight: false,
+                    is_option: false,
+                    sequence: 0,
+                    match_item_id: null,
+                };
+                
+                // Then initialize states for real packages
                 this.packages.forEach(package => {
                     const packageKey = package.id ? package.id.toString() : 'null';
                     newBlurb.package_states[packageKey] = {
@@ -826,6 +1030,171 @@
                 this.hideBlurbMatches();
                 
                 this.showSuccess('Existing blurb added to context');
+            },
+            
+            // Debounced search for existing packages
+            debouncedSearchPackages: function() {
+                clearTimeout(this.packageSearchTimeout);
+                this.packageSearchTimeout = setTimeout(() => {
+                    this.searchPackages();
+                }, 300);
+            },
+            
+            // Search for existing packages
+            searchPackages: async function() {
+                const input = document.getElementById('newPackageText');
+                const query = input.value.trim();
+                
+                if (!query || query.length < 2) {
+                    this.hidePackageMatches();
+                    return;
+                }
+                
+                try {
+                    const response = await fetch(`/speeder/api/packages/search/?q=${encodeURIComponent(query)}`, {
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.showPackageMatches(data.packages);
+                    } else {
+                        this.hidePackageMatches();
+                    }
+                } catch (error) {
+                    console.error('Error searching packages:', error);
+                    this.hidePackageMatches();
+                }
+            },
+            
+            // Show package search matches
+            showPackageMatches: function(packages) {
+                const container = document.getElementById('packageMatches');
+                
+                if (packages.length === 0) {
+                    this.hidePackageMatches();
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                packages.forEach(package => {
+                    const matchItem = document.createElement('div');
+                    matchItem.className = 'package-match-item';
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'package-match-text';
+                    textSpan.textContent = package.name;
+                    
+                    const addBtn = document.createElement('button');
+                    addBtn.className = 'add-existing-package-btn';
+                    addBtn.textContent = 'Add to Series';
+                    addBtn.addEventListener('click', () => {
+                        this.addExistingPackage(package.id, package.name);
+                    });
+                    
+                    matchItem.appendChild(textSpan);
+                    matchItem.appendChild(addBtn);
+                    container.appendChild(matchItem);
+                });
+                
+                container.classList.remove('hidden');
+            },
+            
+            // Hide package search matches
+            hidePackageMatches: function() {
+                const container = document.getElementById('packageMatches');
+                container.classList.add('hidden');
+                container.innerHTML = '';
+            },
+            
+            // Add existing package to current series
+            addExistingPackage: async function(packageId, packageName) {
+                try {
+                    const response = await fetch('/speeder/api/add-package-to-series/', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': this.getCsrfToken(),
+                        },
+                        body: JSON.stringify({
+                            package_id: packageId,
+                            brand_model_series_id: this.brandModelSeriesId,
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Add to local packages array
+                        this.packages.push({
+                            id: packageId,
+                            name: packageName,
+                        });
+                        
+                        // Refresh the package display and table
+                        this.renderPackages();
+                        this.renderBlurbTable();
+                        
+                        // Clear input and hide matches
+                        document.getElementById('newPackageText').value = '';
+                        this.hidePackageMatches();
+                        
+                        this.showSuccess(`Package "${packageName}" added to series`);
+                    } else {
+                        this.showError('Failed to add package: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error adding package: ' + error.message);
+                }
+            },
+            
+            // Create new package
+            createNewPackage: async function() {
+                const input = document.getElementById('newPackageText');
+                const name = input.value.trim();
+                
+                if (!name) {
+                    this.showError('Please enter package name');
+                    return;
+                }
+                
+                try {
+                    const response = await fetch('/speeder/api/create-package/', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': this.getCsrfToken(),
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            brand_model_series_id: this.brandModelSeriesId,
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Add to local packages array
+                        this.packages.push(data.package);
+                        
+                        // Refresh the package display and table
+                        this.renderPackages();
+                        this.renderBlurbTable();
+                        
+                        // Clear input and hide matches
+                        input.value = '';
+                        this.hidePackageMatches();
+                        
+                        this.showSuccess(`Package "${data.package.name}" created and added to series`);
+                    } else {
+                        this.showError('Failed to create package: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error creating package: ' + error.message);
+                }
             },
             
             // Load brands from API
@@ -976,6 +1345,82 @@
                 container.appendChild(addCard);
             },
             
+            // Render packages for current series
+            renderPackages: function() {
+                const container = document.getElementById('packageContainer');
+                container.innerHTML = '';
+                
+                this.packages.forEach(package => {
+                    const card = document.createElement('div');
+                    card.className = 'nav-card';
+                    
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'card-title';
+                    titleDiv.textContent = package.name;
+                    card.appendChild(titleDiv);
+                    
+                    // Add remove button
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-package-btn';
+                    removeBtn.textContent = '×';
+                    removeBtn.title = 'Remove from series';
+                    removeBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.removePackageFromSeries(package.id, package.name);
+                    });
+                    card.appendChild(removeBtn);
+                    
+                    container.appendChild(card);
+                });
+                
+                // Add "No packages" message if empty
+                if (this.packages.length === 0) {
+                    const emptyCard = document.createElement('div');
+                    emptyCard.className = 'nav-card empty-package-card';
+                    emptyCard.innerHTML = '<div class="card-title">No packages yet</div><div class="card-subtitle">Add packages below to get started</div>';
+                    container.appendChild(emptyCard);
+                }
+            },
+            
+            // Remove package from series
+            removePackageFromSeries: async function(packageId, packageName) {
+                if (!confirm(`Remove "${packageName}" from this series? This will affect all associated blurbs.`)) {
+                    return;
+                }
+                
+                try {
+                    const response = await fetch('/speeder/api/remove-package-from-series/', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': this.getCsrfToken(),
+                        },
+                        body: JSON.stringify({
+                            package_id: packageId,
+                            brand_model_series_id: this.brandModelSeriesId,
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Remove from local packages array
+                        this.packages = this.packages.filter(p => p.id !== packageId);
+                        
+                        // Refresh displays
+                        this.renderPackages();
+                        this.renderBlurbTable();
+                        
+                        this.showSuccess(`Package "${packageName}" removed from series`);
+                    } else {
+                        this.showError('Failed to remove package: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error removing package: ' + error.message);
+                }
+            },
+            
             // Select a series
             selectSeries: async function(series) {
                 this.selectedSeries = series;
@@ -986,10 +1431,34 @@
                 // Update breadcrumb
                 this.updateBreadcrumb();
                 
+                // Load packages first
+                await this.loadPackages(this.selectedBrand.id, this.selectedModel.id, series.id || 0);
+                this.showSection('packageSection');
+                
                 // Load blurbs
                 const seriesId = series.id || 0; // Handle "No Series" case
                 await this.loadBlurbs(this.selectedBrand.id, this.selectedModel.id, seriesId);
                 this.showSection('blurbSection');
+            },
+            
+            // Load packages for a brand, model, and series
+            loadPackages: async function(brandId, modelId, seriesId) {
+                try {
+                    const response = await fetch(`/speeder/api/packages/${brandId}/${modelId}/${seriesId}/`, {
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.packages = data.packages;
+                        this.brandModelSeriesId = data.brand_model_series_id;
+                        this.renderPackages();
+                    } else {
+                        this.showError('Failed to load packages: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error loading packages: ' + error.message);
+                }
             },
             
             // Load blurbs for a brand, model, and series
@@ -1001,7 +1470,8 @@
                     const data = await response.json();
                     
                     if (data.success) {
-                        this.packages = data.packages;
+                        // Note: packages are already loaded by loadPackages(), don't overwrite
+                        // this.packages = data.packages;  // This was causing "All Packages" to appear as a real package
                         this.blurbs = data.blurbs;
                         this.renderBlurbTable();
                     } else {
@@ -1026,8 +1496,14 @@
                 const packageCells = header.querySelectorAll('.package-header');
                 packageCells.forEach(cell => cell.remove());
                 
-                // Add package columns before the blurb text column
+                // Add "All Packages" column first
                 const blurbTextHeader = header.querySelector('th');
+                const allPackagesTh = document.createElement('th');
+                allPackagesTh.textContent = 'All Packages';
+                allPackagesTh.className = 'package-header';
+                header.insertBefore(allPackagesTh, blurbTextHeader);
+                
+                // Add real package columns
                 this.packages.forEach(package => {
                     const th = document.createElement('th');
                     th.textContent = package.name;
@@ -1049,7 +1525,7 @@
                 if (this.blurbs.length === 0) {
                     const emptyRow = document.createElement('tr');
                     const emptyCell = document.createElement('td');
-                    emptyCell.colSpan = this.packages.length + 5; // packages + 5 other columns
+                    emptyCell.colSpan = this.packages.length + 6; // packages + "All Packages" + 5 other columns
                     emptyCell.className = 'empty-state';
                     emptyCell.textContent = 'No blurbs found. Add one below to get started.';
                     emptyRow.appendChild(emptyCell);
@@ -1062,7 +1538,40 @@
                 const row = document.createElement('tr');
                 row.dataset.blurbId = blurb.id;
                 
-                // Package checkboxes
+                // Package checkboxes - start with "All Packages" (null)
+                const allPackagesCell = document.createElement('td');
+                allPackagesCell.style.textAlign = 'center';
+                
+                const allPackagesCheckbox = document.createElement('input');
+                allPackagesCheckbox.type = 'checkbox';
+                allPackagesCheckbox.className = 'package-checkbox';
+                allPackagesCheckbox.dataset.packageId = 'null';
+                
+                const allPackagesState = blurb.package_states['null'];
+                
+                if (allPackagesState) {
+                    allPackagesCheckbox.checked = allPackagesState.checked;
+                    
+                    // Check if this MatchItem is complex (created in admin)
+                    if (allPackagesState.is_complex) {
+                        allPackagesCheckbox.disabled = true;
+                        allPackagesCheckbox.className += ' complex-match-item';
+                        allPackagesCheckbox.title = 'This MatchItem was created in admin and cannot be modified here';
+                        allPackagesCell.title = 'This MatchItem was created in admin and cannot be modified here';
+                        allPackagesCell.className = 'complex-match-item-cell';
+                    }
+                }
+                
+                if (!allPackagesState || !allPackagesState.is_complex) {
+                    allPackagesCheckbox.addEventListener('change', () => {
+                        this.updateBlurbPackage(blurb.id, null, allPackagesCheckbox.checked);
+                    });
+                }
+                
+                allPackagesCell.appendChild(allPackagesCheckbox);
+                row.appendChild(allPackagesCell);
+                
+                // Then add checkboxes for real packages
                 this.packages.forEach(package => {
                     const cell = document.createElement('td');
                     cell.style.textAlign = 'center';
@@ -1077,11 +1586,22 @@
                     
                     if (state) {
                         checkbox.checked = state.checked;
+                        
+                        // Check if this MatchItem is complex (created in admin)
+                        if (state.is_complex) {
+                            checkbox.disabled = true;
+                            checkbox.className += ' complex-match-item';
+                            checkbox.title = 'This MatchItem was created in admin and cannot be modified here';
+                            cell.title = 'This MatchItem was created in admin and cannot be modified here';
+                            cell.className = 'complex-match-item-cell';
+                        }
                     }
                     
-                    checkbox.addEventListener('change', () => {
-                        this.updateBlurbPackage(blurb.id, package.id, checkbox.checked);
-                    });
+                    if (!state || !state.is_complex) {
+                        checkbox.addEventListener('change', () => {
+                            this.updateBlurbPackage(blurb.id, package.id, checkbox.checked);
+                        });
+                    }
                     
                     cell.appendChild(checkbox);
                     row.appendChild(cell);
