@@ -285,6 +285,15 @@ class MatchItem(models.Model):
             categories.append('options')
         return categories
     
+    @property
+    def is_complex(self):
+        """Check if this MatchItem has complex matching rules that should be read-only in speeder."""
+        match = self.match
+        # Complex if Match has wildcards (null values) or year filters
+        return (match.brand is None or match.model is None or 
+                match.series is None or match.package is None or
+                match.year_start is not None or match.year_end is not None)
+    
     def __str__(self):
         categories = ', '.join([cat.title() for cat in self.get_categories()])
         return f"{categories} - {self.blurb}"

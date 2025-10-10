@@ -74,14 +74,48 @@
         
         .nav-card.selected {
             border-color: #1a5b5b;
-            background: #f0f8f8;
-            box-shadow: 0 4px 12px rgba(26, 91, 91, 0.15);
+            background: linear-gradient(135deg, #f0f8f8 0%, #e6f3f3 100%);
+            box-shadow: 0 6px 20px rgba(26, 91, 91, 0.25);
+            transform: translateY(-2px);
+            position: relative;
+        }
+        
+        .nav-card.selected::after {
+            content: "✓";
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #1a5b5b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .nav-card.selected .card-title {
+            color: #1a5b5b;
+            font-weight: 700;
+        }
+        
+        .nav-card.selected .card-subtitle {
+            color: #0f3f3f;
         }
         
         .nav-card.add-new {
             border: 2px dashed #1a5b5b;
             color: #1a5b5b;
             background: #f9fcfc;
+            padding: 15px;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .nav-card.add-new:hover {
@@ -223,6 +257,198 @@
             cursor: not-allowed;
         }
         
+        /* Blurb Search Matches */
+        .blurb-matches {
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        
+        .blurb-match-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+        
+        .blurb-match-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .blurb-match-item:last-child {
+            border-bottom: none;
+        }
+        
+        .blurb-match-text {
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .add-existing-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .add-existing-btn:hover {
+            background: #218838;
+        }
+        
+        /* Package Management */
+        .package-management {
+            margin-bottom: 30px;
+        }
+        
+        .package-cards-container {
+            margin-bottom: 20px;
+        }
+        
+        .add-package-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .add-package-form {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .add-package-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .add-package-btn {
+            background: #1a5b5b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .add-package-btn:hover {
+            background: #145050;
+        }
+        
+        .add-package-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .package-matches {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        
+        .package-match-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+        
+        .package-match-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .package-match-item:last-child {
+            border-bottom: none;
+        }
+        
+        .package-match-text {
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .add-existing-package-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .add-existing-package-btn:hover {
+            background: #218838;
+        }
+        
+        .remove-package-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+        
+        .remove-package-btn:hover {
+            background: #c82333;
+        }
+        
+        /* Complex MatchItem Styling */
+        .package-checkbox.complex-match-item {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: #f5f5f5;
+        }
+        
+        .package-checkbox.complex-match-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .complex-match-item-cell {
+            background-color: #f8f9fa;
+            position: relative;
+        }
+        
+        .complex-match-item-cell::after {
+            content: "🔒";
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 10px;
+            color: #666;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
         /* Loading and Empty States */
         .loading-state {
             text-align: center;
@@ -259,6 +485,178 @@
             border: 1px solid #f5c6cb;
         }
         
+        /* Breadcrumb Navigation */
+        .breadcrumb-section {
+            margin-bottom: 25px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: var(--navbar-height, 60px);
+            z-index: 1000;
+            border-bottom: 3px solid #1a5b5b;
+        }        .breadcrumb {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .breadcrumb-item.active {
+            background: #1a5b5b;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .breadcrumb-item.completed {
+            background: #28a745;
+            color: white;
+        }
+        
+        .breadcrumb-icon {
+            font-size: 1rem;
+        }
+        
+        .breadcrumb-separator {
+            color: #ccc;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .breadcrumb-text {
+            white-space: nowrap;
+        }
+        
+        /* Enhanced Navigation Cards */        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            color: #1a5b5b;
+            font-size: 1.5rem;
+        }
+        
+        .modal-close {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: #333;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-group input:focus {
+            border-color: #1a5b5b;
+            outline: none;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .btn-cancel {
+            padding: 10px 20px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-cancel:hover {
+            background: #545b62;
+        }
+        
+        .btn-primary {
+            padding: 10px 20px;
+            background: #1a5b5b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background: #0f3f3f;
+        }
+        
+        .btn-primary:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
         /* Responsive Design */
         @media (max-width: 1200px) {
             .blurb-table {
@@ -281,10 +679,26 @@
                 padding: 15px;
                 min-height: 60px;
             }
+            
+            .breadcrumb {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            
+            .breadcrumb-item {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .breadcrumb-separator {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    {% csrf_token %}
     {% include "base_navbar.html" %}
     
     <main class="main-content">
@@ -299,6 +713,26 @@
             
             <!-- Status Messages -->
             <div id="statusMessage" class="status-message hidden"></div>
+            
+            <!-- Current Selection Breadcrumb -->
+            <div class="breadcrumb-section" id="breadcrumbSection">
+                <div class="breadcrumb">
+                    <span class="breadcrumb-item" id="breadcrumbBrand">
+                        <i class="breadcrumb-icon">🏢</i>
+                        <span class="breadcrumb-text">Select Brand</span>
+                    </span>
+                    <span class="breadcrumb-separator">›</span>
+                    <span class="breadcrumb-item" id="breadcrumbModel">
+                        <i class="breadcrumb-icon">🚗</i>
+                        <span class="breadcrumb-text">Select Model</span>
+                    </span>
+                    <span class="breadcrumb-separator">›</span>
+                    <span class="breadcrumb-item" id="breadcrumbSeries">
+                        <i class="breadcrumb-icon">🔧</i>
+                        <span class="breadcrumb-text">Select Series</span>
+                    </span>
+                </div>
+            </div>
             
             <!-- Brand Selection -->
             <div class="navigation-section" id="brandSection">
@@ -318,6 +752,36 @@
             <div class="navigation-section hidden" id="seriesSection">
                 <h2 class="section-title">Select Series</h2>
                 <div class="cards-container" id="seriesContainer"></div>
+            </div>
+            
+            <!-- Package Management -->
+            <div class="package-management hidden" id="packageSection">
+                <h2 class="section-title">Manage Packages</h2>
+                
+                <div class="package-cards-container">
+                    <div class="cards-container" id="packageContainer"></div>
+                    
+                    <!-- Add Package Section -->
+                    <div class="add-package-section">
+                        <div class="add-package-form">
+                            <input type="text" 
+                                   id="newPackageText" 
+                                   class="add-package-input" 
+                                   placeholder="Enter new package name..." 
+                                   maxlength="100">
+                            <button type="button" 
+                                    id="createPackageBtn" 
+                                    class="add-package-btn">
+                                Create Package
+                            </button>
+                        </div>
+                        
+                        <!-- Package Search Matches -->
+                        <div id="packageMatches" class="package-matches hidden">
+                            <!-- Matching packages will be displayed here -->
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Blurb Management -->
@@ -352,8 +816,13 @@
                             <button type="button" 
                                     id="addBlurbBtn" 
                                     class="add-blurb-btn">
-                                Add Blurb
+                                Add new blurb
                             </button>
+                        </div>
+                        
+                        <!-- Blurb Search Matches -->
+                        <div id="blurbMatches" class="blurb-matches hidden">
+                            <!-- Matching blurbs will be displayed here -->
                         </div>
                     </div>
                 </div>
@@ -372,11 +841,28 @@
             // Current data
             packages: [],
             blurbs: [],
+            brandModelSeriesId: null,
+            
+            // Search timeouts for debouncing
+            blurbSearchTimeout: null,
+            packageSearchTimeout: null,
             
             // Initialize the application
             init: function() {
+                this.setNavbarHeight();
                 this.loadBrands();
                 this.setupEventListeners();
+                this.setupModalHandlers();
+                this.updateBreadcrumb();
+            },
+            
+            // Set navbar height for sticky positioning
+            setNavbarHeight: function() {
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    const navbarHeight = navbar.offsetHeight;
+                    document.documentElement.style.setProperty('--navbar-height', navbarHeight + 'px');
+                }
             },
             
             // Set up event listeners
@@ -392,12 +878,331 @@
                         this.addNewBlurb();
                     }
                 });
+                
+                // Blurb search input
+                const blurbInput = document.getElementById('newBlurbText');
+                blurbInput.addEventListener('input', this.debouncedSearchBlurbs.bind(this));
+                blurbInput.addEventListener('focus', this.debouncedSearchBlurbs.bind(this));
+                blurbInput.addEventListener('blur', () => {
+                    // Delay hiding to allow clicking on matches
+                    setTimeout(() => this.hideBlurbMatches(), 150);
+                });
+                
+                // Package management events
+                document.getElementById('createPackageBtn').addEventListener('click', () => {
+                    this.createNewPackage();
+                });
+                
+                const packageInput = document.getElementById('newPackageText');
+                packageInput.addEventListener('input', this.debouncedSearchPackages.bind(this));
+                packageInput.addEventListener('focus', this.debouncedSearchPackages.bind(this));
+                packageInput.addEventListener('blur', () => {
+                    setTimeout(() => this.hidePackageMatches(), 150);
+                });
+                
+                packageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.createNewPackage();
+                    }
+                });
+            },
+            
+            // Debounced search for existing blurbs
+            debouncedSearchBlurbs: function() {
+                clearTimeout(this.blurbSearchTimeout);
+                this.blurbSearchTimeout = setTimeout(() => {
+                    this.searchBlurbs();
+                }, 300);
+            },
+            
+            // Search for existing blurbs
+            searchBlurbs: async function() {
+                const input = document.getElementById('newBlurbText');
+                const query = input.value.trim();
+                
+                if (!query || query.length < 2) {
+                    this.hideBlurbMatches();
+                    return;
+                }
+                
+                try {
+                    const response = await fetch(`/speeder/api/blurbs/search/?q=${encodeURIComponent(query)}`, {
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.showBlurbMatches(data.blurbs);
+                    } else {
+                        this.hideBlurbMatches();
+                    }
+                } catch (error) {
+                    console.error('Error searching blurbs:', error);
+                    this.hideBlurbMatches();
+                }
+            },
+            
+            // Show blurb search matches
+            showBlurbMatches: function(blurbs) {
+                const container = document.getElementById('blurbMatches');
+                
+                if (blurbs.length === 0) {
+                    this.hideBlurbMatches();
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                blurbs.forEach(blurb => {
+                    const matchItem = document.createElement('div');
+                    matchItem.className = 'blurb-match-item';
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'blurb-match-text';
+                    textSpan.textContent = blurb.text;
+                    
+                    const addBtn = document.createElement('button');
+                    addBtn.className = 'add-existing-btn';
+                    addBtn.textContent = 'Add existing blurb';
+                    addBtn.addEventListener('click', () => {
+                        this.addExistingBlurb(blurb.id, blurb.text);
+                    });
+                    
+                    matchItem.appendChild(textSpan);
+                    matchItem.appendChild(addBtn);
+                    container.appendChild(matchItem);
+                });
+                
+                container.classList.remove('hidden');
+            },
+            
+            // Hide blurb search matches
+            hideBlurbMatches: function() {
+                const container = document.getElementById('blurbMatches');
+                container.classList.add('hidden');
+                container.innerHTML = '';
+            },
+            
+            // Add existing blurb to current context
+            addExistingBlurb: function(blurbId, blurbText) {
+                // Check if blurb already exists in current context
+                const existingBlurb = this.blurbs.find(b => b.id === blurbId);
+                if (existingBlurb) {
+                    this.showError('This blurb is already in the current context');
+                    return;
+                }
+                
+                // Add to local state with empty package states
+                const newBlurb = {
+                    id: blurbId,
+                    text: blurbText,
+                    package_states: {},
+                };
+                
+                // Initialize package states - start with "All Packages" (null)
+                newBlurb.package_states['null'] = {
+                    checked: false,
+                    placement: 'interior',
+                    is_highlight: false,
+                    is_option: false,
+                    sequence: 0,
+                    match_item_id: null,
+                };
+                
+                // Then initialize states for real packages
+                this.packages.forEach(package => {
+                    const packageKey = package.id ? package.id.toString() : 'null';
+                    newBlurb.package_states[packageKey] = {
+                        checked: false,
+                        placement: 'interior',
+                        is_highlight: false,
+                        is_option: false,
+                        sequence: 0,
+                        match_item_id: null,
+                    };
+                });
+                
+                this.blurbs.push(newBlurb);
+                this.renderTableBody();
+                
+                // Clear input and hide matches
+                document.getElementById('newBlurbText').value = '';
+                this.hideBlurbMatches();
+                
+                this.showSuccess('Existing blurb added to context');
+            },
+            
+            // Debounced search for existing packages
+            debouncedSearchPackages: function() {
+                clearTimeout(this.packageSearchTimeout);
+                this.packageSearchTimeout = setTimeout(() => {
+                    this.searchPackages();
+                }, 300);
+            },
+            
+            // Search for existing packages
+            searchPackages: async function() {
+                const input = document.getElementById('newPackageText');
+                const query = input.value.trim();
+                
+                if (!query || query.length < 2) {
+                    this.hidePackageMatches();
+                    return;
+                }
+                
+                try {
+                    const response = await fetch(`/speeder/api/packages/search/?q=${encodeURIComponent(query)}`, {
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.showPackageMatches(data.packages);
+                    } else {
+                        this.hidePackageMatches();
+                    }
+                } catch (error) {
+                    console.error('Error searching packages:', error);
+                    this.hidePackageMatches();
+                }
+            },
+            
+            // Show package search matches
+            showPackageMatches: function(packages) {
+                const container = document.getElementById('packageMatches');
+                
+                if (packages.length === 0) {
+                    this.hidePackageMatches();
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                packages.forEach(package => {
+                    const matchItem = document.createElement('div');
+                    matchItem.className = 'package-match-item';
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'package-match-text';
+                    textSpan.textContent = package.name;
+                    
+                    const addBtn = document.createElement('button');
+                    addBtn.className = 'add-existing-package-btn';
+                    addBtn.textContent = 'Add to Series';
+                    addBtn.addEventListener('click', () => {
+                        this.addExistingPackage(package.id, package.name);
+                    });
+                    
+                    matchItem.appendChild(textSpan);
+                    matchItem.appendChild(addBtn);
+                    container.appendChild(matchItem);
+                });
+                
+                container.classList.remove('hidden');
+            },
+            
+            // Hide package search matches
+            hidePackageMatches: function() {
+                const container = document.getElementById('packageMatches');
+                container.classList.add('hidden');
+                container.innerHTML = '';
+            },
+            
+            // Add existing package to current series
+            addExistingPackage: async function(packageId, packageName) {
+                try {
+                    const response = await fetch('/speeder/api/add-package-to-series/', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': this.getCsrfToken(),
+                        },
+                        body: JSON.stringify({
+                            package_id: packageId,
+                            brand_model_series_id: this.brandModelSeriesId,
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Add to local packages array
+                        this.packages.push({
+                            id: packageId,
+                            name: packageName,
+                        });
+                        
+                        // Refresh the package display and table
+                        this.renderPackages();
+                        this.renderBlurbTable();
+                        
+                        // Clear input and hide matches
+                        document.getElementById('newPackageText').value = '';
+                        this.hidePackageMatches();
+                        
+                        this.showSuccess(`Package "${packageName}" added to series`);
+                    } else {
+                        this.showError('Failed to add package: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error adding package: ' + error.message);
+                }
+            },
+            
+            // Create new package
+            createNewPackage: async function() {
+                const input = document.getElementById('newPackageText');
+                const name = input.value.trim();
+                
+                if (!name) {
+                    this.showError('Please enter package name');
+                    return;
+                }
+                
+                try {
+                    const response = await fetch('/speeder/api/create-package/', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': this.getCsrfToken(),
+                        },
+                        body: JSON.stringify({
+                            name: name,
+                            brand_model_series_id: this.brandModelSeriesId,
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Add to local packages array
+                        this.packages.push(data.package);
+                        
+                        // Refresh the package display and table
+                        this.renderPackages();
+                        this.renderBlurbTable();
+                        
+                        // Clear input and hide matches
+                        input.value = '';
+                        this.hidePackageMatches();
+                        
+                        this.showSuccess(`Package "${data.package.name}" created and added to series`);
+                    } else {
+                        this.showError('Failed to create package: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error creating package: ' + error.message);
+                }
             },
             
             // Load brands from API
             loadBrands: async function() {
                 try {
-                    const response = await fetch('/speeder/api/brands/');
+                    const response = await fetch('/speeder/api/brands/', {
+                        credentials: 'same-origin'
+                    });
                     const data = await response.json();
                     
                     if (data.success) {
@@ -441,6 +1246,9 @@
                 this.hideSection('seriesSection');
                 this.hideSection('blurbSection');
                 
+                // Update breadcrumb
+                this.updateBreadcrumb();
+                
                 // Load models
                 await this.loadModels(brand.id);
                 this.showSection('modelSection');
@@ -449,7 +1257,9 @@
             // Load models for a brand
             loadModels: async function(brandId) {
                 try {
-                    const response = await fetch(`/speeder/api/models/${brandId}/`);
+                    const response = await fetch(`/speeder/api/models/${brandId}/`, {
+                        credentials: 'same-origin'
+                    });
                     const data = await response.json();
                     
                     if (data.success) {
@@ -490,6 +1300,9 @@
                 this.highlightCard('modelsContainer', model.id);
                 this.hideSection('blurbSection');
                 
+                // Update breadcrumb
+                this.updateBreadcrumb();
+                
                 // Load series
                 await this.loadSeries(this.selectedBrand.id, model.id);
                 this.showSection('seriesSection');
@@ -498,7 +1311,9 @@
             // Load series for a brand and model
             loadSeries: async function(brandId, modelId) {
                 try {
-                    const response = await fetch(`/speeder/api/series/${brandId}/${modelId}/`);
+                    const response = await fetch(`/speeder/api/series/${brandId}/${modelId}/`, {
+                        credentials: 'same-origin'
+                    });
                     const data = await response.json();
                     
                     if (data.success) {
@@ -530,6 +1345,82 @@
                 container.appendChild(addCard);
             },
             
+            // Render packages for current series
+            renderPackages: function() {
+                const container = document.getElementById('packageContainer');
+                container.innerHTML = '';
+                
+                this.packages.forEach(package => {
+                    const card = document.createElement('div');
+                    card.className = 'nav-card';
+                    
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'card-title';
+                    titleDiv.textContent = package.name;
+                    card.appendChild(titleDiv);
+                    
+                    // Add remove button
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-package-btn';
+                    removeBtn.textContent = '×';
+                    removeBtn.title = 'Remove from series';
+                    removeBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.removePackageFromSeries(package.id, package.name);
+                    });
+                    card.appendChild(removeBtn);
+                    
+                    container.appendChild(card);
+                });
+                
+                // Add "No packages" message if empty
+                if (this.packages.length === 0) {
+                    const emptyCard = document.createElement('div');
+                    emptyCard.className = 'nav-card empty-package-card';
+                    emptyCard.innerHTML = '<div class="card-title">No packages yet</div><div class="card-subtitle">Add packages below to get started</div>';
+                    container.appendChild(emptyCard);
+                }
+            },
+            
+            // Remove package from series
+            removePackageFromSeries: async function(packageId, packageName) {
+                if (!confirm(`Remove "${packageName}" from this series? This will affect all associated blurbs.`)) {
+                    return;
+                }
+                
+                try {
+                    const response = await fetch('/speeder/api/remove-package-from-series/', {
+                        method: 'POST',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': this.getCsrfToken(),
+                        },
+                        body: JSON.stringify({
+                            package_id: packageId,
+                            brand_model_series_id: this.brandModelSeriesId,
+                        }),
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Remove from local packages array
+                        this.packages = this.packages.filter(p => p.id !== packageId);
+                        
+                        // Refresh displays
+                        this.renderPackages();
+                        this.renderBlurbTable();
+                        
+                        this.showSuccess(`Package "${packageName}" removed from series`);
+                    } else {
+                        this.showError('Failed to remove package: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error removing package: ' + error.message);
+                }
+            },
+            
             // Select a series
             selectSeries: async function(series) {
                 this.selectedSeries = series;
@@ -537,20 +1428,50 @@
                 // Update UI
                 this.highlightCard('seriesContainer', series.brand_model_series_id);
                 
+                // Update breadcrumb
+                this.updateBreadcrumb();
+                
+                // Load packages first
+                await this.loadPackages(this.selectedBrand.id, this.selectedModel.id, series.id || 0);
+                this.showSection('packageSection');
+                
                 // Load blurbs
                 const seriesId = series.id || 0; // Handle "No Series" case
                 await this.loadBlurbs(this.selectedBrand.id, this.selectedModel.id, seriesId);
                 this.showSection('blurbSection');
             },
             
-            // Load blurbs for a brand, model, and series
-            loadBlurbs: async function(brandId, modelId, seriesId) {
+            // Load packages for a brand, model, and series
+            loadPackages: async function(brandId, modelId, seriesId) {
                 try {
-                    const response = await fetch(`/speeder/api/blurbs/${brandId}/${modelId}/${seriesId}/`);
+                    const response = await fetch(`/speeder/api/packages/${brandId}/${modelId}/${seriesId}/`, {
+                        credentials: 'same-origin'
+                    });
                     const data = await response.json();
                     
                     if (data.success) {
                         this.packages = data.packages;
+                        this.brandModelSeriesId = data.brand_model_series_id;
+                        this.renderPackages();
+                    } else {
+                        this.showError('Failed to load packages: ' + data.error);
+                    }
+                } catch (error) {
+                    this.showError('Error loading packages: ' + error.message);
+                }
+            },
+            
+            // Load blurbs for a brand, model, and series
+            loadBlurbs: async function(brandId, modelId, seriesId) {
+                try {
+                    const response = await fetch(`/speeder/api/blurbs/${brandId}/${modelId}/${seriesId}/`, {
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Note: packages are already loaded by loadPackages(), don't overwrite
+                        // this.packages = data.packages;  // This was causing "All Packages" to appear as a real package
                         this.blurbs = data.blurbs;
                         this.renderBlurbTable();
                     } else {
@@ -575,8 +1496,14 @@
                 const packageCells = header.querySelectorAll('.package-header');
                 packageCells.forEach(cell => cell.remove());
                 
-                // Add package columns before the blurb text column
+                // Add "All Packages" column first
                 const blurbTextHeader = header.querySelector('th');
+                const allPackagesTh = document.createElement('th');
+                allPackagesTh.textContent = 'All Packages';
+                allPackagesTh.className = 'package-header';
+                header.insertBefore(allPackagesTh, blurbTextHeader);
+                
+                // Add real package columns
                 this.packages.forEach(package => {
                     const th = document.createElement('th');
                     th.textContent = package.name;
@@ -598,7 +1525,7 @@
                 if (this.blurbs.length === 0) {
                     const emptyRow = document.createElement('tr');
                     const emptyCell = document.createElement('td');
-                    emptyCell.colSpan = this.packages.length + 5; // packages + 5 other columns
+                    emptyCell.colSpan = this.packages.length + 6; // packages + "All Packages" + 5 other columns
                     emptyCell.className = 'empty-state';
                     emptyCell.textContent = 'No blurbs found. Add one below to get started.';
                     emptyRow.appendChild(emptyCell);
@@ -611,7 +1538,40 @@
                 const row = document.createElement('tr');
                 row.dataset.blurbId = blurb.id;
                 
-                // Package checkboxes
+                // Package checkboxes - start with "All Packages" (null)
+                const allPackagesCell = document.createElement('td');
+                allPackagesCell.style.textAlign = 'center';
+                
+                const allPackagesCheckbox = document.createElement('input');
+                allPackagesCheckbox.type = 'checkbox';
+                allPackagesCheckbox.className = 'package-checkbox';
+                allPackagesCheckbox.dataset.packageId = 'null';
+                
+                const allPackagesState = blurb.package_states['null'];
+                
+                if (allPackagesState) {
+                    allPackagesCheckbox.checked = allPackagesState.checked;
+                    
+                    // Check if this MatchItem is complex (created in admin)
+                    if (allPackagesState.is_complex) {
+                        allPackagesCheckbox.disabled = true;
+                        allPackagesCheckbox.className += ' complex-match-item';
+                        allPackagesCheckbox.title = 'This MatchItem was created in admin and cannot be modified here';
+                        allPackagesCell.title = 'This MatchItem was created in admin and cannot be modified here';
+                        allPackagesCell.className = 'complex-match-item-cell';
+                    }
+                }
+                
+                if (!allPackagesState || !allPackagesState.is_complex) {
+                    allPackagesCheckbox.addEventListener('change', () => {
+                        this.updateBlurbPackage(blurb.id, null, allPackagesCheckbox.checked);
+                    });
+                }
+                
+                allPackagesCell.appendChild(allPackagesCheckbox);
+                row.appendChild(allPackagesCell);
+                
+                // Then add checkboxes for real packages
                 this.packages.forEach(package => {
                     const cell = document.createElement('td');
                     cell.style.textAlign = 'center';
@@ -626,11 +1586,22 @@
                     
                     if (state) {
                         checkbox.checked = state.checked;
+                        
+                        // Check if this MatchItem is complex (created in admin)
+                        if (state.is_complex) {
+                            checkbox.disabled = true;
+                            checkbox.className += ' complex-match-item';
+                            checkbox.title = 'This MatchItem was created in admin and cannot be modified here';
+                            cell.title = 'This MatchItem was created in admin and cannot be modified here';
+                            cell.className = 'complex-match-item-cell';
+                        }
                     }
                     
-                    checkbox.addEventListener('change', () => {
-                        this.updateBlurbPackage(blurb.id, package.id, checkbox.checked);
-                    });
+                    if (!state || !state.is_complex) {
+                        checkbox.addEventListener('change', () => {
+                            this.updateBlurbPackage(blurb.id, package.id, checkbox.checked);
+                        });
+                    }
                     
                     cell.appendChild(checkbox);
                     row.appendChild(cell);
@@ -642,7 +1613,12 @@
                 // Blurb text
                 const textCell = document.createElement('td');
                 textCell.className = 'blurb-text';
-                textCell.textContent = blurb.text;
+                const blurbLink = document.createElement('a');
+                blurbLink.href = `/admin/maker/blurb/${blurb.id}/change/`;
+                blurbLink.textContent = blurb.text;
+                blurbLink.target = '_blank';
+                blurbLink.title = 'Edit this blurb in admin';
+                textCell.appendChild(blurbLink);
                 row.appendChild(textCell);
                 
                 // Placement
@@ -765,8 +1741,10 @@
                 try {
                     const response = await fetch('/speeder/api/save-blurb-packages/', {
                         method: 'POST',
+                        credentials: 'same-origin',
                         headers: {
                             'Content-Type': 'application/json',
+                            'X-CSRFToken': this.getCsrfToken(),
                         },
                         body: JSON.stringify({
                             blurb_id: blurbId,
@@ -800,8 +1778,10 @@
                 try {
                     const response = await fetch('/speeder/api/create-blurb/', {
                         method: 'POST',
+                        credentials: 'same-origin',
                         headers: {
                             'Content-Type': 'application/json',
+                            'X-CSRFToken': this.getCsrfToken(),
                         },
                         body: JSON.stringify({
                             text: text,
@@ -927,18 +1907,362 @@
                 }, 5000);
             },
             
-            // Placeholder functions for add new actions
+            // Add new brand
             addNewBrand: function() {
-                alert('Add new brand functionality would be implemented here');
+                const modal = document.getElementById('brandModal');
+                const form = document.getElementById('brandForm');
+                const input = document.getElementById('brandName');
+                
+                // Reset form
+                form.reset();
+                input.focus();
+                
+                // Show modal
+                modal.classList.remove('hidden');
+                
+                // Handle form submission
+                form.onsubmit = async (e) => {
+                    e.preventDefault();
+                    
+                    const name = input.value.trim();
+                    if (!name) {
+                        this.showError('Brand name is required');
+                        return;
+                    }
+                    
+                    try {
+                        const response = await fetch('/speeder/api/create-brand/', {
+                            method: 'POST',
+                            credentials: 'same-origin',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': this.getCsrfToken(),
+                            },
+                            body: JSON.stringify({ name: name }),
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            modal.classList.add('hidden');
+                            this.showSuccess(`Brand "${data.brand.name}" created successfully`);
+                            
+                            // Reload brands and auto-select the new one
+                            await this.loadBrands();
+                            this.selectBrand(data.brand);
+                        } else {
+                            this.showError('Failed to create brand: ' + data.error);
+                        }
+                    } catch (error) {
+                        this.showError('Error creating brand: ' + error.message);
+                    }
+                };
             },
             
+            // Add new model
             addNewModel: function() {
-                alert('Add new model functionality would be implemented here');
+                if (!this.selectedBrand) {
+                    this.showError('Please select a brand first');
+                    return;
+                }
+                
+                const modal = document.getElementById('modelModal');
+                const form = document.getElementById('modelForm');
+                const input = document.getElementById('modelName');
+                
+                // Reset form
+                form.reset();
+                input.focus();
+                
+                // Show modal
+                modal.classList.remove('hidden');
+                
+                // Handle form submission
+                form.onsubmit = async (e) => {
+                    e.preventDefault();
+                    
+                    const name = input.value.trim();
+                    if (!name) {
+                        this.showError('Model name is required');
+                        return;
+                    }
+                    
+                    try {
+                        const response = await fetch('/speeder/api/create-model/', {
+                            method: 'POST',
+                            credentials: 'same-origin',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': this.getCsrfToken(),
+                            },
+                            body: JSON.stringify({ 
+                                name: name,
+                                brand_id: this.selectedBrand ? this.selectedBrand.id : null
+                            }),
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            modal.classList.add('hidden');
+                            this.showSuccess(`Model "${data.model.name}" created successfully`);
+                            
+                            // Reload models and auto-select the new one
+                            await this.loadModels(this.selectedBrand.id);
+                            this.selectModel(data.model);
+                        } else {
+                            this.showError('Failed to create model: ' + data.error);
+                        }
+                    } catch (error) {
+                        this.showError('Error creating model: ' + error.message);
+                    }
+                };
             },
             
+            // Add new series
             addNewSeries: function() {
-                alert('Add new series functionality would be implemented here');
+                if (!this.selectedBrand || !this.selectedModel) {
+                    this.showError('Please select a brand and model first');
+                    return;
+                }
+                
+                const modal = document.getElementById('seriesModal');
+                const form = document.getElementById('seriesForm');
+                const brandSelect = document.getElementById('seriesBrand');
+                const modelSelect = document.getElementById('seriesModel');
+                const nameInput = document.getElementById('seriesName');
+                const yearStartInput = document.getElementById('yearStart');
+                const yearEndInput = document.getElementById('yearEnd');
+                
+                // Reset form
+                form.reset();
+                nameInput.focus();
+                
+                // Load brands and pre-select current brand
+                this.loadBrandsForModal(brandSelect, this.selectedBrand.id);
+                
+                // Show modal
+                modal.classList.remove('hidden');
+                
+                // Handle brand change to update models
+                brandSelect.addEventListener('change', async () => {
+                    const selectedBrandId = brandSelect.value;
+                    if (selectedBrandId) {
+                        await this.loadModelsForModal(modelSelect, selectedBrandId);
+                    } else {
+                        modelSelect.innerHTML = '<option value="">Select a brand first</option>';
+                    }
+                });
+                
+                // Load models for current brand and pre-select current model
+                this.loadModelsForModal(modelSelect, this.selectedBrand.id, this.selectedModel.id);
+                
+                // Handle form submission
+                form.onsubmit = async (e) => {
+                    e.preventDefault();
+                    
+                    const name = nameInput.value.trim();
+                    const brandId = brandSelect.value;
+                    const modelId = modelSelect.value;
+                    const yearStart = parseInt(yearStartInput.value);
+                    const yearEnd = yearEndInput.value ? parseInt(yearEndInput.value) : null;
+                    
+                    if (!name) {
+                        this.showError('Series name is required');
+                        return;
+                    }
+                    
+                    if (!brandId || !modelId) {
+                        this.showError('Brand and model are required');
+                        return;
+                    }
+                    
+                    if (!yearStart || isNaN(yearStart)) {
+                        this.showError('Year start is required');
+                        return;
+                    }
+                    
+                    if (yearEnd && yearStart > yearEnd) {
+                        this.showError('Year start cannot be greater than year end');
+                        return;
+                    }
+                    
+                    try {
+                        const response = await fetch('/speeder/api/create-series/', {
+                            method: 'POST',
+                            credentials: 'same-origin',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': this.getCsrfToken(),
+                            },
+                            body: JSON.stringify({
+                                name: name,
+                                brand_id: brandId,
+                                model_id: modelId,
+                                year_start: yearStart,
+                                year_end: yearEnd,
+                            }),
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.success) {
+                            modal.classList.add('hidden');
+                            this.showSuccess(`Series "${data.series.name}" created successfully`);
+                            
+                            // Reload series for the selected brand/model combination
+                            await this.loadSeries(brandId, modelId);
+                            
+                            // If the series was created for the currently selected brand/model, select it
+                            if (brandId == this.selectedBrand.id && modelId == this.selectedModel.id) {
+                                this.selectSeries(data.series);
+                            }
+                        } else {
+                            this.showError('Failed to create series: ' + data.error);
+                        }
+                    } catch (error) {
+                        this.showError('Error creating series: ' + error.message);
+                    }
+                };
             },
+            
+            // Load brands for modal dropdown
+            loadBrandsForModal: async function(selectElement, selectedBrandId = null) {
+                try {
+                    const response = await fetch('/speeder/api/brands/', {
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        selectElement.innerHTML = '<option value="">Select a brand</option>';
+                        data.brands.forEach(brand => {
+                            const option = document.createElement('option');
+                            option.value = brand.id;
+                            option.textContent = brand.name;
+                            if (brand.id == selectedBrandId) {
+                                option.selected = true;
+                            }
+                            selectElement.appendChild(option);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading brands for modal:', error);
+                }
+            },
+            
+            // Load models for modal dropdown
+            loadModelsForModal: async function(selectElement, brandId, selectedModelId = null) {
+                try {
+                    const response = await fetch(`/speeder/api/models/${brandId}/`, {
+                        credentials: 'same-origin'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        selectElement.innerHTML = '<option value="">Select a model</option>';
+                        data.models.forEach(model => {
+                            const option = document.createElement('option');
+                            option.value = model.id;
+                            option.textContent = model.name;
+                            if (model.id == selectedModelId) {
+                                option.selected = true;
+                            }
+                            selectElement.appendChild(option);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading models for modal:', error);
+                }
+            },
+            
+            // Update breadcrumb navigation
+            updateBreadcrumb: function() {
+                const brandItem = document.getElementById('breadcrumbBrand');
+                const modelItem = document.getElementById('breadcrumbModel');
+                const seriesItem = document.getElementById('breadcrumbSeries');
+                
+                // Reset all items
+                brandItem.className = 'breadcrumb-item';
+                modelItem.className = 'breadcrumb-item';
+                seriesItem.className = 'breadcrumb-item';
+                
+                // Update brand
+                if (this.selectedBrand) {
+                    brandItem.className = 'breadcrumb-item completed';
+                    brandItem.querySelector('.breadcrumb-text').textContent = this.selectedBrand.name;
+                } else {
+                    brandItem.className = 'breadcrumb-item active';
+                    brandItem.querySelector('.breadcrumb-text').textContent = 'Select Brand';
+                }
+                
+                // Update model
+                if (this.selectedModel) {
+                    modelItem.className = 'breadcrumb-item completed';
+                    modelItem.querySelector('.breadcrumb-text').textContent = this.selectedModel.name;
+                } else if (this.selectedBrand) {
+                    modelItem.className = 'breadcrumb-item active';
+                    modelItem.querySelector('.breadcrumb-text').textContent = 'Select Model';
+                } else {
+                    modelItem.className = 'breadcrumb-item';
+                    modelItem.querySelector('.breadcrumb-text').textContent = 'Select Model';
+                }
+                
+                // Update series
+                if (this.selectedSeries) {
+                    seriesItem.className = 'breadcrumb-item completed';
+                    seriesItem.querySelector('.breadcrumb-text').textContent = this.selectedSeries.name;
+                } else if (this.selectedModel) {
+                    seriesItem.className = 'breadcrumb-item active';
+                    seriesItem.querySelector('.breadcrumb-text').textContent = 'Select Series';
+                } else {
+                    seriesItem.className = 'breadcrumb-item';
+                    seriesItem.querySelector('.breadcrumb-text').textContent = 'Select Series';
+                }
+            },
+            
+            // Get CSRF token from cookie
+            getCsrfToken: function() {
+                const name = 'csrftoken';
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            },
+            
+            setupModalHandlers: function() {
+                // Close modals when clicking outside or on close button
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal') || e.target.classList.contains('modal-close')) {
+                        const modals = document.querySelectorAll('.modal');
+                        modals.forEach(modal => modal.classList.add('hidden'));
+                    }
+                });
+                
+                // Handle cancel buttons
+                const cancelButtons = document.querySelectorAll('.btn-cancel');
+                cancelButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const modals = document.querySelectorAll('.modal');
+                        modals.forEach(modal => modal.classList.add('hidden'));
+                    });
+                });
+                
+                // Prevent modal close when clicking on modal content
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal-content')) {
+                        e.stopPropagation();
+                    }
+                });
+            }
         };
         
         // Initialize the application when DOM is loaded
@@ -948,3 +2272,87 @@
     </script>
 </body>
 </html>
+
+<!-- Modal Dialogs -->
+<div id="brandModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Brand</h3>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="brandForm">
+                <div class="form-group">
+                    <label for="brandName">Brand Name:</label>
+                    <input type="text" id="brandName" name="name" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Brand</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="modelModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Model</h3>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="modelForm">
+                <div class="form-group">
+                    <label for="modelName">Model Name:</label>
+                    <input type="text" id="modelName" name="name" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Model</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="seriesModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add New Series</h3>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="seriesForm">
+                <div class="form-group">
+                    <label for="seriesBrand">Brand:</label>
+                    <select id="seriesBrand" name="brand_id" required>
+                        <option value="">Loading brands...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="seriesModel">Model:</label>
+                    <select id="seriesModel" name="model_id" required>
+                        <option value="">Select a brand first</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="seriesName">Series Name:</label>
+                    <input type="text" id="seriesName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="yearStart">Year Start:</label>
+                    <input type="number" id="yearStart" name="year_start" min="1900" max="2100" required>
+                </div>
+                <div class="form-group">
+                    <label for="yearEnd">Year End (optional):</label>
+                    <input type="number" id="yearEnd" name="year_end" min="1900" max="2100">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Series</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
