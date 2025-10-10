@@ -2,7 +2,7 @@
 
 /* Override Django admin colors to match Carla.se theme */
 :root {
-    --primary: #00d4aa;  /* Your teal color */
+    --primary: #ADE1B9;  /* Your teal color */
     --primary-fg: #fff;
     --body-fg: #333;
     --body-bg: #fff;
@@ -16,8 +16,8 @@
     --breadcrumbs-link-fg: var(--primary);
     --breadcrumbs-bg: #f8f9fa;
     --link-fg: var(--primary);
-    --link-hover-color: #00b899;
-    --link-selected-fg: #00b899;
+    --link-hover-color: #8fbf9a;
+    --link-selected-fg: #8fbf9a;
     --hairline-color: #e8e8e8;
     --border-color: #ddd;
     --error-fg: #d63384;
@@ -29,7 +29,7 @@
     --selected-row: #e8f5f0;
     --button-fg: #fff;
     --button-bg: var(--primary);
-    --button-hover-bg: #00b899;
+    --button-hover-bg: #8fbf9a;
     --default-button-bg: #6c757d;
     --default-button-hover-bg: #5a6268;
     --close-button-bg: #888;
@@ -52,7 +52,7 @@
 }
 
 #header a:focus, #header a:hover {
-    color: #00b899;
+    color: #8fbf9a;
 }
 
 #site-name a {
@@ -449,8 +449,7 @@ select:focus {
 }
 
 .login .submit-row input[type="submit"]:hover {
-    background: #00b899;
-    transform: translateY(-1px);
+    background: #8fbf9a(-1px);
     box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
 }
 
@@ -468,7 +467,7 @@ select:focus {
 }
 
 .login .password-reset-link a:hover {
-    color: #00b899;
+    color: #8fbf9a;
     text-decoration: underline;
 }
 
