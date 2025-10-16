@@ -2,15 +2,15 @@
 
 /* Override Django admin colors to match Carla.se theme */
 :root {
-    --primary: #ADE1B9;  /* Your teal color */
+    --primary: #1b1a1a;  
     --primary-fg: #fff;
-    --body-fg: #333;
+    --body-fg: #393939;
     --body-bg: #fff;
     --body-quiet-color: #666;
-    --body-loud-color: #000;
+    --body-loud-color: #6a6a6a;
     --header-color: #ffc;
     --header-branding-color: var(--primary);
-    --header-bg: #2c2c2c;  /* Dark header like your main site */
+    --header-bg: #ececec;  /* Dark header like your main site */
     --header-link-color: var(--primary);
     --breadcrumbs-fg: #c4dce8;
     --breadcrumbs-link-fg: var(--primary);
@@ -43,11 +43,11 @@
     background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
     color: #fff;
     border-bottom: 3px solid var(--primary);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #header a:link, #header a:visited {
-    color: var(--primary);
+    color: #fff;
     font-weight: 500;
 }
 
@@ -65,7 +65,7 @@
 }
 
 #site-name a:hover {
-    color: var(--primary) !important;
+    color: #8fbf9a !important;
 }
 
 /* Navigation breadcrumbs */
@@ -147,7 +147,7 @@ textarea:focus,
 select:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Buttons */
@@ -166,9 +166,9 @@ select:focus {
 }
 
 .button:hover, input[type="submit"]:hover, button:hover {
-    background: #00b899;
+    background: #8fbf9a;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .button.default, .default {
@@ -357,7 +357,7 @@ select:focus {
     color: #fff;
     border-radius: 12px 12px 0 0;
     border-bottom: 3px solid var(--primary);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .login #branding {
@@ -424,7 +424,7 @@ select:focus {
 .login .form-row input[type="text"]:focus,
 .login .form-row input[type="password"]:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+    box-shadow: 0 0 0 2px rgba(2, 2, 2, 0.2);
     outline: none;
 }
 
@@ -450,7 +450,7 @@ select:focus {
 
 .login .submit-row input[type="submit"]:hover {
     background: #8fbf9a(-1px);
-    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .login .password-reset-link {
@@ -577,6 +577,6 @@ select.vForeignKeyRawIdAdminField:focus,
 .aligned select:focus,
 .inline-group select:focus {
     border-color: var(--primary) !important;
-    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2) !important;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2) !important;
     outline: none !important;
 }
