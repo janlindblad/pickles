@@ -35,8 +35,8 @@
 }
 
 .btn-primary:hover:not(:disabled) {
-    background-color: #333;
-    border-color: #333;
+    background-color: #424242;
+    border-color: #424242;
     color: white;
 }
 

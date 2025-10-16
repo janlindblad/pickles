@@ -28,10 +28,10 @@
     --selected-bg: #e8f5f0;
     --selected-row: #e8f5f0;
     --button-fg: #fff;
-    --button-bg: var(--primary);
+    --button-bg: #fff;
     --button-hover-bg: #8fbf9a;
-    --default-button-bg: #6c757d;
-    --default-button-hover-bg: #5a6268;
+    --default-button-bg: #fff;
+    --default-button-hover-bg: #fff;
     --close-button-bg: #888;
     --close-button-hover-bg: #747474;
     --delete-button-bg: #d63384;
@@ -152,7 +152,7 @@ select:focus {
 
 /* Buttons */
 .button, input[type="submit"], button {
-    background: var(--primary);
+    background: #fff;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -230,7 +230,7 @@ select:focus {
 /* Dashboard modules */
 .dashboard .module {
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 8px rgba(0,0,0,0.1);
     border: none;
 }
 
