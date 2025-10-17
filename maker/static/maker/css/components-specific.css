@@ -90,7 +90,7 @@
 
 .content-item:hover {
     background: #f5f5f5;
-    border-color: var(--secondary-color);
+    border-color: #8fbf9a;
     box-shadow: 0 2px 4px rgba(0, 212, 170, 0.1);
 }
 

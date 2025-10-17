@@ -11,7 +11,7 @@
     --text-primary: #1a1a1a;         /* Dark text */
     --text-secondary: #6c757d;       /* Gray text */
     --text-muted: #adb5bd;           /* Muted text */
-    --success-color: #28a745;        /* Success green */
+    --success-color: #48a553;        /* Success green */
     --warning-color: #ffc107;        /* Warning yellow */
     --error-color: #dc3545;          /* Error red */
     
@@ -68,7 +68,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-normal);
     line-height: 1.2;
     margin-top: 0;
     margin-bottom: var(--spacing-md);
@@ -92,7 +92,7 @@ a {
 }
 
 a:hover {
-    color: var(--primary-color);
+    color: #8fbf9a;
 }
 
 /* Utility classes */

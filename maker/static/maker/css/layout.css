@@ -86,7 +86,7 @@
 }
 
 .navbar-brand:hover {
-    color: var(--secondary-color);
+    color: #8fbf9a;
 }
 
 .navbar-nav {
@@ -110,7 +110,7 @@
 }
 
 .navbar-nav a:hover {
-    color: var(--secondary-color);
+    color: #8fbf9a;
 }
 
 /* Main content area */
