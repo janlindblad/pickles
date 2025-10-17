@@ -8,7 +8,7 @@
     --body-bg: #fff;
     --body-quiet-color: #666;
     --body-loud-color: #6a6a6a;
-    --header-color: #ffc;
+    --header-color: rgb(114, 114, 114);
     --header-branding-color: var(--primary);
     --header-bg: #ececec;  /* Dark header like your main site */
     --header-link-color: var(--primary);
