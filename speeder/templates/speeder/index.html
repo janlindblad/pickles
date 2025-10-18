@@ -7,9 +7,14 @@
     <style>
         /* Speeder Interface Styles */
         .speeder-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
+            /* Match Maker container horizontal gutters and responsive max-width */
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: var(--spacing-md);
+            padding-left: var(--spacing-md);
+            /* Follow Maker breakpoints: max-width will scale via layout.css media queries; ensure large screens match 1140px */
+            max-width: 1140px;
         }
         
         .speeder-header {
@@ -120,7 +125,7 @@
         }
         
         .nav-card.add-new {
-            border: 2px dashed #515151ff;
+            border: 1.5px dashed #dededeff;
             color: #505050ff;
             background: #f9fcfc;
             padding: 15px;
@@ -502,13 +507,13 @@
         .breadcrumb-section {
             margin-bottom: 25px;
             padding: 15px 20px;
-            background: white;
+            background: #ecececff;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: sticky;
             top: var(--navbar-height, 60px);
             z-index: 1000;
-            border-bottom: 2px solid #dcdbdbff;
+            border-bottom: 1.5px solid #ecececff;
         }        .breadcrumb {
             display: flex;
             align-items: center;
@@ -720,7 +725,7 @@
             <div class="speeder-header">
                 <div>
                     <h1 class="speeder-title">Speeder</h1>
-                    <p class="speeder-subtitle">Bulk Data Management Interface</p>
+                    <p class="speeder-subtitle">Add New Model</p>
                 </div>
             </div>
             
@@ -731,17 +736,14 @@
             <div class="breadcrumb-section" id="breadcrumbSection">
                 <div class="breadcrumb">
                     <span class="breadcrumb-item" id="breadcrumbBrand">
-                      <!--   <i class="breadcrumb-icon">🏢</i> -->
                         <span class="breadcrumb-text">Select Brand</span>
                     </span>
                     <span class="breadcrumb-separator">›</span>
                     <span class="breadcrumb-item" id="breadcrumbModel">
-                        <!-- <i class="breadcrumb-icon">🚗</i> -->
                         <span class="breadcrumb-text">Select Model</span>
                     </span>
                     <span class="breadcrumb-separator">›</span>
                     <span class="breadcrumb-item" id="breadcrumbSeries">
-                        <!-- <i class="breadcrumb-icon">🔧</i> -->
                         <span class="breadcrumb-text">Select Series</span>
                     </span>
                 </div>

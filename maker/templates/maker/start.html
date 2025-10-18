@@ -167,6 +167,12 @@
         .content-text {
             flex: 1;
         }
+        /* Speeder-style header thin divider to match speeder page */
+        .speeder-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
     </style>
 </head>
 <body>
@@ -174,6 +180,14 @@
     
     <main class="main-content">
         <div class="container">
+            <!-- Speeder header (copied from speeder page) -->
+            <div class="speeder-header">
+                <div>
+                    <h1 class="speeder-title">Maker</h1>
+                    <p class="speeder-subtitle">Generate Content</p>
+                </div>
+            </div>
+
             <!-- Header with Clear Button -->
             <div class="header-controls">
                <!-- <h1 class="m-0">Create Ad Blurb</h1> -->
