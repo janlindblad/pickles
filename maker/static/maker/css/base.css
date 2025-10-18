@@ -1,7 +1,6 @@
 /* Base CSS - Core styling, typography, colors, and fundamental elements */
 
 :root {
-    /* Color scheme inspired by Carla.se */
     --primary-color: #1a1a1a;        /* Dark primary */
     --secondary-color: #8fbf9a;      /* Pickle insida */
     --accent-color: #8fbf9a;         /* Pickle utsida */

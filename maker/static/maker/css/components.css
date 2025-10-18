@@ -60,7 +60,7 @@
 
 .btn-outline:hover:not(:disabled) {
     background-color: #8fbf9a;
-    border-color: var(--primary-color);
+    border-color: #cccccc;
     color: white;
 }
 
@@ -72,7 +72,7 @@
 
 .btn-clear:hover:not(:disabled) {
     background-color: #e88173;
-    border-color: var(--error-color);
+    border-color:  #ffbab0;
     color: white;
 }
 
@@ -184,7 +184,7 @@
 .card-header {
     padding: var(--spacing-md) var(--spacing-lg);
     background-color: var(--surface-color);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color); 
     font-weight: var(--font-weight-medium);
 }
 
