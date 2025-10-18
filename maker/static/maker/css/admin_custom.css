@@ -580,3 +580,26 @@ select.vForeignKeyRawIdAdminField:focus,
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2) !important;
     outline: none !important;
 }
+
+/* User tools styling - ensure LOG OUT button is always visible on dark header */
+#logout-form button {
+    color: #ffffff !important; /* Always white text for visibility on dark header */
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0;
+    font-weight: 300;
+    font-size: 0.6875rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+#logout-form button:hover,
+#logout-form button:focus {
+    color: #81d4fa !important; /* Light blue hover color */
+    border-bottom: 1px solid #81d4fa;
+    text-decoration: none;
+    margin-bottom: 0;
+}
