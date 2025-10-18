@@ -71,7 +71,7 @@
 }
 
 .btn-clear:hover:not(:disabled) {
-    background-color: #8fbf9a;
+    background-color: #e88173;
     border-color: var(--error-color);
     color: white;
 }
@@ -117,7 +117,7 @@
 .form-control:focus {
     border-color: var(--secondary-color);
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 212, 170, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(110, 181, 103, 0.25);
 }
 
 .form-select {
@@ -138,7 +138,7 @@
 .form-select:focus {
     border-color: var(--secondary-color);
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 212, 170, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(123, 199, 125, 0.25);
 }
 
 .form-select:disabled {
