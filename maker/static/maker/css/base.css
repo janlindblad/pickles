@@ -85,13 +85,13 @@ p {
 }
 
 a {
-    color: var(--secondary-color);
+    color: #393939;
     text-decoration: none;
     transition: color 0.15s ease-in-out;
 }
 
 a:hover {
-    color: #8fbf9a;
+    color: #f0f0f0;
 }
 
 /* Utility classes */
