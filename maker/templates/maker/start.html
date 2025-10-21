@@ -229,10 +229,12 @@
                 </div>
             </div>
             
-            <!-- Notification Area -->
-            <div id="notificationArea" class="alert alert-dismissible d-none mt-3" role="alert">
-                <span id="notificationMessage"></span>
-                <button type="button" class="btn-close" onclick="document.getElementById('notificationArea').classList.add('d-none')"></button>
+            <!-- Popup Notification System -->
+            <div id="notificationPopup" class="notification-popup hidden">
+                <div class="notification-content">
+                    <span id="notificationMessage"></span>
+                    <button type="button" class="notification-close" onclick="AppState.hideNotification()">&times;</button>
+                </div>
             </div>
             
             <!-- Selection Area -->
@@ -592,40 +594,27 @@
                     });
             },
             
-            // Show notification to user
+            // Show notification popup
             showNotification: function(message, type = 'info') {
-                const notificationArea = document.getElementById('notificationArea');
+                const notificationPopup = document.getElementById('notificationPopup');
                 const notificationMessage = document.getElementById('notificationMessage');
                 
                 // Set message and style
                 notificationMessage.textContent = message;
-                notificationArea.className = `alert alert-${type} alert-dismissible`;
-                notificationArea.classList.remove('d-none');
+                notificationPopup.className = `notification-popup notification-${type}`;
                 
                 // Auto-hide after 5 seconds for non-error messages
                 if (type !== 'danger') {
                     setTimeout(() => {
-                        notificationArea.classList.add('d-none');
+                        this.hideNotification();
                     }, 5000);
                 }
             },
             
-            // Show notification to user
-            showNotification: function(message, type = 'info') {
-                const notificationArea = document.getElementById('notificationArea');
-                const notificationMessage = document.getElementById('notificationMessage');
-                
-                // Set message and style
-                notificationMessage.textContent = message;
-                notificationArea.className = `alert alert-${type} alert-dismissible`;
-                notificationArea.classList.remove('d-none');
-                
-                // Auto-hide after 5 seconds for non-error messages
-                if (type !== 'danger') {
-                    setTimeout(() => {
-                        notificationArea.classList.add('d-none');
-                    }, 5000);
-                }
+            // Hide notification popup
+            hideNotification: function() {
+                const notificationPopup = document.getElementById('notificationPopup');
+                notificationPopup.classList.add('hidden');
             },
             
             // Clear content lists
@@ -726,7 +715,7 @@
                 this.clearContentLists();
                 
                 // Hide notifications
-                document.getElementById('notificationArea').classList.add('d-none');
+                AppState.hideNotification();
                 
                 // Update UI
                 this.updateSelection();

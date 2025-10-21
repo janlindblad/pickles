@@ -484,23 +484,75 @@
             display: none !important;
         }
         
-        /* Status Messages */
-        .status-message {
-            padding: 10px 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
+        /* Popup Notification System */
+        .notification-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            min-width: 300px;
+            max-width: 400px;
+            transform: translateX(450px);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
         }
-        
-        .status-success {
-            background: #8fbf9a;
-            color: #505050ff;
-            border: 1px solid #8fbf9a;
+
+        .notification-popup:not(.hidden) {
+            transform: translateX(0);
+            opacity: 1;
         }
-        
-        .status-error {
-            background: #f8d7da;
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            line-height: 1.4;
+            border-left: 4px solid;
+        }
+
+        .notification-popup.notification-info .notification-content {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-left-color: #17a2b8;
+        }
+
+        .notification-popup.notification-success .notification-content {
+            background-color: #d4edda;
+            color: #155724;
+            border-left-color: #28a745;
+        }
+
+        .notification-popup.notification-danger .notification-content {
+            background-color: #f8d7da;
             color: #721c24;
-            border: 1px solid #f5c6cb;
+            border-left-color: #dc3545;
+        }
+
+        .notification-popup.notification-warning .notification-content {
+            background-color: #fff3cd;
+            color: #856404;
+            border-left-color: #ffc107;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: inherit;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 12px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+
+        .notification-close:hover {
+            opacity: 1;
         }
         
         /* Breadcrumb Navigation */
@@ -729,8 +781,13 @@
                 </div>
             </div>
             
-            <!-- Status Messages -->
-            <div id="statusMessage" class="status-message hidden"></div>
+            <!-- Popup Notification System -->
+            <div id="notificationPopup" class="notification-popup hidden">
+                <div class="notification-content">
+                    <span id="notificationMessage"></span>
+                    <button type="button" class="notification-close" onclick="SpeederApp.hideNotification()">&times;</button>
+                </div>
+            </div>
             
             <!-- Current Selection Breadcrumb -->
             <div class="breadcrumb-section" id="breadcrumbSection">
@@ -1903,23 +1960,32 @@
             },
             
             showSuccess: function(message) {
-                this.showMessage(message, 'status-success');
+                this.showNotification(message, 'success');
             },
             
             showError: function(message) {
-                this.showMessage(message, 'status-error');
+                this.showNotification(message, 'danger');
             },
             
-            showMessage: function(message, className) {
-                const messageDiv = document.getElementById('statusMessage');
-                messageDiv.textContent = message;
-                messageDiv.className = `status-message ${className}`;
-                messageDiv.classList.remove('hidden');
+            showNotification: function(message, type = 'info') {
+                const notificationPopup = document.getElementById('notificationPopup');
+                const notificationMessage = document.getElementById('notificationMessage');
                 
-                // Auto-hide after 5 seconds
-                setTimeout(() => {
-                    messageDiv.classList.add('hidden');
-                }, 5000);
+                // Set message and style
+                notificationMessage.textContent = message;
+                notificationPopup.className = `notification-popup notification-${type}`;
+                
+                // Auto-hide after 5 seconds for non-error messages
+                if (type !== 'danger') {
+                    setTimeout(() => {
+                        this.hideNotification();
+                    }, 5000);
+                }
+            },
+            
+            hideNotification: function() {
+                const notificationPopup = document.getElementById('notificationPopup');
+                notificationPopup.classList.add('hidden');
             },
             
             // Add new brand

@@ -16,15 +16,136 @@
     </div>
 </nav>
 
-<!-- Django Messages Display -->
+<!-- Django Messages converted to popup notifications -->
 {% if messages %}
-    <div class="container">
-        <ul class="messages">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags|default:'info' }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </ul>
+    <!-- Popup Notification System for Django Messages -->
+    <div id="djangoNotificationPopup" class="notification-popup hidden">
+        <div class="notification-content">
+            <span id="djangoNotificationMessage"></span>
+            <button type="button" class="notification-close" onclick="hideDjangoNotification()">&times;</button>
+        </div>
     </div>
+    
+    <script>
+        // Convert Django messages to popup notifications
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = [
+                {% for message in messages %}
+                {
+                    text: "{{ message|escapejs }}",
+                    type: '{{ message.tags|default:"info" }}'
+                },
+                {% endfor %}
+            ];
+            
+            // Show each message as popup (with delay between multiple messages)
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    showDjangoNotification(msg.text, msg.type);
+                }, index * 100); // Slight delay between multiple messages
+            });
+        });
+        
+        function showDjangoNotification(message, type) {
+            const popup = document.getElementById('djangoNotificationPopup');
+            const messageEl = document.getElementById('djangoNotificationMessage');
+            
+            // Map Django message tags to our notification types
+            const typeMap = {
+                'success': 'success',
+                'error': 'danger', 
+                'warning': 'warning',
+                'info': 'info',
+                'debug': 'info'
+            };
+            
+            messageEl.textContent = message;
+            popup.className = `notification-popup notification-${typeMap[type] || 'info'}`;
+            
+            // Auto-hide after 7 seconds (longer for Django messages)
+            if (type !== 'error') {
+                setTimeout(() => {
+                    hideDjangoNotification();
+                }, 7000);
+            }
+        }
+        
+        function hideDjangoNotification() {
+            const popup = document.getElementById('djangoNotificationPopup');
+            popup.classList.add('hidden');
+        }
+    </script>
+    
+    <style>
+        /* Popup Notification System for Django Messages */
+        #djangoNotificationPopup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            min-width: 300px;
+            max-width: 400px;
+            transform: translateX(450px);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+        }
+
+        #djangoNotificationPopup:not(.hidden) {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        #djangoNotificationPopup .notification-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            line-height: 1.4;
+            border-left: 4px solid;
+        }
+
+        #djangoNotificationPopup.notification-info .notification-content {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border-left-color: #17a2b8;
+        }
+
+        #djangoNotificationPopup.notification-success .notification-content {
+            background-color: #d4edda;
+            color: #155724;
+            border-left-color: #28a745;
+        }
+
+        #djangoNotificationPopup.notification-danger .notification-content {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left-color: #dc3545;
+        }
+
+        #djangoNotificationPopup.notification-warning .notification-content {
+            background-color: #fff3cd;
+            color: #856404;
+            border-left-color: #ffc107;
+        }
+
+        #djangoNotificationPopup .notification-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: inherit;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 12px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+
+        #djangoNotificationPopup .notification-close:hover {
+            opacity: 1;
+        }
+    </style>
 {% endif %}
