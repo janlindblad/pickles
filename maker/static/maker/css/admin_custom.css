@@ -20,7 +20,7 @@
     --link-selected-fg: #8fbf9a;
     --hairline-color: #e8e8e8;
     --border-color: #ddd;
-    --error-fg: #d63384;
+    --error-fg: #e88173;
     --message-success-bg: #d1e7dd;
     --message-warning-bg: #fff3cd;
     --message-error-bg: #f8d7da;
@@ -31,11 +31,11 @@
     --button-bg: #fff;
     --button-hover-bg: #8fbf9a;
     --default-button-bg: #fff;
-    --default-button-hover-bg: #fff;
+    --default-button-hover-bg: #8fbf9a;
     --close-button-bg: #888;
     --close-button-hover-bg: #747474;
-    --delete-button-bg: #d63384;
-    --delete-button-hover-bg: #c02c5f;
+    --delete-button-bg: #e88173;
+    --delete-button-hover-bg: #ffbab0;
 }
 
 /* Header styling to match your main site */
@@ -154,7 +154,7 @@ select:focus {
 .button, input[type="submit"], button {
     background: #fff;
     border: none;
-    color: white;
+    color: rgb(52, 52, 52);
     padding: 10px 20px;
     border-radius: 6px;
     font-size: 14px;
@@ -176,7 +176,7 @@ select:focus {
 }
 
 .button.default:hover, .default:hover {
-    background: #5a6268;
+    background: #8fbf9a;
 }
 
 /* Tables */
@@ -591,15 +591,14 @@ select.vForeignKeyRawIdAdminField:focus,
     font-weight: 300;
     font-size: 0.6875rem;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
     cursor: pointer;
     font-family: inherit;
 }
 
 #logout-form button:hover,
 #logout-form button:focus {
-    color: #81d4fa !important; /* Light blue hover color */
-    border-bottom: 1px solid #81d4fa;
+    color: #8fbf9a !important; /* Pickle green */
+    border-bottom: 1px solid #b2d6ba;
     text-decoration: none;
     margin-bottom: 0;
 }
