@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "base_header.html" %}
+    <title>Pickles Setup</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .card-header {
+            background: #007bff;
+            color: white;
+            padding: 20px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .alert-info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-outline-secondary {
+            background-color: transparent;
+            color: #6c757d;
+            border: 1px solid #6c757d;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-muted {
+            color: #6c757d;
+        }
+        .mt-4 { margin-top: 1.5rem; }
+        .mt-5 { margin-top: 3rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h3>🥒 Pickles Initial Setup</h3>
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if not setup_attempted %}
+                    <p class="mb-4">
+                        This setup page allows you to create the initial superuser account for the Pickles application.
+                        The superuser credentials are read from the <code>SUPERUSER</code> and <code>SUPERPASS</code> environment variables.
+                    </p>
+                    
+                    <div class="alert alert-info">
+                        <strong>Note:</strong> This setup can only be run once for security reasons. 
+                        After a superuser is created, this page will be disabled.
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">
+                            Create Superuser Account
+                        </button>
+                    </form>
+                {% elif success %}
+                    <div class="alert alert-success">
+                        <h4>✅ Setup Complete!</h4>
+                        <p>{{ message }}</p>
+                        <a href="/admin/" class="btn btn-success">Go to Admin Panel</a>
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">
+                        <h4>❌ Setup Failed</h4>
+                        <p>{{ message }}</p>
+                        <button onclick="location.reload()" class="btn btn-secondary">Try Again</button>
+                    </div>
+                {% endif %}
+
+                <hr class="mt-4">
+                <div class="text-muted">
+                    <small>
+                        <strong>Environment Variables Required:</strong><br>
+                        • <code>SUPERUSER</code> - Username for the admin account<br>
+                        • <code>SUPERPASS</code> - Password for the admin account
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a href="/" class="btn btn-outline-secondary">← Back to Main App</a>
+        </div>
+    </div>
+</body>
+</html>

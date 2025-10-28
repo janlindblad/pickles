@@ -10,4 +10,13 @@ python manage.py migrate --noinput
 # Collect static files
 python manage.py collectstatic --noinput
 
-exec "$(cat /proc/1/cmdline | tr '\0' ' ' )" || exec "$@"
+# Set default port if not provided
+PORT=${PORT:-8080}
+
+# If the command is gunicorn, make sure it uses the PORT environment variable
+if [ "$1" = "gunicorn" ]; then
+    exec gunicorn pickles.wsgi:application -b "0.0.0.0:$PORT" --workers 3
+else
+    # Execute the command passed to the container
+    exec "$@"
+fi

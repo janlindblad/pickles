@@ -26,7 +26,7 @@ COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Collect static files and run migrations at container start via entrypoint
-EXPOSE 8000
+EXPOSE 8080
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["gunicorn", "pickles.wsgi:application", "-b", "0.0.0.0:8000", "--workers", "3"]
+CMD ["gunicorn", "pickles.wsgi:application", "-b", "0.0.0.0:8080", "--workers", "3"]

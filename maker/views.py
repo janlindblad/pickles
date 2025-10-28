@@ -476,3 +476,51 @@ def maker_content_api(request):
             'success': False,
             'error': str(e)
         }, status=500)
+
+
+def setup_superuser(request):
+    """
+    Create a superuser from environment variables for initial setup.
+    Only works if no superuser exists yet.
+    """
+    import os
+    from django.contrib.auth.models import User
+    from django.contrib.messages import success, error
+    from django.contrib import messages
+    
+    context = {'setup_attempted': False, 'success': False, 'message': ''}
+    
+    if request.method == 'POST':
+        context['setup_attempted'] = True
+        
+        # Check if any superuser already exists
+        if User.objects.filter(is_superuser=True).exists():
+            context['message'] = 'A superuser already exists. Setup is disabled for security.'
+            messages.error(request, context['message'])
+            return render(request, 'maker/setup.html', context)
+        
+        # Get credentials from environment
+        username = os.getenv('SUPERUSER')
+        password = os.getenv('SUPERPASS')
+        
+        if not username or not password:
+            context['message'] = 'SUPERUSER and SUPERPASS environment variables must be set.'
+            messages.error(request, context['message'])
+            return render(request, 'maker/setup.html', context)
+        
+        try:
+            # Create the superuser
+            user = User.objects.create_superuser(
+                username=username,
+                password=password,
+                email=f'{username}@example.com'  # Default email
+            )
+            context['success'] = True
+            context['message'] = f'Superuser "{username}" created successfully! You can now log in to /admin/'
+            messages.success(request, context['message'])
+            
+        except Exception as e:
+            context['message'] = f'Error creating superuser: {str(e)}'
+            messages.error(request, context['message'])
+    
+    return render(request, 'maker/setup.html', context)

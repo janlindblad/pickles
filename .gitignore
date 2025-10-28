@@ -15,6 +15,7 @@ env/
 
 # Environment variables
 .env
+**/*_login
 
 # IDE
 .vscode/

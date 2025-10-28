@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('maker.urls')),  # Root URL points to maker app
+    path('', include('maker.urls')),  # Root URL points to maker app (includes /setup/)
     path('speeder/', include('speeder.urls')),  # Bulk management interface
 ]
 

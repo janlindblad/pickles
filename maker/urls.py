@@ -18,4 +18,7 @@ urlpatterns = [
     path('api/models/', views.maker_models_api, name='models_api'),
     path('api/packages/', views.maker_packages_api, name='packages_api'),
     path('api/content/', views.maker_content_api, name='content_api'),
+    
+    # Setup endpoint
+    path('setup/', views.setup_superuser, name='setup'),
 ]
