@@ -4,6 +4,40 @@
 
 Pickles Maker is a Django-based application that generates dynamic marketing content for electric and hybrid vehicles. It uses a sophisticated matching system to deliver contextually appropriate content based on vehicle specifications, packages, and features.
 
+## 🚀 Quick Start Options
+
+**Choose your preferred development approach:**
+
+### 🖥️ Local Development (Recommended for Development)
+- ✅ **Direct log access** in your terminal
+- ✅ **Faster development cycle** (no container rebuilds)
+- ✅ **Full IDE integration** and debugging support
+- ✅ **Auto-reload** on code changes
+
+```bash
+# One-command setup
+python3 setup_local.py
+
+# Start development server
+./run_local.sh
+# or: source .venv/bin/activate && python manage.py runserver
+```
+
+📖 **[See detailed local development guide →](DEVELOPMENT.md)**
+
+### 🐳 Docker Deployment (Recommended for Production)
+- ✅ **Production-ready** with Gunicorn + WhiteNoise
+- ✅ **Consistent environment** across all systems
+- ✅ **Easy deployment** to cloud platforms
+
+```bash
+# Build and run
+docker build -t pickles-app .
+docker run -p 8080:8080 -e SUPERUSER=admin -e SUPERPASS=password pickles-app
+```
+
+**Cloud deployment:** `ghcr.io/janlindblad/pickles:latest`
+
 ## ✨ Features
 
 - **Dynamic Content Generation**: Automatically generates marketing content based on vehicle selection
