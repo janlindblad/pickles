@@ -277,8 +277,16 @@ def blurbs_search_api(request):
     API endpoint to search for existing blurbs by text query.
     Used for autocomplete functionality when adding new blurbs.
     """
+    import logging
+    logger = logging.getLogger('speeder.blurb_search')
+    
+    user_id = request.user.pk if request.user.is_authenticated else 'anonymous'
+    
     try:
         query = request.GET.get('q', '').strip()
+        exclude_ids = request.GET.get('exclude_ids', '').strip()
+        
+        logger.debug(f"Blurb search - User: {user_id}, Query: '{query}', Exclude IDs: '{exclude_ids}'")
         
         if not query:
             return JsonResponse({
@@ -286,19 +294,40 @@ def blurbs_search_api(request):
                 'blurbs': []
             })
         
+        # Parse exclude_ids (comma-separated list of IDs to exclude)
+        exclude_list = []
+        if exclude_ids:
+            try:
+                exclude_list = [int(id_str.strip()) for id_str in exclude_ids.split(',') if id_str.strip().isdigit()]
+            except ValueError:
+                logger.warning(f"Invalid exclude_ids format - User: {user_id}, exclude_ids: '{exclude_ids}'")
+        
         # Search for blurbs containing the query (case-insensitive)
+        # Exclude blurbs that are already in the current series
         # Limit to prevent overwhelming the UI
-        blurbs = Blurb.objects.filter(
+        blurbs_query = Blurb.objects.filter(
             text__icontains=query
-        ).select_related('blurb_group')[:20]  # Limit to 20 results
+        ).select_related('blurb_group')
+        
+        if exclude_list:
+            blurbs_query = blurbs_query.exclude(pk__in=exclude_list)
+            
+        blurbs = blurbs_query[:20]  # Limit to 20 results
         
         blurbs_data = [
             {
-                'id': blurb.id,
+                'id': blurb.pk,
                 'text': blurb.text,
             }
             for blurb in blurbs
         ]
+        
+        # Enhanced logging to show specific blurbs found
+        if blurbs_data:
+            blurb_details = [f"ID:{b['id']}='{b['text'][:50]}'" for b in blurbs_data]
+            logger.debug(f"Blurb search results - User: {user_id}, Found: {len(blurbs_data)} matches: {', '.join(blurb_details)}")
+        else:
+            logger.debug(f"Blurb search results - User: {user_id}, Found: {len(blurbs_data)} matches")
         
         return JsonResponse({
             'success': True,
@@ -306,6 +335,7 @@ def blurbs_search_api(request):
         })
         
     except Exception as e:
+        logger.error(f"Blurb search failed - User: {user_id}, Error: {str(e)}", exc_info=True)
         return JsonResponse({
             'success': False,
             'error': str(e)
@@ -811,27 +841,60 @@ def create_blurb(request):
     """
     API endpoint to create a new blurb.
     """
+    import logging
+    logger = logging.getLogger('speeder.blurb_creation')
+    
+    user_id = request.user.id if request.user.is_authenticated else 'anonymous'
+    
     try:
         data = json.loads(request.body)
         blurb_text = data.get('text', '').strip()
         
+        # Enhanced logging for debugging
+        logger.info(f"Blurb creation attempt - User: {user_id}, Text: '{blurb_text}', IP: {request.META.get('REMOTE_ADDR', 'unknown')}")
+        
         if not blurb_text:
+            logger.warning(f"Blurb creation failed - empty text - User: {user_id}")
             return JsonResponse({
                 'success': False,
                 'error': 'Blurb text is required'
             }, status=400)
         
-        blurb = Blurb.objects.create(text=blurb_text)
+        # Check for exact duplicate
+        existing_blurb = Blurb.objects.filter(text__iexact=blurb_text).first()
+        if existing_blurb:
+            logger.info(f"Blurb creation skipped - duplicate found - User: {user_id}, Existing ID: {existing_blurb.pk}")
+            return JsonResponse({
+                'success': False,
+                'error': 'A blurb with this exact text already exists',
+                'duplicate': True,
+                'existing_blurb': {
+                    'id': existing_blurb.pk,
+                    'text': existing_blurb.text,
+                }
+            }, status=409)  # Conflict status code
+        
+        # Create new blurb with transaction for safety
+        with transaction.atomic():
+            blurb = Blurb.objects.create(text=blurb_text)
+            logger.info(f"Blurb created successfully - User: {user_id}, ID: {blurb.pk}, Text: '{blurb.text}'")
         
         return JsonResponse({
             'success': True,
             'blurb': {
-                'id': blurb.id,
+                'id': blurb.pk,
                 'text': blurb.text,
             }
         })
         
+    except json.JSONDecodeError as e:
+        logger.error(f"Blurb creation failed - JSON decode error - User: {user_id}, Error: {str(e)}")
+        return JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
     except Exception as e:
+        logger.error(f"Blurb creation failed - Unexpected error - User: {user_id}, Error: {str(e)}", exc_info=True)
         return JsonResponse({
             'success': False,
             'error': str(e)
